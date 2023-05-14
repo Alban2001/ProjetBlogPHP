@@ -1,0 +1,233 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+/************* HEADER ****************/
+
+header {
+  position: sticky;
+  top: 0;
+  margin-bottom: 100px;
+  z-index: 2;
+}
+
+.list-navigation li {
+  list-style-type: none;
+}
+
+.nav-item {
+  transition: all 0.75s;
+}
+
+.nav-item:hover {
+  background: rgb(3, 5, 115);
+  height: 100%;
+  font-weight: bold;
+}
+
+/************* FOOTER ****************/
+
+.logo-reseaux {
+  font-size: 50px;
+}
+
+/************* ACCUEIL ****************/
+
+section#accueil {
+  height: 750px;
+  position: relative;
+  z-index: 1;
+}
+
+section#accueil .div-accueil1 {
+  position: relative;
+  animation-name: animation-accueil1;
+  animation-duration: 2s;
+}
+
+@keyframes animation-accueil1 {
+  from {
+    left: -2000px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+.div-accueil-photo {
+  background-image: url("../images/fond-ecran.jpg");
+  background-repeat: no-repeat;
+  height: 550px;
+}
+
+section#accueil .div-accueil-photo {
+  position: relative;
+  animation-name: animation-accueil2;
+  animation-duration: 2s;
+}
+
+@keyframes animation-accueil2 {
+  from {
+    right: -2000px;
+  }
+  to {
+    right: 0px;
+  }
+}
+
+.photo-profil {
+  position: relative;
+  z-index: 1;
+  left: 50px;
+  width: 200px;
+  height: 200px;
+  box-shadow: #fff 12px 12px 15px;
+  opacity: 0.9;
+}
+
+.div-inter-accueil-presentation {
+  background: rgb(3, 5, 115);
+  height: 150px;
+  transform: skewY(10deg);
+  position: relative;
+  top: 85px;
+  z-index: 1;
+  animation-name: animation-inter;
+  animation-duration: 2s;
+}
+
+@keyframes animation-inter {
+  from {
+    left: -2000px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+section#presentation {
+  height: 1100px;
+  background: rgb(3, 5, 115);
+  position: relative;
+  z-index: 1;
+  animation-name: animation-presentation;
+  animation-duration: 2s;
+}
+
+@keyframes animation-presentation {
+  from {
+    left: -4000px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+.div-presentation {
+  width: 100%;
+  text-align: justify;
+  opacity: 0.9;
+  transition: opacity 0.75s;
+}
+
+.div-presentation:hover {
+  opacity: 1;
+}
+
+section#cv {
+  background: rgb(3, 5, 115);
+}
+
+.logo-competences {
+  height: 60px;
+}
+
+.progress-bar {
+  background: rgb(3, 5, 115);
+}
+
+@media screen and (min-width: 768px) {
+  /************* ACCUEIL ****************/
+
+  section#accueil {
+    height: 375px;
+  }
+
+  .div-accueil-photo {
+    height: 700px;
+  }
+
+  .photo-profil {
+    left: 300px;
+    z-index: 3;
+    width: 250px;
+    height: 250px;
+  }
+
+  .div-inter-accueil-presentation {
+    top: 150px;
+  }
+
+  section#presentation {
+    max-height: 660px;
+  }
+
+  .div-presentation {
+    position: relative;
+    width: 50%;
+  }
+
+  .div-presentation:nth-child(2) {
+    left: -20px;
+    top: 100px;
+  }
+
+  .div-presentation:nth-child(3) {
+    left: 0px;
+    top: 80px;
+  }
+
+  .div-presentation:nth-child(4) {
+    left: -20px;
+    top: 200px;
+  }
+
+  .div-coordonnees {
+    display: block;
+    background: rgb(3, 5, 115);
+    width: 200px;
+    height: 200px;
+    position: relative;
+    top: 90px;
+    transform: skewY(-10deg);
+    box-shadow: rgb(3, 5, 115) 10px 10px 15px;
+    animation-name: animation-coordonnees;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes animation-coordonnees {
+    from {
+      box-shadow: #fff 10px 10px 15px;
+    }
+    to {
+      box-shadow: rgb(3, 5, 115) 10px 10px 15px;
+    }
+  }
+
+  .div-coordonnees:nth-child(2) {
+    left: 150px;
+    top: 50px;
+    transform: skewY(25deg);
+  }
+
+  .div-coordonnees:nth-child(3) {
+    top: 5px;
+    transform: skewY(-10deg);
+  }
+}
