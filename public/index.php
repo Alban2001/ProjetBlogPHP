@@ -2,4 +2,5 @@
 
 require("../src/controllers/HomeController.php");
 
-homepage();
+$home_page = new HomeController();
+$home_page->homepage();

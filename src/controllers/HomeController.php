@@ -1,6 +1,13 @@
 <?php
 
-function homepage()
+class HomeController
 {
-    include(__DIR__ . '/../../templates/accueil.php');
+    function __construct()
+    {
+
+    }
+    function homepage()
+    {
+        include(__DIR__ . '/../../templates/accueil.php');
+    }
 }
