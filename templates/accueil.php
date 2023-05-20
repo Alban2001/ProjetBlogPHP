@@ -9,12 +9,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="div-accueil1 col-12 col-md-6 bg-light bg-gradient p-3 p-md-5">
-                <h1 class="shadow-lg"><code class="text-secondary fw-bold">< </code><code
-                        class="text-primary fw-bold">h1</code>
-                    <code class="text-secondary fw-bold">></code>Alban VOIRIOT<code
-                        class="text-secondary fw-bold"><</code>
-                    <code class="text-secondary fw-bold">/</code>
-                    <code class="text-primary fw-bold">h1</code><code class="text-secondary fw-bold"> ></code>
+                <h1 class="shadow-lg">
+                    <code class="text-secondary fw-bold"><<span class="text-primary">h1</span>></code>
+                    Alban VOIRIOT
+                    <code class="text-secondary fw-bold"><<span>/</span><span class="text-primary">h1</span>></code>
                 </h1>
                 <p class="shadow-lg fs-2">21ans, Développeur Web en alternance</p><br>
                 <p><cite>=> Autonome, passionné et curieux. Je suis celui qu'il vous faut dans votre équipe !</cite></p>
