@@ -1,12 +1,10 @@
 <?php
 
+namespace Controllers;
+
 class HomeController
 {
-    function __construct()
-    {
-
-    }
-    function homepage()
+    public function homepage()
     {
         include(__DIR__ . '/../../templates/accueil.php');
     }

@@ -1,5 +1,5 @@
 <!--- VUE PARTIELLE : HEADER + NAV --->
-
+<?php session_start(); ?>
 <header>
   <div class="container-fluid">
     <div class="row">
@@ -14,7 +14,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
               <ul class="navbar-nav text-center">
                 <li class="nav-item">
-                  <a class="nav-link text-white fs-5 active" aria-current="page" href="#accueil">Accueil</a>
+                  <a class="nav-link text-white fs-5 active" aria-current="page" href="index.php">Accueil</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-white fs-5" href="#presentation">Présentation</a>
@@ -28,6 +28,11 @@
                 <li class="nav-item">
                   <a class="nav-link text-white fs-5" href="#">Articles</a>
                 </li>
+                <?php if (isset($_SESSION["role"])) { ?>
+                <li class="nav-item">
+                  <a class="nav-link text-white fs-5" href="#">Gestion des articles</a>
+                </li>
+                <?php } ?>
                 <li class="nav-item">
                   <a class="nav-link text-white fs-5" href="#contact">Contact</a>
                 </li>
