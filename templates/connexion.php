@@ -11,11 +11,12 @@
                 <div class="div-connexion p-4 border rounded shadow-lg fw-bold">
                     <h1 class="fs-4 fw-bold text-center">Connexion à votre compte</h1>
                     <br>
-                    <?php if (isset($_POST["btnConnecter"])) { ?>
+                    <?php if (isset($numErreur) && $numErreur == true) { ?>
                         <div class="bg-danger text-white fw-bold p-3">
                             Erreur : votre adresse mail ou mot de passe est incorrect !
                         </div>
                     <?php } ?>
+                    <br>
                     <form action="index.php?action=retourConnexion" method="POST">
                         <label for="email" class="form-label">Email</label>
                         <input class="form-control" type="email" name="email" placeholder="Email" /><br>

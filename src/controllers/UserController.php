@@ -6,7 +6,7 @@ use Models\UserManager;
 
 class UserController
 {
-    // Direction vers la page de connexion pour la saisit de l'adresse mail et mot de passe
+    // Direction vers la page de connexion pour la saisie de l'adresse mail et mot de passe
     public function connexion()
     {
         include_once(__DIR__ . '/../../templates/connexion.php');
@@ -16,6 +16,7 @@ class UserController
     // Vérifie aussi si ces données sont corrects et correspondent dans la BDD
     public function retourConnexion(array $input)
     {
+        $numErreur = false;
         $userManager = new UserManager();
         if ($userManager->verifierCompte($input["email"], $input["password"])) {
             session_start();
@@ -28,7 +29,8 @@ class UserController
 
             header("Location: index.php");
         } else {
-            header("Location: index.php?action=connexion");
+            $numErreur = true;
+            include_once(__DIR__ . '/../../templates/connexion.php');
         }
     }
 
