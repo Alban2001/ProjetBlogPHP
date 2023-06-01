@@ -20,7 +20,7 @@ class UserController
         $userManager = new UserManager();
         if ($userManager->verifierCompte($input["email"], $input["password"])) {
             session_start();
-
+            $_SESSION["id"] = $userManager->getUser($input["email"], $input["password"])->getId();
             $_SESSION["nom"] = $userManager->getUser($input["email"], $input["password"])->getNom();
             $_SESSION["prenom"] = $userManager->getUser($input["email"], $input["password"])->getPrenom();
             $_SESSION["adresseMail"] = $userManager->getUser($input["email"], $input["password"])->getAdresseMail();
