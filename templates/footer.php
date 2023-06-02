@@ -1,5 +1,4 @@
 <!--- VUE PARTIELLE : FOOTER --->
-
 <footer id="footer" class="bg-dark text-white">
     <div class="container-fluid">
         <div class="row p-4 p-md-5">
@@ -14,10 +13,14 @@
                 <h4 class="text-center text-md-start fw-bold">Navigation</h4>
                 <hr class="border border-2 border-white">
                 <ul class="list-navigation">
-                    <li><a class="text-white" href="">Accueil</a></li>
+                    <li><a class="text-white" href="index.php">Accueil</a></li>
                     <li><a class="text-white" href="#">Articles</a></li>
                     <li><a class="text-white" href="#contact">Contact</a></li>
-                    <li><a class="text-white" href="">Se connecter</a></li>
+                    <?php if (isset($_SESSION["role"])) { ?>
+                    <li><a class="text-white" href="index.php?action=deconnexion">Se déconnecter</a></li>
+                    <?php } else { ?>
+                    <li><a class="text-white" href="index.php?action=connexion">Se connecter</a></li>
+                    <?php } ?>
                 </ul>
             </div>
             <div class="col-12 col-md-4 mb-4 mb-md-0 text-center text-md-start">
@@ -31,9 +34,9 @@
                 </ul>
             </div>
             <div class="col-12 col-md-2">
-                <h4 class="text-center text-md-start fw-bold">Suivez-Moi</h4>
+                <h4 class="text-center fw-bold">Suivez-Moi</h4>
                 <hr class="border border-2 border-white">
-                <div class="d-flex flex-row justify-content-evenly justify-content-md-start">
+                <div class="d-flex flex-row justify-content-evenly">
                     <a class="me-md-5" href="https://www.linkedin.com/in/alban-voiriot-aa69b820b/">
                         <i class="fa-brands fa-linkedin text-white logo-reseaux"></i>
                     </a>

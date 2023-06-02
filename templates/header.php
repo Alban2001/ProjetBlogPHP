@@ -1,10 +1,15 @@
 <!--- VUE PARTIELLE : HEADER + NAV --->
-
+<?php session_start(); ?>
+<?php if (isset($_SESSION["id"])) { ?>
+<div class="p-2 fw-bold text-black border bg-white text-center">
+  <?php echo "Bonjour " . $_SESSION["nom"] . " " . $_SESSION["prenom"] . ". Ravi de vous revoir ! :-)"; ?>
+</div>
+<?php } ?>
 <header>
   <div class="container-fluid">
     <div class="row">
       <div class="col px-0">
-        <nav class="navbar navbar-expand-md navbar-light fixed-top bg-primary bg-gradient">
+        <nav class="navbar navbar-expand-md navbar-light bg-primary bg-gradient">
           <div class="container-fluid">
             <a class="navbar-brand" href="#"><img class="w-50 rounded-pill logo" src="images/logo.png" alt="logo" /></a>
             <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -14,7 +19,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
               <ul class="navbar-nav text-center">
                 <li class="nav-item">
-                  <a class="nav-link text-white fs-5 active" aria-current="page" href="#accueil">Accueil</a>
+                  <a class="nav-link text-white fs-5 active" aria-current="page" href="index.php">Accueil</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-white fs-5" href="#presentation">Présentation</a>
@@ -28,6 +33,11 @@
                 <li class="nav-item">
                   <a class="nav-link text-white fs-5" href="#">Articles</a>
                 </li>
+                <?php if (isset($_SESSION["role"])) { ?>
+                <li class="nav-item">
+                  <a class="nav-link text-white fs-5" href="#">Gestion des articles</a>
+                </li>
+                <?php } ?>
                 <li class="nav-item">
                   <a class="nav-link text-white fs-5" href="#contact">Contact</a>
                 </li>
