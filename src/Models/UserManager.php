@@ -13,7 +13,8 @@ class UserManager
     {
         $connection = new DatabaseConnection();
         $statement = $connection->getConnection()->prepare("select adresseMail, motDePasse FROM utilisateur WHERE adresseMail = ?");
-        $statement->execute([$adresseMail]);
+        $statement->bindParam(1, $adresseMail);
+        $statement->execute();
 
         $row = $statement->fetch();
 
@@ -29,12 +30,14 @@ class UserManager
     {
         $connection = new DatabaseConnection();
         $statement = $connection->getConnection()->prepare("select * FROM utilisateur WHERE adresseMail = ?");
-        $statement->execute([$adresseMail]);
+        $statement->bindParam(1, $adresseMail);
+        $statement->execute();
 
         $row = $statement->fetch();
 
         $user = new User();
         $user
+            ->setId($row['id'])
             ->setNom($row['nom'])
             ->setPrenom($row['prenom'])
             ->setAdresseMail($row['adresseMail'])

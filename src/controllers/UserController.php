@@ -18,14 +18,15 @@ class UserController
     {
         $numErreur = false;
         $userManager = new UserManager();
-        if ($userManager->verifierCompte($input["email"], $input["password"])) {
+        $inputs = filter_input_array(INPUT_POST, $input);
+        if ($userManager->verifierCompte($inputs["email"], $inputs["password"])) {
             session_start();
-            $_SESSION["id"] = $userManager->getUser($input["email"], $input["password"])->getId();
-            $_SESSION["nom"] = $userManager->getUser($input["email"], $input["password"])->getNom();
-            $_SESSION["prenom"] = $userManager->getUser($input["email"], $input["password"])->getPrenom();
-            $_SESSION["adresseMail"] = $userManager->getUser($input["email"], $input["password"])->getAdresseMail();
-            $_SESSION["motDePasse"] = $userManager->getUser($input["email"], $input["password"])->getMotDePasse();
-            $_SESSION["role"] = $userManager->getUser($input["email"], $input["password"])->getRole();
+            $_SESSION["id"] = $userManager->getUser($inputs["email"], $inputs["password"])->getId();
+            $_SESSION["nom"] = $userManager->getUser($inputs["email"], $inputs["password"])->getNom();
+            $_SESSION["prenom"] = $userManager->getUser($inputs["email"], $inputs["password"])->getPrenom();
+            $_SESSION["adresseMail"] = $userManager->getUser($inputs["email"], $inputs["password"])->getAdresseMail();
+            $_SESSION["motDePasse"] = $userManager->getUser($inputs["email"], $inputs["password"])->getMotDePasse();
+            $_SESSION["role"] = $userManager->getUser($inputs["email"], $inputs["password"])->getRole();
 
             header("Location: index.php");
         } else {
