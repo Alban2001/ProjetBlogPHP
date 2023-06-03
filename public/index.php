@@ -25,7 +25,7 @@ try {
             $userController->connexion();
             // Page de retourConnexion
         } elseif ($_GET["action"] === "retourConnexion") {
-            $userController->retourConnexion($_POST);
+            $userController->retourConnexion();
             // Page de déconnexion (retour à la page d'accueil + fermeture des sessions)
         } elseif ($_GET["action"] === "deconnexion") {
             $userController->deconnexion();

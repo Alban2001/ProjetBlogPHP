@@ -13,20 +13,22 @@ class UserController
     }
 
     // Permet de récupérer les données (adresse mail + mot de passe) de la page de connexion
-    // Vérifie aussi si ces données sont corrects et correspondent dans la BDD
-    public function retourConnexion(array $input)
+    // Vérifie aussi si ces données sont correctes et correspondent dans la BDD
+    public function retourConnexion()
     {
         $numErreur = false;
         $userManager = new UserManager();
-        $inputs = filter_input_array(INPUT_POST, $input);
+        $options = array("email" => FILTER_SANITIZE_EMAIL, "password" => FILTER_SANITIZE_STRING);
+        $inputs = filter_input_array(INPUT_POST, $options);
         if ($userManager->verifierCompte($inputs["email"], $inputs["password"])) {
             session_start();
-            $_SESSION["id"] = $userManager->getUser($inputs["email"], $inputs["password"])->getId();
-            $_SESSION["nom"] = $userManager->getUser($inputs["email"], $inputs["password"])->getNom();
-            $_SESSION["prenom"] = $userManager->getUser($inputs["email"], $inputs["password"])->getPrenom();
-            $_SESSION["adresseMail"] = $userManager->getUser($inputs["email"], $inputs["password"])->getAdresseMail();
-            $_SESSION["motDePasse"] = $userManager->getUser($inputs["email"], $inputs["password"])->getMotDePasse();
-            $_SESSION["role"] = $userManager->getUser($inputs["email"], $inputs["password"])->getRole();
+            $user = $userManager->getUser($inputs["email"], $inputs["password"]);
+            $_SESSION["user"]["id"] = $user->getId();
+            $_SESSION["user"]["nom"] = $user->getNom();
+            $_SESSION["user"]["prenom"] = $user->getPrenom();
+            $_SESSION["user"]["adresseMail"] = $user->getAdresseMail();
+            $_SESSION["user"]["motDePasse"] = $user->getMotDePasse();
+            $_SESSION["user"]["role"] = $user->getRole();
 
             header("Location: index.php");
         } else {

@@ -1,8 +1,8 @@
 <!--- VUE PARTIELLE : HEADER + NAV --->
 <?php session_start(); ?>
-<?php if (isset($_SESSION["id"])) { ?>
+<?php if (isset($_SESSION["user"]["id"])) { ?>
 <div class="p-2 fw-bold text-black border bg-white text-center">
-  <?php echo "Bonjour " . $_SESSION["nom"] . " " . $_SESSION["prenom"] . ". Ravi de vous revoir ! :-)"; ?>
+  <?php echo "Bonjour " . $_SESSION["user"]["nom"] . " " . $_SESSION["user"]["prenom"] . ". Ravi de vous revoir ! :-)"; ?>
 </div>
 <?php } ?>
 <header>
@@ -33,7 +33,7 @@
                 <li class="nav-item">
                   <a class="nav-link text-white fs-5" href="#">Articles</a>
                 </li>
-                <?php if (isset($_SESSION["role"])) { ?>
+                <?php if (isset($_SESSION["user"]["role"])) { ?>
                 <li class="nav-item">
                   <a class="nav-link text-white fs-5" href="#">Gestion des articles</a>
                 </li>
