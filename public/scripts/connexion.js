@@ -8,17 +8,13 @@ const inputPassword = document.getElementById("input-password-connexion");
 function afficherCacherMdp(element1, type1, element2, type2) {
   element1.onclick = () => {
     if (element1.classList.contains("d-block")) {
-      element1.classList.remove("d-block");
-      element1.classList.add("d-none");
+      element1.classList.replace("d-block", "d-none");
       inputPassword.setAttribute("type", type1);
-      element2.classList.add("d-block");
-      element2.classList.remove("d-none");
+      element2.classList.replace("d-none", "d-block");
     } else {
-      element1.classList.add("d-block");
-      element1.classList.remove("d-none");
+      element1.classList.replace("d-none", "d-block");
       inputPassword.setAttribute("type", type2);
-      element2.classList.remove("d-block");
-      element2.classList.add("d-none");
+      element2.classList.replace("d-block", "d-none");
     }
   };
 }
