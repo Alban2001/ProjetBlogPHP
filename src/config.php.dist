@@ -1,0 +1,9 @@
+<?php
+
+// Fichier de configuration
+
+// Nom d'utilisateur et mot de passe de la base de données
+$_ENV["DB_HOST"] = "nom de l'hôte";
+$_ENV["DB_NAME"] = "nom de la bdd";
+$_ENV["DB_USERNAME"] = "votre username";
+$_ENV["DB_PASSWORD"] = "votre mot de passe";

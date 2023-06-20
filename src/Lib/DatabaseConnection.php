@@ -13,7 +13,7 @@ class DatabaseConnection
     public function getConnection(): PDO
     {
         if ($this->database === null) {
-            $this->database = new PDO('mysql:host=localhost;dbname=bdd_blogpro;charset=utf8', $_ENV["USERNAME_DB"], $_ENV["PASSWORD_DB"]);
+            $this->database = new PDO('mysql:host=' . $_ENV["DB_HOST"] . ';dbname=' . $_ENV["DB_NAME"] . ';charset=utf8', $_ENV["DB_USERNAME"], $_ENV["DB_PASSWORD"]);
             $this->database->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }

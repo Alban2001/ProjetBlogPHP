@@ -8,10 +8,13 @@ spl_autoload_register(function (string $fqcn) {
 
 use Controllers\HomeController;
 use Controllers\UserController;
+use Controllers\ArticleController;
 
 ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
 error_reporting(-1);
+
+session_start();
 
 try {
     // Page d'accueil
@@ -20,18 +23,30 @@ try {
         $homeController->homepage();
     } elseif (isset($_GET["action"])) {
         $userController = new UserController();
+        $articleController = new ArticleController();
         // Page de connexion
         if ($_GET["action"] === "connexion") {
             $userController->connexion();
             // Page de retourConnexion
         } elseif ($_GET["action"] === "retourConnexion") {
-            $userController->retourConnexion($_POST);
+            $userController->retourConnexion();
             // Page de déconnexion (retour à la page d'accueil + fermeture des sessions)
         } elseif ($_GET["action"] === "deconnexion") {
             $userController->deconnexion();
         }
+        if (isset($_SESSION["user"]["id"]) && $_SESSION["user"]["role"] === "admin") {
+            if ($_GET["action"] === "gestionArticles") {
+                $articleController->gestion();
+            } elseif ($_GET["action"] === "ajoutArticle") {
+                $articleController->add();
+            } elseif ($_GET["action"] === "retourAjoutArticle") {
+                $articleController->retourAdd($_FILES);
+            }
+        } else {
+            throw new Exception("Erreur 401 : vous n'avez pas l'autorisation d'accéder à cette page !");
+        }
     } else {
-        throw new Exception("La page que vous recherchez n'existe pas !");
+        throw new Exception("Erreur 404 : La page que vous recherchez n'existe pas !");
     }
 } catch (Exception $e) {
     $messageErreur = $e->getMessage();

@@ -12,13 +12,13 @@ class UserManager
     public function verifierCompte(string $adresseMail, string $motDePasse): bool
     {
         $connection = new DatabaseConnection();
-        $statement = $connection->getConnection()->prepare("select adresseMail, motDePasse FROM utilisateur WHERE adresseMail = ?");
+        $statement = $connection->getConnection()->prepare("SELECT adresse_mail, mot_de_passe FROM utilisateur WHERE adresse_mail = ?");
         $statement->bindParam(1, $adresseMail);
         $statement->execute();
 
         $row = $statement->fetch();
 
-        if ((count($row) > 0) && ($adresseMail == $row["adresseMail"]) && (password_verify($motDePasse, $row["motDePasse"]))) {
+        if ((count($row) > 0) && ($adresseMail == $row["adresse_mail"]) && (password_verify($motDePasse, $row["mot_de_passe"]))) {
             return true;
         }
 
@@ -29,7 +29,7 @@ class UserManager
     public function getUser(string $adresseMail, string $motDePasse): User
     {
         $connection = new DatabaseConnection();
-        $statement = $connection->getConnection()->prepare("select * FROM utilisateur WHERE adresseMail = ?");
+        $statement = $connection->getConnection()->prepare("SELECT * FROM utilisateur WHERE adresse_mail = ?");
         $statement->bindParam(1, $adresseMail);
         $statement->execute();
 
@@ -40,7 +40,7 @@ class UserManager
             ->setId($row['id'])
             ->setNom($row['nom'])
             ->setPrenom($row['prenom'])
-            ->setAdresseMail($row['adresseMail'])
+            ->setAdresseMail($row['adresse_mail'])
             ->setMotDePasse($motDePasse)
             ->setRole($row['role'])
         ;

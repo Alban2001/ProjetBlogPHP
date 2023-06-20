@@ -192,6 +192,18 @@ section#erreur {
   z-index: 1;
 }
 
+/************* GESTION ARTICLES ****************/
+
+/* section#gestionArticles {
+  height: 750px;
+  z-index: 1;
+} */
+
+.btnAjoutArticle {
+  background: rgb(3, 5, 115);
+  width: 50px;
+}
+
 @media screen and (min-width: 768px) {
   /************* ACCUEIL ****************/
 
