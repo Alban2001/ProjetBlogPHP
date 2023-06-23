@@ -7,8 +7,9 @@
         <div class="row">
             <div class="col">
                 <div class="div-erreur bg-danger bg-gradient p-4 text-white fw-bold">
-                    <h1 class="text-decoration-underline">Erreur :</h1>
-                    <?php echo $messageErreur; ?>
+                    <h2>
+                        <?php echo $messageErreur; ?>
+                    </h2>
                 </div>
             </div>
         </div>

@@ -47,4 +47,24 @@ class UserManager
 
         return $user;
     }
+
+    //Permet d'obtenir toutes les informations d'un utilisateur (id, nom, prenom, adresse mail, mot de passe et rôle) avec un id en paramètre
+    public function getUserById(int $id): User
+    {
+        $connection = new DatabaseConnection();
+        $statement = $connection->getConnection()->prepare("SELECT * FROM utilisateur WHERE id = ?");
+        $statement->bindParam(1, $id);
+        $statement->execute();
+
+        $row = $statement->fetch();
+
+        $user = new User();
+        $user
+            ->setId($row['id'])
+            ->setNom($row['nom'])
+            ->setPrenom($row['prenom'])
+        ;
+
+        return $user;
+    }
 }

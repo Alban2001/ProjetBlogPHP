@@ -194,14 +194,14 @@ section#erreur {
 
 /************* GESTION ARTICLES ****************/
 
-/* section#gestionArticles {
-  height: 750px;
-  z-index: 1;
-} */
-
 .btnAjoutArticle {
   background: rgb(3, 5, 115);
   width: 50px;
+}
+
+.imageArticle {
+  min-width: 125px;
+  height: 100px;
 }
 
 @media screen and (min-width: 768px) {
@@ -294,5 +294,10 @@ section#erreur {
   .div-erreur {
     transform: translate(10%, -50%);
     width: 80%;
+  }
+
+  /************* GESTION ARTICLES ****************/
+  .imageArticle {
+    height: 150px;
   }
 }

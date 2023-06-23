@@ -1,3 +1,11 @@
+// Fermeture du message de succès en 3 secondes
+const messageSuccess = document.querySelector(".messageSuccess");
+if (messageSuccess !== null) {
+  setTimeout(function () {
+    messageSuccess.classList.add("d-none");
+  }, 3000);
+}
+
 // Permet de fermer le modal pour continuer à écrire l'article
 document.getElementById("btnConfirmerAnnuler").onclick = () => {
   location.href = "index.php?action=gestionArticles";
@@ -20,3 +28,16 @@ for (let index in inputAjoutArticle) {
     }
   };
 }
+
+// Permet d'afficher et de mettre à jour l'image instantanément
+const inputFileImage = document.getElementById("inputFileImage");
+const imgEditArticle = document.getElementById("imgEditArticle");
+
+inputFileImage.onchange = () => {
+  imgEditArticle.classList.replace("d-none", "d-block");
+  imgEditArticle.src = window.URL.createObjectURL(inputFileImage.files[0]);
+};
+
+imgEditArticle.onclick = () => {
+  imgEditArticle.click();
+};

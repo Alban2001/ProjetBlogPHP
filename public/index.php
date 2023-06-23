@@ -23,7 +23,6 @@ try {
         $homeController->homepage();
     } elseif (isset($_GET["action"])) {
         $userController = new UserController();
-        $articleController = new ArticleController();
         // Page de connexion
         if ($_GET["action"] === "connexion") {
             $userController->connexion();
@@ -35,12 +34,22 @@ try {
             $userController->deconnexion();
         }
         if (isset($_SESSION["user"]["id"]) && $_SESSION["user"]["role"] === "admin") {
+            $articleController = new ArticleController();
             if ($_GET["action"] === "gestionArticles") {
                 $articleController->gestion();
             } elseif ($_GET["action"] === "ajoutArticle") {
                 $articleController->add();
             } elseif ($_GET["action"] === "retourAjoutArticle") {
                 $articleController->retourAdd($_FILES);
+            } elseif ($_GET["action"] === "edit") {
+                if (isset($_GET["id"]) && $_GET["id"] > 0) {
+                    $idArticle = $_GET["id"];
+                    $articleController->edit($idArticle);
+                } else {
+                    throw new Exception("Erreur 404 : aucun identifiant d'article envoyé !");
+                }
+            } elseif ($_GET["action"] === "retourEditArticle") {
+                $articleController->retourEditArticle($_FILES);
             }
         } else {
             throw new Exception("Erreur 401 : vous n'avez pas l'autorisation d'accéder à cette page !");
