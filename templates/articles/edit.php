@@ -1,4 +1,4 @@
-<?php $title = "Ajouter un article"; ?>
+<?php $title = "Editer d'un article"; ?>
 
 <?php ob_start(); ?>
 
@@ -6,7 +6,17 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1 class="fw-bold p-5 text-center">Ajouter un article</h1>
+                <h1 class="fw-bold p-5 text-center">Editer un article</h1>
+                <br>
+                <p><strong>Date de création</strong> :
+                    <?php echo $article->getDateCreation()->format("d/m/Y"); ?>
+                </p>
+                <p><strong>Date de dernière mise à jour</strong> :
+                    <?php echo $article->getDateDerniereMaj()->format("d/m/Y"); ?>
+                </p>
+                <p><strong>Auteur (Dernière mise à jour)</strong> :
+                    <?php echo $user->getPrenom() . ' ' . $user->getNom(); ?>
+                </p>
                 <br>
                 <?php if (isset($numErreur) && $numErreur == true) { ?>
                     <div class="bg-danger text-white fw-bold p-3">
@@ -14,17 +24,20 @@
                     </div>
                 <?php } ?>
                 <br>
-                <form action="index.php?action=retourAjoutArticle" method="POST" enctype='multipart/form-data'>
+                <form action="index.php?action=retourEditArticle" method="POST" enctype='multipart/form-data'>
                     <label class="fw-bold" for="title" class="form-label">Titre</label>
                     <input class="inputAjoutArticle form-control border border-3" type="text" name="title"
-                        placeholder="Titre" maxlength="255">
+                        value="<?php echo htmlspecialchars($article->getTitre()); ?>" placeholder="Titre"
+                        maxlength="255">
                     <p class="messageErreurP d-none fst-italic fw-bold text-danger">La saisie du titre est obligatoire !
                     </p><br>
                     <label class="fw-bold" for="image" class="form-label">Image</label>
                     <br>
-                    <img id="imgEditArticle" class="imageArticle d-none" />
-                    <input id="inputFileImage" class="form-control border border-3" type="file" name="image"
-                        accept="image/png, image/jpg, image/jpeg">
+                    <img id="imgEditArticle" class="imageArticle"
+                        src="<?php echo 'images/upload/' . $article->getImage(); ?>" />
+                    <input id="inputFileImage" class="inputAjoutArticle form-control border border-3" type="file"
+                        name="image" accept="image/png, image/jpg, image/jpeg"
+                        value="<?php echo 'images/upload/' . $article->getImage(); ?>">
                     <?php if (isset($erreurExtension) && $erreurExtension == true) { ?>
                         <p class="bg-danger fst-italic fw-bold text-white p-1">
                             <?php echo $messageErreur; ?>
@@ -33,16 +46,16 @@
                     <br>
                     <label class="fw-bold" for="chapo">Chapô</label><br>
                     <textarea class="inputAjoutArticle w-100 border border-3 p-3" name="chapo" id="chapo" rows="10"
-                        placeholder="Ecrivez votre chapô..."></textarea>
+                        placeholder="Ecrivez votre chapô..."><?php echo htmlspecialchars($article->getChapo()); ?></textarea>
                     <p class="messageErreurP d-none fst-italic fw-bold text-danger">La saisie du chapô est obligatoire !
                     </p><br><br>
                     <label class="fw-bold" for="content">Contenu</label><br>
                     <textarea class="inputAjoutArticle w-100 border border-3 p-3" name="content" id="content" rows="10"
-                        placeholder="Ecrivez votre contenu..."></textarea>
+                        placeholder="Ecrivez votre contenu..."><?php echo htmlspecialchars($article->getContenu()); ?></textarea>
                     <p class="messageErreurP d-none fst-italic fw-bold text-danger">La saisie du contenu est obligatoire
                         !</p><br><br>
                     <input class="btn btn-primary bg-gradient w-100 fw-bold p-2 mb-3" type="submit"
-                        value="Ajouter l'article">
+                        value="Mettre à jour l'article">
                     <button id="btnAnnulerArticle" class="btn btn-secondary bg-gradient w-100 fw-bold p-2" type="button"
                         data-bs-toggle="modal" data-bs-target="#modalAnnuler">Annuler</button>
                 </form>
@@ -55,7 +68,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalAnnulerLabel">Annuler l'ajout d'un article</h5>
+                <h5 class="modal-title" id="modalAnnulerLabel">Annuler la modification de l'article</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

@@ -12,9 +12,9 @@ class Article
     private string $image;
     private string $chapo;
     private string $contenu;
-    private DateTime $date_creation; //La date de création est la date du jour par défaut lors de la création de l'article
-    private DateTime $date_derniere_maj; //La date de création est la date du jour par défaut lors de la création de l'article
-    private int $id_utilisateur;
+    private DateTime $dateCreation; //La date de création est la date du jour par défaut lors de la création de l'article
+    private DateTime $dateDerniereMaj; //La date de création est la date du jour par défaut lors de la création de l'article
+    private int $idUtilisateur;
 
     // Attribution de l'ID
     public function setId(int $id): self
@@ -84,42 +84,42 @@ class Article
     }
 
     // Attribution de la date de création
-    public function setDateCreation(DateTime $date_creation): self
+    public function setDateCreation(DateTime $dateCreation): self
     {
-        $this->date_creation = $date_creation;
+        $this->dateCreation = $dateCreation;
 
         return $this;
     }
     // Affichage de la date de création
     public function getDateCreation(): DateTime
     {
-        return $this->date_creation;
+        return $this->dateCreation;
     }
 
     // Attribution de la date de dernière MAJ
     public function setDateDerniereMaj(DateTime $dateDerniereMaj): self
     {
-        $this->date_derniere_maj = $dateDerniereMaj;
+        $this->dateDerniereMaj = $dateDerniereMaj;
 
         return $this;
     }
     // Affichage de la date de dernière MAJ
     public function getDateDerniereMaj(): DateTime
     {
-        return $this->date_derniere_maj;
+        return $this->dateDerniereMaj;
     }
 
     // Attribution de l'ID utilisateur
-    public function setIdUtilisateur(int $id_utilisateur): self
+    public function setIdUtilisateur(int $idUtilisateur): self
     {
-        $this->id_utilisateur = $id_utilisateur;
+        $this->idUtilisateur = $idUtilisateur;
 
         return $this;
     }
     // Affichage de l'ID utilisateur
     public function getIdUtilisateur(): int
     {
-        return $this->id_utilisateur;
+        return $this->idUtilisateur;
     }
 
 }
