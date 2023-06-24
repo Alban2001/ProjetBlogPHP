@@ -22,6 +22,13 @@
                 </div>
                 <br>
                 <?php } ?>
+                <?php
+                if (isset($_GET["successDelete"]) && $_GET["successDelete"] === "1") { ?>
+                <div class="messageSuccess fw-bold bg-success text-white text-center p-3 w-100">
+                    Suppression l'article effectuée avec succès !
+                </div>
+                <br>
+                <?php } ?>
                 <table class="table table-striped table-mobile-responsive table-mobile-sided">
                     <thead>
                         <tr class="table-primary">
@@ -59,7 +66,8 @@
                             <td data-content="Actions"><a
                                     href="<?php echo "index.php?action=edit&id=" . htmlspecialchars($article->getId()); ?>"
                                     class="me-4 me-md-3"><i class="fa-solid fa-pen-to-square text-dark"></i></a>
-                                <a href="#"><i class="fa-solid fa-trash text-dark"></i></a>
+                                <a class="btnSupprimerArticle" href="#" data-bs-toggle="modal"
+                                    data-bs-target="#modalDelete"><i class="fa-solid fa-trash text-dark"></i></a>
                             </td>
                         </tr>
                         <?php } ?>
@@ -71,6 +79,27 @@
         </div>
     </div>
 </section>
+<div class="modal fade" id="modalDelete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="modalDeleteLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalDeleteLabel">Suppression de l'article</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Etes-vous sûr de vouloir supprimer l'article n°<span id="spanDelete"></span> ?<br>Si oui, cet article
+                sera supprimé définitivement !
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
+                <button id="btnConfirmerDelete" type="button" class="btn btn-primary">Oui</button>
+            </div>
+        </div>
+    </div>
+</div>
+<form id="formDelete" action="index.php?action=delete" method="POST">
+</form>
 
 <script type="text/javascript" src="scripts/articles.js"></script>
 

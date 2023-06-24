@@ -1,3 +1,25 @@
+// Permet de supprimer un article au choix dans la BDD
+const btnSupprimerArticle = document.querySelectorAll(".btnSupprimerArticle");
+const dataId = document.querySelectorAll("td[data-content=ID]");
+const spanDelete = document.getElementById("spanDelete");
+const btnConfirmerDelete = document.getElementById("btnConfirmerDelete");
+const formDelete = document.getElementById("formDelete");
+for (let index in btnSupprimerArticle) {
+  btnSupprimerArticle[index].onclick = () => {
+    spanDelete.innerHTML = dataId[index].innerHTML;
+    btnConfirmerDelete.onclick = () => {
+      const input = document.createElement("input");
+      input.setAttribute("id", "inputIdArticle");
+      input.setAttribute("name", "id");
+      input.setAttribute("type", "hidden");
+      formDelete.appendChild(input);
+      document.getElementById("inputIdArticle").value =
+        dataId[index].innerHTML.trim();
+      formDelete.submit();
+    };
+  };
+}
+
 // Fermeture du message de succès en 3 secondes
 const messageSuccess = document.querySelector(".messageSuccess");
 if (messageSuccess !== null) {
@@ -7,9 +29,12 @@ if (messageSuccess !== null) {
 }
 
 // Permet de fermer le modal pour continuer à écrire l'article
-document.getElementById("btnConfirmerAnnuler").onclick = () => {
-  location.href = "index.php?action=gestionArticles";
-};
+const btnConfirmerAnnuler = document.getElementById("btnConfirmerAnnuler");
+if (btnConfirmerAnnuler !== null) {
+  btnConfirmerAnnuler.onclick = () => {
+    location.href = "index.php?action=gestionArticles";
+  };
+}
 
 // Vérification individuelle de chaque champ s'ils sont remplis
 const inputAjoutArticle = document.querySelectorAll(".inputAjoutArticle");

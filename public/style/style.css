@@ -83,7 +83,7 @@ section#accueil .div-accueil-photo {
 .photo-profil {
   position: relative;
   z-index: 1;
-  left: 50px;
+  left: 10px;
   width: 200px;
   height: 200px;
   box-shadow: #fff 12px 12px 15px;

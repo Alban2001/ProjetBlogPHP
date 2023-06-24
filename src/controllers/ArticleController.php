@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Models\Article;
 use Models\ArticleManager;
 use Models\UserManager;
 use Exception;
@@ -28,34 +29,31 @@ class ArticleController
         $numErreur = false;
         $erreurExtension = false;
         $options = array(
-            "title" => FILTER_DEFAULT,
-            "image" => FILTER_DEFAULT,
-            "chapo" => FILTER_DEFAULT,
-            "content" => FILTER_DEFAULT
+            "title" => FILTER_SANITIZE_STRING,
+            "image" => FILTER_SANITIZE_STRING,
+            "chapo" => FILTER_SANITIZE_STRING,
+            "content" => FILTER_SANITIZE_STRING
         );
-        $inputs = filter_input_array(INPUT_POST);
+        $inputs = filter_input_array(INPUT_POST, $options);
         $idUtilisateur = $_SESSION["user"]["id"];
 
         // On vérifie que tout les champs ne sont pas vides
         if (!empty($inputs["title"]) && !empty($inputs["chapo"]) && !empty($inputs["content"]) && !empty($img["image"]["name"])) {
-            $chercheExtension = explode(".", $img["image"]["name"]);
-            $extension = strtolower(end($chercheExtension)); // Récupère le dernier mot du tableau (donc l'extension du fichier)
-            $emplacementOrigine = $img["image"]["tmp_name"]; // Récupère le chemin complet du fichier temporaire du serveur
-            $extensions = ["jpg", "jpeg", "png"]; // Extensions d'image accepté
-
-            // On vérifie que l'extension choisie fait partie des extensions autorisées (jpg, jpeg ou png)
-            if (in_array($extension, $extensions)) {
-                $nomImage = uniqid('', true); // Génère un id unique pour le nom de l'image
-                $image = $nomImage . "." . $extension;
-                // Définit le nouveau de destination pour les images uploadées
-                $emplacementDestination = __DIR__ . "/../../public/images/upload/" . $image;
-
+            $articleManager = new ArticleManager();
+            $image = $articleManager->addImage($img);
+            if (!empty($image)) {
                 $articleManager = new ArticleManager();
-                $articleManager->add($inputs["title"], $image, $inputs["chapo"], $inputs["content"], intval($idUtilisateur));
-                move_uploaded_file($emplacementOrigine, $emplacementDestination);
+                $objetArticle = new Article();
+                $objetArticle
+                    ->setTitre($inputs["title"])
+                    ->setImage($image)
+                    ->setChapo($inputs["chapo"])
+                    ->setContenu($inputs["content"])
+                    ->setIdUtilisateur($idUtilisateur)
+                ;
+                $articleManager->add($objetArticle);
                 $articles = $articleManager->getAll();
                 header("Location: index.php?action=gestionArticles&successInsert=1");
-
             } else {
                 $erreurExtension = true;
                 $messageErreur = "Ce type d'extension n'est pas accepté. Extensions autorisées : jpg, jpeg ou png";
@@ -89,34 +87,33 @@ class ArticleController
         $numErreur = false;
         $erreurExtension = false;
         $options = array(
-            "title" => FILTER_DEFAULT,
-            "image" => FILTER_DEFAULT,
-            "chapo" => FILTER_DEFAULT,
-            "content" => FILTER_DEFAULT
+            "title" => FILTER_SANITIZE_STRING,
+            "image" => FILTER_SANITIZE_STRING,
+            "chapo" => FILTER_SANITIZE_STRING,
+            "content" => FILTER_SANITIZE_STRING
         );
-        $inputs = filter_input_array(INPUT_POST);
+        $inputs = filter_input_array(INPUT_POST, $options);
         $idUtilisateur = $_SESSION["user"]["id"];
         $idArticle = $_SESSION["article"]["id"];
 
         // On vérifie que tout les champs ne sont pas vides
         if (!empty($inputs["title"]) && !empty($inputs["chapo"]) && !empty($inputs["content"])) {
+            $objetArticle = new Article();
+            $objetArticle
+                ->setId($idArticle)
+                ->setTitre($inputs["title"])
+                ->setChapo($inputs["chapo"])
+                ->setContenu($inputs["content"])
+                ->setIdUtilisateur($idUtilisateur)
+            ;
             // Si je mets une nouvelle image, alors :
             if (!empty($img["image"]["name"])) {
                 $article = $articleManager->getArticle($idArticle);
-                $chercheExtension = explode(".", $img["image"]["name"]);
-                $extension = strtolower(end($chercheExtension)); // Récupère le dernier mot du tableau (donc l'extension du fichier)
-                $emplacementOrigine = $img["image"]["tmp_name"]; // Récupère le chemin complet du fichier temporaire du serveur
-                $extensions = ["jpg", "jpeg", "png"]; // Extensions d'image accepté
+                $image = $articleManager->addImage($img);
 
-                // On vérifie que l'extension choisie fait partie des extensions autorisées (jpg, jpeg ou png)
-                if (in_array($extension, $extensions)) {
-                    $nomImage = uniqid('', true); // Génère un id unique pour le nom de l'image
-                    $image = $nomImage . "." . $extension;
-                    // Définit le nouveau de destination pour les images uploadées
-                    $emplacementDestination = __DIR__ . "/../../public/images/upload/" . $image;
-
-                    $articleManager->update($idArticle, $inputs["title"], $image, $inputs["chapo"], $inputs["content"], $idUtilisateur);
-                    move_uploaded_file($emplacementOrigine, $emplacementDestination);
+                if (!empty($image)) {
+                    $objetArticle->setImage($image);
+                    $articleManager->update($objetArticle);
                     // Permet de supprimer l'ancienne image du dossier upload, car celle-ci ne sera plus utilisée
                     // Permet d'éviter un nombre important d'images (encombrement) surtout quand elles ne sont pas utilisées
                     unlink(__DIR__ . "/../../public/images/upload/" . $article->getImage());
@@ -135,7 +132,8 @@ class ArticleController
                 // (ça évitera de duppliquer la même image dans le dossier upload)
             } else {
                 $image = "";
-                $articleManager->update($idArticle, $inputs["title"], $image, $inputs["chapo"], $inputs["content"], $idUtilisateur);
+                $objetArticle->setImage($image);
+                $articleManager->update($objetArticle);
                 $articles = $articleManager->getAll();
                 header("Location: index.php?action=gestionArticles&successUpdate=1");
                 unset($_SESSION["article"]);
@@ -146,6 +144,23 @@ class ArticleController
             $user = $userManager->getUserById($article->getIdUtilisateur());
             $numErreur = true;
             include_once(__DIR__ . '/../../templates/articles/edit.php');
+        }
+    }
+    // Permet de supprimer un article de la BDD
+    public function delete()
+    {
+        $input = filter_input_array(INPUT_POST, FILTER_SANITIZE_NUMBER_INT);
+        $articleManager = new ArticleManager();
+        if ($articleManager->verifierId($input["id"])) {
+            // On va aussi supprimer en même temps, l'image dans le dossier upload
+            // car celle-ci ne sera plus utilisée par la BDD
+            $article = $articleManager->getArticle($input["id"]);
+            unlink(__DIR__ . "/../../public/images/upload/" . $article->getImage());
+            $articleManager->delete($input["id"]);
+            $articles = $articleManager->getAll();
+            header("Location: index.php?action=gestionArticles&successDelete=1");
+        } else {
+            throw new Exception("Erreur 404 : l'identifiant de cet article n'existe pas !");
         }
     }
 }
