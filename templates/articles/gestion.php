@@ -1,7 +1,8 @@
 <!--- VUE DE LA PAGE SUR LA GESTION DES ARTICLES --->
 
 <?php $title = "Gestion des articles"; ?>
-<?php ob_start(); ?>
+<?php ob_start();
+$_SESSION['token'] = bin2hex(random_bytes(35)); ?>
 
 <section id="gestionArticles" class="py-3 bg-light bg-gradient">
     <div class="container">
@@ -99,6 +100,7 @@
     </div>
 </div>
 <form id="formDelete" action="index.php?action=delete" method="POST">
+    <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>">
 </form>
 
 <script type="text/javascript" src="scripts/articles.js"></script>

@@ -22,6 +22,7 @@ try {
         $homeController = new HomeController();
         $homeController->homepage();
     } elseif (isset($_GET["action"])) {
+        // Mise en place d'une session pour le token
         $userController = new UserController();
         // Page de connexion
         if ($_GET["action"] === "connexion") {
@@ -47,6 +48,7 @@ try {
                 // Page pour traiter les données sur la modification d'un article
             } elseif ($_GET["action"] === "retourEditArticle") {
                 $articleController->retourEditArticle($_FILES);
+                // Action qui permet de supprimer un article
             } elseif ($_GET["action"] === "delete") {
                 $articleController->delete();
             }
@@ -55,7 +57,6 @@ try {
                 // Page de modification d'un article
                 if ($_GET["action"] === "edit") {
                     $articleController->edit($id);
-                    // Action qui permet de supprimer un article
                 }
             } else {
                 throw new Exception("Erreur 404 : aucun identifiant d'article envoyé !");

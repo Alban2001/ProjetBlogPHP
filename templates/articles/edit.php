@@ -1,6 +1,6 @@
 <?php $title = "Editer d'un article"; ?>
-
-<?php ob_start(); ?>
+<?php ob_start();
+$_SESSION['token'] = bin2hex(random_bytes(35)); ?>
 
 <section id="ajoutArticle" class="py-5 bg-light bg-gradient">
     <div class="container">
@@ -54,6 +54,7 @@
                         placeholder="Ecrivez votre contenu..."><?php echo htmlspecialchars($article->getContenu()); ?></textarea>
                     <p class="messageErreurP d-none fst-italic fw-bold text-danger">La saisie du contenu est obligatoire
                         !</p><br><br>
+                    <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>">
                     <input class="btn btn-primary bg-gradient w-100 fw-bold p-2 mb-3" type="submit"
                         value="Mettre à jour l'article">
                     <button id="btnAnnulerArticle" class="btn btn-secondary bg-gradient w-100 fw-bold p-2" type="button"
