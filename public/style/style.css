@@ -204,6 +204,17 @@ section#erreur {
   height: 100px;
 }
 
+.btnPaginationGestion {
+  background-color: rgb(3, 5, 115);
+  color: #fff;
+  border: 3px solid gray;
+  border-radius: 5px;
+}
+
+.btnPaginationActive {
+  font-weight: bold;
+}
+
 @media screen and (min-width: 768px) {
   /************* ACCUEIL ****************/
 

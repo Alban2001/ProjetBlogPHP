@@ -78,6 +78,17 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                         class="fa-solid fa-plus"></i></a>
             </div>
         </div>
+        <div class="d-flex justify-content-center align-items-end">
+            <div>
+                <button id="btnPaginationLeft" class="btnPaginationGestion p-2 m-2"><i
+                        class="fa-solid fa-angle-left"></i></button>
+            </div>
+            <div id="pagination" class="mt-5 text-center"></div>
+            <div>
+                <button id="btnPaginationRight" class="btnPaginationGestion p-2 m-2"><i
+                        class="fa-solid fa-angle-right"></i></button>
+            </div>
+        </div>
     </div>
 </section>
 <div class="modal fade" id="modalDelete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
