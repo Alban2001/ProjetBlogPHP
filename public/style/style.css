@@ -211,8 +211,19 @@ section#erreur {
   border-radius: 5px;
 }
 
+/*** POUR JAVASCRIPT (pagination.js) ***/
 .btnPaginationActive {
   font-weight: bold;
+}
+
+/************* GESTION ARTICLES ****************/
+.card {
+  width: 100%;
+  height: 25%;
+}
+
+.btnAffichageArticle {
+  background-color: rgb(3, 5, 115);
 }
 
 @media screen and (min-width: 768px) {
@@ -310,5 +321,11 @@ section#erreur {
   /************* GESTION ARTICLES ****************/
   .imageArticle {
     height: 150px;
+  }
+
+  /************* GESTION ARTICLES ****************/
+  .card {
+    width: 25%;
+    height: 400px;
   }
 }

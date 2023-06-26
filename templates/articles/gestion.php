@@ -52,8 +52,8 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                                 <?php echo htmlspecialchars($article->getTitre()); ?>
                             </td>
                             <td data-content="Image">
-                                <img class="imageArticle"
-                                    src="<?php echo 'images/upload/' . $article->getImage(); ?>" />
+                                <img class="imageArticle" src="<?php echo 'images/upload/' . $article->getImage(); ?>"
+                                    alt="image article" />
                             </td>
                             <td data-content="Chapô">
                                 <?php echo htmlspecialchars($article->getChapo()); ?>
@@ -114,6 +114,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
     <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>">
 </form>
 
+<script type="text/javascript" src="scripts/pagination.js"></script>
 <script type="text/javascript" src="scripts/articles.js"></script>
 
 <?php $content = ob_get_clean(); ?>

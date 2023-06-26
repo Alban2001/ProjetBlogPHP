@@ -167,4 +167,13 @@ class ArticleController
             throw new Exception("Erreur 405 : la requête effectuée n'est pas autorisée !");
         }
     }
+
+    // Permet d'afficher l'ensemble des articles
+    public function affichage()
+    {
+        $articleManager = new ArticleManager();
+        $articles = $articleManager->getAll();
+        include_once(__DIR__ . "/../../templates/articles/affichage.php");
+    }
+
 }
