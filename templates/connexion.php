@@ -1,6 +1,7 @@
 <?php $title = "Connexion"; ?>
 
-<?php ob_start(); ?>
+<?php ob_start();
+$_SESSION['token'] = bin2hex(random_bytes(35)); ?>
 
 <div class="div-connexion-bg">
 </div>
@@ -28,6 +29,7 @@
                             <i id="eye-opened" class="d-none fa-solid fa-eye p-2"></i>
                         </div>
                         <br><br>
+                        <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>">
                         <input class="btn btn-dark w-100" type="submit" name="btnConnecter" value="Se connecter" />
                         <hr class="border border-2 border-dark">
                         <a href="#" class="btn btn-primary w-100">Créer un compte</a>

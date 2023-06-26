@@ -83,7 +83,7 @@ section#accueil .div-accueil-photo {
 .photo-profil {
   position: relative;
   z-index: 1;
-  left: 50px;
+  left: 10px;
   width: 200px;
   height: 200px;
   box-shadow: #fff 12px 12px 15px;
@@ -202,6 +202,17 @@ section#erreur {
 .imageArticle {
   min-width: 125px;
   height: 100px;
+}
+
+.btnPaginationGestion {
+  background-color: rgb(3, 5, 115);
+  color: #fff;
+  border: 3px solid gray;
+  border-radius: 5px;
+}
+
+.btnPaginationActive {
+  font-weight: bold;
 }
 
 @media screen and (min-width: 768px) {

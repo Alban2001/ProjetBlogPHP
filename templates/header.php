@@ -8,9 +8,10 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col px-0">
-        <nav class="navbar navbar-expand-md navbar-light bg-primary bg-gradient">
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary bg-gradient">
           <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img class="w-50 rounded-pill logo" src="images/logo.png" alt="logo" /></a>
+            <a class="navbar-brand" href="index.php"><img class="w-50 rounded-pill logo" src="images/logo.png"
+                alt="logo" /></a>
             <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>

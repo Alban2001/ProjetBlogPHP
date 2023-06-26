@@ -22,6 +22,7 @@ try {
         $homeController = new HomeController();
         $homeController->homepage();
     } elseif (isset($_GET["action"])) {
+        // Mise en place d'une session pour le token
         $userController = new UserController();
         // Page de connexion
         if ($_GET["action"] === "connexion") {
@@ -35,21 +36,30 @@ try {
         }
         if (isset($_SESSION["user"]["id"]) && $_SESSION["user"]["role"] === "admin") {
             $articleController = new ArticleController();
+            // Page de l'affichage de l'ensemble des articles avec actions (edit, delete)
             if ($_GET["action"] === "gestionArticles") {
                 $articleController->gestion();
+                // Page pour ajouter un article
             } elseif ($_GET["action"] === "ajoutArticle") {
                 $articleController->add();
+                // Page pour traiter les données sur l'ajout d'un article
             } elseif ($_GET["action"] === "retourAjoutArticle") {
                 $articleController->retourAdd($_FILES);
-            } elseif ($_GET["action"] === "edit") {
-                if (isset($_GET["id"]) && $_GET["id"] > 0) {
-                    $idArticle = $_GET["id"];
-                    $articleController->edit($idArticle);
-                } else {
-                    throw new Exception("Erreur 404 : aucun identifiant d'article envoyé !");
-                }
+                // Page pour traiter les données sur la modification d'un article
             } elseif ($_GET["action"] === "retourEditArticle") {
                 $articleController->retourEditArticle($_FILES);
+                // Action qui permet de supprimer un article
+            } elseif ($_GET["action"] === "delete") {
+                $articleController->delete();
+            }
+            if (isset($_GET["id"]) && $_GET["id"] > 0) {
+                $id = $_GET["id"];
+                // Page de modification d'un article
+                if ($_GET["action"] === "edit") {
+                    $articleController->edit($id);
+                }
+            } else {
+                throw new Exception("Erreur 404 : aucun identifiant d'article envoyé !");
             }
         } else {
             throw new Exception("Erreur 401 : vous n'avez pas l'autorisation d'accéder à cette page !");

@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Models\UserManager;
+use Exception;
 
 class UserController
 {
@@ -17,23 +18,31 @@ class UserController
     public function retourConnexion()
     {
         $numErreur = false;
-        $userManager = new UserManager();
-        $options = array("email" => FILTER_SANITIZE_EMAIL, "password" => FILTER_SANITIZE_STRING);
+        $options = array(
+            "email" => FILTER_SANITIZE_EMAIL,
+            "password" => FILTER_DEFAULT,
+            "token" => FILTER_DEFAULT
+        );
         $inputs = filter_input_array(INPUT_POST, $options);
-        if ($userManager->verifierCompte($inputs["email"], $inputs["password"])) {
-            session_start();
-            $user = $userManager->getUser($inputs["email"], $inputs["password"]);
-            $_SESSION["user"]["id"] = $user->getId();
-            $_SESSION["user"]["nom"] = $user->getNom();
-            $_SESSION["user"]["prenom"] = $user->getPrenom();
-            $_SESSION["user"]["adresseMail"] = $user->getAdresseMail();
-            $_SESSION["user"]["motDePasse"] = $user->getMotDePasse();
-            $_SESSION["user"]["role"] = $user->getRole();
+        if (!empty($inputs["token"]) && $inputs["token"] === $_SESSION["token"]) {
+            $userManager = new UserManager();
+            if ($userManager->verifierCompte($inputs["email"], $inputs["password"])) {
+                session_start();
+                $user = $userManager->getUser($inputs["email"], $inputs["password"]);
+                $_SESSION["user"]["id"] = $user->getId();
+                $_SESSION["user"]["nom"] = $user->getNom();
+                $_SESSION["user"]["prenom"] = $user->getPrenom();
+                $_SESSION["user"]["adresseMail"] = $user->getAdresseMail();
+                $_SESSION["user"]["motDePasse"] = $user->getMotDePasse();
+                $_SESSION["user"]["role"] = $user->getRole();
 
-            header("Location: index.php");
+                header("Location: index.php");
+            } else {
+                $numErreur = true;
+                include_once(__DIR__ . '/../../templates/connexion.php');
+            }
         } else {
-            $numErreur = true;
-            include_once(__DIR__ . '/../../templates/connexion.php');
+            throw new Exception("Erreur 405 : la requête effectuée n'est pas autorisée !");
         }
     }
 
