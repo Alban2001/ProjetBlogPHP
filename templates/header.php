@@ -31,7 +31,7 @@
                   <a class="nav-link text-white fs-5" href="index.php#cv">Mon CV</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-white fs-5" href="#">Articles</a>
+                  <a class="nav-link text-white fs-5" href="index.php?action=affichageArticles">Articles</a>
                 </li>
                 <?php if (isset($_SESSION["user"]["role"])) { ?>
                 <li class="nav-item">

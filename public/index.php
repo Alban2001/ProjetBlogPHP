@@ -33,6 +33,10 @@ try {
             // Page de déconnexion (retour à la page d'accueil + fermeture des sessions)
         } elseif ($_GET["action"] === "deconnexion") {
             $userController->deconnexion();
+            // Page sur l'affichage de l'ensemble des articles
+        } elseif ($_GET["action"] === "affichageArticles") {
+            $articleController = new ArticleController();
+            $articleController->affichage();
         }
         if (isset($_SESSION["user"]["id"]) && $_SESSION["user"]["role"] === "admin") {
             $articleController = new ArticleController();

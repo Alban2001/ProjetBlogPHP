@@ -14,8 +14,8 @@
                 <hr class="border border-2 border-white">
                 <ul class="list-navigation">
                     <li><a class="text-white" href="index.php">Accueil</a></li>
-                    <li><a class="text-white" href="#">Articles</a></li>
-                    <li><a class="text-white" href="#contact">Contact</a></li>
+                    <li><a class="text-white" href="index.php?action=affichagesArticles">Articles</a></li>
+                    <li><a class="text-white" href="index.php#contact">Contact</a></li>
                     <?php if (isset($_SESSION["user"]["role"])) { ?>
                     <li><a class="text-white" href="index.php?action=deconnexion">Se déconnecter</a></li>
                     <?php } else { ?>
