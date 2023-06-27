@@ -9,6 +9,7 @@ spl_autoload_register(function (string $fqcn) {
 use Controllers\HomeController;
 use Controllers\UserController;
 use Controllers\ArticleController;
+use Controllers\CommentController;
 
 ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
@@ -37,6 +38,23 @@ try {
         } elseif ($_GET["action"] === "affichageArticles") {
             $articleController = new ArticleController();
             $articleController->affichage();
+        }
+        if (isset($_GET["id"]) && $_GET["id"] > 0) {
+            $id = $_GET["id"];
+            // Page de modification d'un article
+            if ($_GET["action"] === "read") {
+                $articleController = new ArticleController();
+                $articleController->read($id);
+            }
+        }
+        if (isset($_SESSION["user"]["id"])) {
+            if ($_GET["action"] === "comment") {
+                $commentController = new CommentController();
+                $commentController->comment();
+            }
+        } else {
+            $userController = new UserController();
+            $userController->connexion();
         }
         if (isset($_SESSION["user"]["id"]) && $_SESSION["user"]["role"] === "admin") {
             $articleController = new ArticleController();

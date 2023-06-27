@@ -80,3 +80,24 @@ if (inputFileImage !== null) {
     imgEditArticle.click();
   };
 }
+
+// Affichage de l'article pour le commentaire
+const textareaCommentaire = document.getElementById("textarea-commentaire");
+const messageErreurCommentaire = document.querySelector(
+  ".messageErreurCommentaire"
+);
+const btnEnvoyerCommentaire = document.getElementById("btnEnvoyerCommentaire");
+
+textareaCommentaire.oninput = () => {
+  if (textareaCommentaire.value.length > 0) {
+    textareaCommentaire.classList.remove("border-danger");
+    textareaCommentaire.classList.add("border-success");
+    messageErreurCommentaire.classList.replace("d-block", "d-none");
+    btnEnvoyerCommentaire.disabled = false;
+  } else {
+    textareaCommentaire.classList.remove("border-success");
+    textareaCommentaire.classList.add("border-danger");
+    messageErreurCommentaire.classList.replace("d-none", "d-block");
+    btnEnvoyerCommentaire.disabled = true;
+  }
+};
