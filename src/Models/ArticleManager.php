@@ -136,13 +136,18 @@ class ArticleManager
         $statement->execute();
     }
 
-    //Permet de supprimer une ligne (article) dans la BDD
+    //Permet de supprimer une ligne (article) avec les commentaires associées dans la BDD
     public function delete(int $id): void
     {
         $connection = new DatabaseConnection();
-        $statement = $connection->getConnection()->prepare("DELETE FROM article WHERE id = ?");
+        // On supprimer tout d'abord, les commentaires (clés étrangères)
+        $statement = $connection->getConnection()->prepare("DELETE FROM commentaire WHERE id_article = ?");
         $statement->bindParam(1, $id);
-
         $statement->execute();
+
+        // Puis l'article que l'on souhaite
+        $statement2 = $connection->getConnection()->prepare("DELETE FROM article WHERE id = ?");
+        $statement2->bindParam(1, $id);
+        $statement2->execute();
     }
 }

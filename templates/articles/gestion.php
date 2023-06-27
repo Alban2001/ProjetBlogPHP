@@ -33,38 +33,38 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                 <table class="table table-striped table-mobile-responsive table-mobile-sided">
                     <thead>
                         <tr class="table-primary">
-                            <th scope="col">ID</th>
-                            <th scope="col">Titre</th>
-                            <th scope="col">Image</th>
-                            <th scope="col">Chapô</th>
-                            <th scope="col">Date de création</th>
-                            <th scope="col">Date de dernière modification</th>
-                            <th scope="col">Actions</th>
+                            <th class="align-middle" scope="col">ID</th>
+                            <th class="align-middle" scope="col">Titre</th>
+                            <th class="align-middle" scope="col">Image</th>
+                            <th class="align-middle" scope="col">Chapô</th>
+                            <th class="align-middle" scope="col">Date de création</th>
+                            <th class="align-middle" scope="col">Date de dernière modification</th>
+                            <th class="align-middle" scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($articles as $article) { ?>
                         <tr>
-                            <td scope="row" data-content="ID">
+                            <td scope="row" class="align-middle" data-content="ID">
                                 <?php echo htmlspecialchars($article->getId()); ?>
                             </td>
-                            <td data-content="Titre">
+                            <td class="align-middle" data-content="Titre">
                                 <?php echo htmlspecialchars($article->getTitre()); ?>
                             </td>
-                            <td data-content="Image">
-                                <img class="imageArticle" src="<?php echo 'images/upload/' . $article->getImage(); ?>"
+                            <td class="align-middle" data-content="Image">
+                                <img class="w-100" src="<?php echo 'images/upload/' . $article->getImage(); ?>"
                                     alt="image article" />
                             </td>
-                            <td data-content="Chapô">
+                            <td class="align-middle" data-content="Chapô">
                                 <?php echo htmlspecialchars($article->getChapo()); ?>
                             </td>
-                            <td data-content="Date de Création">
+                            <td class="align-middle" data-content="Date de Création">
                                 <?php echo htmlspecialchars($article->getDateCreation()->format("d/m/Y")); ?>
                             </td>
-                            <td data-content="Date de dernière MAJ">
+                            <td class="align-middle" data-content="Date de dernière MAJ">
                                 <?php echo htmlspecialchars($article->getDateDerniereMaj()->format("d/m/Y")); ?>
                             </td>
-                            <td data-content="Actions"><a
+                            <td class="align-middle" data-content="Actions"><a
                                     href="<?php echo "index.php?action=edit&id=" . htmlspecialchars($article->getId()); ?>"
                                     class="me-4 me-md-3"><i class="fa-solid fa-pen-to-square text-dark"></i></a>
                                 <a class="btnSupprimerArticle" href="#" data-bs-toggle="modal"
@@ -99,9 +99,10 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                 <h5 class="modal-title" id="modalDeleteLabel">Suppression de l'article</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                Etes-vous sûr de vouloir supprimer l'article n°<span id="spanDelete"></span> ?<br>Si oui, cet article
-                sera supprimé définitivement !
+            <div class="modal-body text-justify">
+                Etes-vous sûr de vouloir supprimer l'article n°<span id="spanDelete"></span> ?<br><br>Si oui, cet
+                article
+                sera supprimé définitivement avec les commentaires concernés !
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>

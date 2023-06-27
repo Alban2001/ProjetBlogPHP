@@ -4,6 +4,7 @@ namespace Controllers;
 
 use Models\Article;
 use Models\ArticleManager;
+use Models\CommentManager;
 use Models\UserManager;
 use Exception;
 
@@ -176,4 +177,21 @@ class ArticleController
         include_once(__DIR__ . "/../../templates/articles/affichage.php");
     }
 
+    // Affichage l'ensemble des informations de l'article sélectionné + formulaire pour commentaire
+    public function read($id)
+    {
+        $articleManager = new ArticleManager();
+        if ($articleManager->verifierId($id)) {
+            $userManager = new UserManager();
+            $commentManager = new CommentManager();
+            $article = $articleManager->getArticle($id);
+            $user = $userManager->getUserById($article->getIdUtilisateur());
+            $_SESSION["article"]["id"] = $article->getId();
+            $commentaires = $commentManager->getComments($id);
+            $nbrCommentaire = $commentManager->nbrComments($id);
+            include_once(__DIR__ . "/../../templates/articles/read.php");
+        } else {
+            throw new Exception("Erreur 404 : l'identifiant de cet article n'existe pas !");
+        }
+    }
 }

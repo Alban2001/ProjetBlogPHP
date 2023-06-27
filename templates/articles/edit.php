@@ -15,7 +15,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                     <?php echo $article->getDateDerniereMaj()->format("d/m/Y"); ?>
                 </p>
                 <p><strong>Auteur (Dernière mise à jour)</strong> :
-                    <?php echo $user->getPrenom() . ' ' . $user->getNom(); ?>
+                    <?php echo htmlspecialchars($user->getPrenom()) . ' ' . htmlspecialchars($user->getNom()); ?>
                 </p>
                 <br>
                 <?php if (isset($numErreur) && $numErreur == true) { ?>

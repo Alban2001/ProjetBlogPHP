@@ -12,7 +12,7 @@
                     <div class="row justify-content-center">
                         <?php foreach ($articles as $article) { ?>
                         <div class="card col-12 col-md-4 ms-0 ms-md-3 mb-5">
-                            <img src="<?php echo 'images/upload/' . $article->getImage(); ?>" class="card-img-top h-50"
+                            <img src="<?php echo 'images/upload/' . $article->getImage(); ?>" class="card-img-top"
                                 alt="image article">
                             <div class="card-body">
                                 <h5 class="card-title">
@@ -20,11 +20,11 @@
                                         <?php echo $article->getTitre(); ?>
                                     </strong>
                                 </h5>
-                                <p class="card-text">
+                                <p class="card-text text-justify">
                                     <?php echo $article->getChapo(); ?>
                                 </p>
                                 <p class="card-text"><small class="text-muted">
-                                        <?php echo "Date de dernière modification : " . $article->getDateDerniereMaj()->format("d/m/Y"); ?>
+                                        <?php echo "Dernière modification : " . $article->getDateDerniereMaj()->format("d/m/Y"); ?>
                                     </small></p>
                                 <a href="index.php?action=read&id=<?php echo $article->getId(); ?>"
                                     class="btn btnAffichageArticle text-white">Lire cet article...</a>
