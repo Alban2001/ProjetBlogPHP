@@ -34,6 +34,12 @@ try {
             // Page de déconnexion (retour à la page d'accueil + fermeture des sessions)
         } elseif ($_GET["action"] === "deconnexion") {
             $userController->deconnexion();
+            // Page pour la création d'un compte utilisateur
+        } elseif ($_GET["action"] === "creationCompte") {
+            $userController->creationCompte();
+            // Page sur l'affichage de l'ensemble des articles
+        } elseif ($_GET["action"] === "retourCreationCompte") {
+            $userController->retourCreationCompte();
             // Page sur l'affichage de l'ensemble des articles
         } elseif ($_GET["action"] === "affichageArticles") {
             $articleController = new ArticleController();
@@ -47,7 +53,7 @@ try {
                 $articleController->read($id);
             }
         }
-        if (isset($_SESSION["user"]["id"])) {
+        if (isset($_SESSION["user"]["id"]) && $_SESSION["user"]["role"] === "user") {
             if ($_GET["action"] === "comment") {
                 $commentController = new CommentController();
                 $commentController->comment();

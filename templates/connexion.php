@@ -28,11 +28,13 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                             <i id="eye-closed" class="d-block fa-sharp fa-solid fa-eye-slash p-2"></i>
                             <i id="eye-opened" class="d-none fa-solid fa-eye p-2"></i>
                         </div>
+                        <br>
+                        <a class="text-center" href="#">Mot de passe oublié ?</a>
                         <br><br>
                         <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>">
                         <input class="btn btn-dark w-100" type="submit" name="btnConnecter" value="Se connecter" />
                         <hr class="border border-2 border-dark">
-                        <a href="#" class="btn btn-primary w-100">Créer un compte</a>
+                        <a href="index.php?action=creationCompte" class="btn btn-primary w-100">Créer un compte</a>
                     </form>
                 </div>
             </div>

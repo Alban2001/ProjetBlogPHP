@@ -33,7 +33,7 @@
                 <li class="nav-item">
                   <a class="nav-link text-white fs-5" href="index.php?action=affichageArticles">Articles</a>
                 </li>
-                <?php if (isset($_SESSION["user"]["role"])) { ?>
+                <?php if (isset($_SESSION["user"]["role"]) && $_SESSION["user"]["role"] === "admin") { ?>
                 <li class="nav-item">
                   <a class="nav-link text-white fs-5" href="index.php?action=gestionArticles">Gestion des articles</a>
                 </li>

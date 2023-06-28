@@ -53,7 +53,7 @@ valide, id_utilisateur) VALUES (?, ?, NOW(), ?, ?)");
     public function nbrComments($idArticle): int
     {
         $connection = new DatabaseConnection();
-        $statement = $connection->getConnection()->prepare("select count(id) AS 'nbrCommentaires' FROM commentaire WHERE id_article = ? AND valide = 0");
+        $statement = $connection->getConnection()->prepare("SELECT COUNT(id) AS 'nbrCommentaires' FROM commentaire WHERE id_article = ? AND valide = 0");
         $statement->bindParam(1, $idArticle);
         $statement->execute();
         $row = $statement->fetch();
