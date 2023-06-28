@@ -158,7 +158,7 @@ section#cv {
   background-repeat: no-repeat;
   background-size: cover;
   filter: blur(5px);
-  height: 750px;
+  height: 950px;
 }
 
 .div-connexion {
@@ -167,7 +167,7 @@ section#cv {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -65%);
+  transform: translate(-50%, -25%);
   width: 80%;
   z-index: 1;
 }
@@ -326,8 +326,8 @@ section#erreur {
 
   /************* CONNEXION ****************/
   .div-connexion {
-    width: 25%;
-    transform: translate(-50%, -25%);
+    width: 400px;
+    transform: translate(-50%, -35%);
   }
 
   /************* ERREUR ****************/
