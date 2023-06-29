@@ -1,3 +1,9 @@
+/***
+ * Ce fichier concerne les fichiers PHP suivants :
+ * - connexion.php
+ * - creationComptes.php
+ */
+
 // Fichier JavaScript de la page connexion
 const eyeOpened = document.getElementById("eye-opened");
 const eyeClosed = document.getElementById("eye-closed");

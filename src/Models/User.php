@@ -10,6 +10,7 @@ class User
     private string $prenom;
     private string $adresseMail;
     private string $motDePasse;
+    private int $valide = 0;
     private string $role = "user"; // Valeur par défaut : un utlisateur a le rôle "User" automatiquement lorsqu'il crééra un compte  
 
     // Attribution de l'ID
@@ -75,6 +76,19 @@ class User
     public function getMotDePasse(): string
     {
         return $this->motDePasse;
+    }
+
+    // Attribution de valide
+    public function setValide(int $valide): self
+    {
+        $this->valide = $valide;
+
+        return $this;
+    }
+    // Affichage de l'ID
+    public function getValide(): int
+    {
+        return $this->valide;
     }
 
     // Attribution du rôle
