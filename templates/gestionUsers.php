@@ -52,9 +52,8 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                             </td>
                             <td class="align-middle" data-content="Actions">
                                 <?php if ($utilisateur->getValide() === 0) { ?>
-                                <a class="btnValider text-dark" href="#" data-bs-toggle="modal"
-                                    data-bs-target="#modalValider" title="Valider"><i
-                                        class="fa-sharp fa-solid fa-square-check"></i></a>
+                                <a class="btnValider btn btn-primary text-white fw-bold" href="#" data-bs-toggle="modal"
+                                    data-bs-target="#modalValider" title="Valider">Valider</a>
                                 <?php } else { ?>
                                 <a class="btnValider text-success" title="Déjà validé" disabled tabindex="-1"><i
                                         class="fa-sharp fa-solid fa-square-check"></i></a>

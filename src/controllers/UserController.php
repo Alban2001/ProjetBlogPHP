@@ -27,6 +27,7 @@ class UserController
         $inputs = filter_input_array(INPUT_POST, $options);
         if (!empty($inputs["token"]) && $inputs["token"] === $_SESSION["token"]) {
             $userManager = new UserManager();
+            // Si l'adresse mail et le mot de passe correspond
             if ($userManager->verifierCompte($inputs["email"], $inputs["password"])) {
                 session_start();
                 $user = $userManager->getUser($inputs["email"], $inputs["password"]);
@@ -34,7 +35,6 @@ class UserController
                 $_SESSION["user"]["nom"] = $user->getNom();
                 $_SESSION["user"]["prenom"] = $user->getPrenom();
                 $_SESSION["user"]["adresseMail"] = $user->getAdresseMail();
-                $_SESSION["user"]["motDePasse"] = $user->getMotDePasse();
                 $_SESSION["user"]["role"] = $user->getRole();
 
                 header("Location: index.php");

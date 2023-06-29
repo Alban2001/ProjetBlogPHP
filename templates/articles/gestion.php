@@ -26,7 +26,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                 <?php
                 if (isset($_GET["successDelete"]) && $_GET["successDelete"] === "1") { ?>
                 <div class="messageSuccess fw-bold bg-success text-white text-center p-3 w-100">
-                    Suppression l'article effectuée avec succès !
+                    Suppression de l'article effectuée avec succès !
                 </div>
                 <br>
                 <?php } ?>
@@ -52,7 +52,8 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                                 <?php echo htmlspecialchars($article->getTitre()); ?>
                             </td>
                             <td class="align-middle" data-content="Image">
-                                <img class="w-100" src="<?php echo 'images/upload/' . $article->getImage(); ?>"
+                                <img class="w-100"
+                                    src="<?php echo 'images/upload/' . htmlspecialchars($article->getImage()); ?>"
                                     alt="image article" />
                             </td>
                             <td class="align-middle" data-content="Chapô">

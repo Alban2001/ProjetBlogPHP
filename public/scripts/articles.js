@@ -46,7 +46,7 @@ const messageSuccess = document.querySelector(".messageSuccess");
 if (messageSuccess !== null) {
   setTimeout(function () {
     messageSuccess.classList.add("d-none");
-  }, 3000);
+  }, 5000);
 }
 
 // Permet de fermer le modal pour continuer à écrire l'article
@@ -97,16 +97,18 @@ const messageErreurCommentaire = document.querySelector(
 );
 const btnEnvoyerCommentaire = document.getElementById("btnEnvoyerCommentaire");
 
-textareaCommentaire.oninput = () => {
-  if (textareaCommentaire.value.length > 0) {
-    textareaCommentaire.classList.remove("border-danger");
-    textareaCommentaire.classList.add("border-success");
-    messageErreurCommentaire.classList.replace("d-block", "d-none");
-    btnEnvoyerCommentaire.disabled = false;
-  } else {
-    textareaCommentaire.classList.remove("border-success");
-    textareaCommentaire.classList.add("border-danger");
-    messageErreurCommentaire.classList.replace("d-none", "d-block");
-    btnEnvoyerCommentaire.disabled = true;
-  }
-};
+if (textareaCommentaire !== null) {
+  textareaCommentaire.oninput = () => {
+    if (textareaCommentaire.value.length > 0) {
+      textareaCommentaire.classList.remove("border-danger");
+      textareaCommentaire.classList.add("border-success");
+      messageErreurCommentaire.classList.replace("d-block", "d-none");
+      btnEnvoyerCommentaire.disabled = false;
+    } else {
+      textareaCommentaire.classList.remove("border-success");
+      textareaCommentaire.classList.add("border-danger");
+      messageErreurCommentaire.classList.replace("d-none", "d-block");
+      btnEnvoyerCommentaire.disabled = true;
+    }
+  };
+}
