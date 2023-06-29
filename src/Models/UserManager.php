@@ -75,7 +75,6 @@ class UserManager
         $statement->execute();
     }
 
-
     // Validation du compte utilisateur
     public function valide(int $id): void
     {
@@ -89,7 +88,7 @@ class UserManager
     public function getAll(): array
     {
         $connection = new DatabaseConnection();
-        $statement = $connection->getConnection()->prepare("SELECT * FROM utilisateur");
+        $statement = $connection->getConnection()->prepare("SELECT * FROM utilisateur ORDER BY valide ASC");
         $statement->execute();
         $users = [];
 

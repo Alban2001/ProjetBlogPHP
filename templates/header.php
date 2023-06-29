@@ -42,7 +42,7 @@
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdownGestion">
                     <li><a class="dropdown-item" href="index.php?action=gestionArticles">Articles</a></li>
                     <li><a class="dropdown-item" href="index.php?action=gestionUtilisateurs">Utilisateurs</a></li>
-                    <li><a class="dropdown-item" href="#">Commentaires</a></li>
+                    <li><a class="dropdown-item" href="index.php?action=gestionCommentaires">Commentaires</a></li>
                   </ul>
                 </li>
                 <?php } ?>

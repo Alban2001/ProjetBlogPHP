@@ -85,6 +85,12 @@ try {
             } elseif ($_GET["action"] === "validateUser") {
                 $userController = new UserController();
                 $userController->validateUser();
+            } elseif ($_GET["action"] === "gestionCommentaires") {
+                $commentController = new CommentController();
+                $commentController->gestion();
+            } elseif ($_GET["action"] === "validateComment") {
+                $commentController = new CommentController();
+                $commentController->validateComment();
             }
             if (isset($_GET["id"]) && $_GET["id"] > 0) {
                 $id = $_GET["id"];
