@@ -12,12 +12,26 @@ class UserManager
     public function verifierCompte(string $adresseMail, string $motDePasse): bool
     {
         $connection = new DatabaseConnection();
-        $statement = $connection->getConnection()->prepare("SELECT adresse_mail, mot_de_passe FROM utilisateur WHERE adresse_mail = ?");
+        $statement = $connection->getConnection()->prepare("SELECT COUNT(id) AS 'nbr', adresse_mail, mot_de_passe FROM utilisateur WHERE adresse_mail = ? AND valide = 1");
         $statement->bindParam(1, $adresseMail);
         $statement->execute();
         $row = $statement->fetch();
 
-        if ((count($row) > 0) && ($adresseMail == $row["adresse_mail"]) && (password_verify($motDePasse, $row["mot_de_passe"]))) {
+        if (($row["nbr"]) > 0 && ($adresseMail == $row["adresse_mail"]) && (password_verify($motDePasse, $row["mot_de_passe"]))) {
+            return true;
+        }
+        return false;
+    }
+
+    // Permet de vérifier si l'ID de l'utilisateur existe dans la BDD.
+    public function verifierId($id): bool
+    {
+        $connection = new DatabaseConnection();
+        $statement = $connection->getConnection()->prepare("SELECT id FROM utilisateur WHERE id = ?");
+        $statement->bindParam(1, $id);
+        $statement->execute();
+
+        if ($statement->rowCount() > 0) {
             return true;
         }
         return false;
@@ -46,17 +60,52 @@ class UserManager
         $prenom = $user->getPrenom();
         $adresseMail = $user->getAdresseMail();
         $password = password_hash($user->getMotDePasse(), PASSWORD_DEFAULT);
+        $valide = $user->getValide();
         $role = $user->getRole();
 
         $connection = new DatabaseConnection();
-        $statement = $connection->getConnection()->prepare("INSERT INTO utilisateur(nom, prenom, adresse_mail, mot_de_passe, role) VALUES (?, ?, ?, ?, ?)");
+        $statement = $connection->getConnection()->prepare("INSERT INTO utilisateur(nom, prenom, adresse_mail, mot_de_passe, valide, role) VALUES (?, ?, ?, ?, ?, ?)");
         $statement->bindParam(1, $nom);
         $statement->bindParam(2, $prenom);
         $statement->bindParam(3, $adresseMail);
         $statement->bindParam(4, $password);
-        $statement->bindParam(5, $role);
+        $statement->bindParam(5, $valide);
+        $statement->bindParam(6, $role);
 
         $statement->execute();
+    }
+
+
+    // Validation du compte utilisateur
+    public function valide(int $id): void
+    {
+        $connection = new DatabaseConnection();
+        $statement = $connection->getConnection()->prepare("UPDATE utilisateur SET valide = 1 WHERE id = ?");
+        $statement->bindParam(1, $id);
+        $statement->execute();
+    }
+
+    // Affichage de l'ensemble des utilisateurs
+    public function getAll(): array
+    {
+        $connection = new DatabaseConnection();
+        $statement = $connection->getConnection()->prepare("SELECT * FROM utilisateur");
+        $statement->execute();
+        $users = [];
+
+        while (($row = $statement->fetch())) {
+            $user = new User();
+            $user
+                ->setId($row['id'])
+                ->setNom($row['nom'])
+                ->setPrenom($row['prenom'])
+                ->setAdresseMail($row['adresse_mail'])
+                ->setValide($row['valide'])
+                ->setRole($row['role'])
+            ;
+            $users[] = $user;
+        }
+        return $users;
     }
 
     //Permet d'obtenir toutes les informations d'un utilisateur (id, nom, prenom, adresse mail, mot de passe et rôle)

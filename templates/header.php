@@ -34,8 +34,16 @@
                   <a class="nav-link text-white fs-5" href="index.php?action=affichageArticles">Articles</a>
                 </li>
                 <?php if (isset($_SESSION["user"]["role"]) && $_SESSION["user"]["role"] === "admin") { ?>
-                <li class="nav-item">
-                  <a class="nav-link text-white fs-5" href="index.php?action=gestionArticles">Gestion des articles</a>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-white fs-5" href="#" id="navbarDropdownGestion" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Gestion
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownGestion">
+                    <li><a class="dropdown-item" href="index.php?action=gestionArticles">Articles</a></li>
+                    <li><a class="dropdown-item" href="index.php?action=gestionUtilisateurs">Utilisateurs</a></li>
+                    <li><a class="dropdown-item" href="#">Commentaires</a></li>
+                  </ul>
                 </li>
                 <?php } ?>
                 <li class="nav-item">

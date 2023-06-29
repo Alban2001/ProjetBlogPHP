@@ -31,7 +31,7 @@ valide, id_utilisateur) VALUES (?, ?, NOW(), ?, ?)");
     public function getComments($idArticle)
     {
         $connection = new DatabaseConnection();
-        $statement = $connection->getConnection()->prepare("SELECT contenu, date_creation, nom, prenom FROM commentaire, utilisateur WHERE id_article = ? AND valide = 0 AND utilisateur.id = commentaire.id_utilisateur ORDER BY date_creation DESC");
+        $statement = $connection->getConnection()->prepare("SELECT contenu, date_creation, nom, prenom FROM commentaire, utilisateur WHERE id_article = ? AND commentaire.valide = 0 AND utilisateur.id = commentaire.id_utilisateur ORDER BY date_creation DESC");
         $statement->bindParam(1, $idArticle);
         $statement->execute();
         $commentaires = [];

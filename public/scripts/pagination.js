@@ -33,7 +33,9 @@ function pagination(elements, nbrElementsParPage, typeAffichage) {
   if (btnPagination[0] !== undefined) {
     btnPagination[0].classList.add("btnPaginationActive");
     for (let i = 0; i < elementsParPage; i++) {
-      nbrElements[i].classList.replace("d-none", typeAffichage);
+      if (nbrElements[i] !== undefined) {
+        nbrElements[i].classList.replace("d-none", typeAffichage);
+      }
     }
   }
 

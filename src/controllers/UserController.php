@@ -123,6 +123,37 @@ class UserController
         }
     }
 
+    // Permet d'afficher l'ensemble des utilisateurs (users + admin)
+    public function gestion()
+    {
+        $userManager = new UserManager();
+        $utilisateurs = $userManager->getAll();
+        include_once(__DIR__ . "/../../templates/gestionUsers.php");
+    }
+
+
+    // Permet de récupérer les données sur la gestion des utilisateurs pour la validation du compte
+    public function validateUser()
+    {
+        $options = array(
+            "id" => FILTER_SANITIZE_NUMBER_INT,
+            "token" => FILTER_DEFAULT
+        );
+        $inputs = filter_input_array(INPUT_POST, $options);
+        if (!empty($inputs["token"]) && $inputs["token"] === $_SESSION["token"]) {
+            $userManager = new UserManager();
+            if ($userManager->verifierId($inputs["id"])) {
+                $userManager->valide($inputs["id"]);
+                $utilisateurs = $userManager->getAll();
+                header("Location: index.php?action=gestionUtilisateurs&successValidate=1");
+            } else {
+                throw new Exception("Erreur 404 : l'identifiant de cet utilisateur n'existe pas !");
+            }
+        } else {
+            throw new Exception("Erreur 405 : la requête effectuée n'est pas autorisée !");
+        }
+    }
+
     // Permet de se déconnecter du compte en supprimant les sessions existantes + retour à la page d'accueil
     public function deconnexion()
     {

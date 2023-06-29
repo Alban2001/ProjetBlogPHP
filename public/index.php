@@ -53,7 +53,7 @@ try {
                 $articleController->read($id);
             }
         }
-        if (isset($_SESSION["user"]["id"]) && $_SESSION["user"]["role"] === "user") {
+        if (isset($_SESSION["user"]["id"])) {
             if ($_GET["action"] === "comment") {
                 $commentController = new CommentController();
                 $commentController->comment();
@@ -79,6 +79,12 @@ try {
                 // Action qui permet de supprimer un article
             } elseif ($_GET["action"] === "delete") {
                 $articleController->delete();
+            } elseif ($_GET["action"] === "gestionUtilisateurs") {
+                $userController = new UserController();
+                $userController->gestion();
+            } elseif ($_GET["action"] === "validateUser") {
+                $userController = new UserController();
+                $userController->validateUser();
             }
             if (isset($_GET["id"]) && $_GET["id"] > 0) {
                 $id = $_GET["id"];

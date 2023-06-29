@@ -14,7 +14,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                     <br>
                     <?php if (isset($numErreur) && $numErreur == true) { ?>
                         <div class="bg-danger text-white fw-bold p-3">
-                            Erreur : votre adresse mail ou mot de passe est incorrect !
+                            Erreur : votre adresse mail ou mot de passe est incorrect ou compte non validé !
                         </div>
                     <?php } ?>
                     <br>
