@@ -53,15 +53,19 @@ try {
                 $articleController->read($id);
             }
         }
-        if (isset($_SESSION["user"]["id"])) {
-            if ($_GET["action"] === "comment") {
+        // Action qui permet traiter les données sur l'ajour d'un commentaire
+        // Si on se dirige vers cette page, alors, on doit avoir les droits user (minimum)
+        if ($_GET["action"] === "comment") {
+            if (isset($_SESSION["user"]["id"])) {
                 $commentController = new CommentController();
                 $commentController->comment();
+                // Sinon, on est redirigé vers la page connexion
+            } else {
+                $userController = new UserController();
+                $userController->connexion();
             }
-        } else {
-            $userController = new UserController();
-            $userController->connexion();
         }
+        // Actions que seul l'administrateur peut effectuer :
         if (isset($_SESSION["user"]["id"]) && $_SESSION["user"]["role"] === "admin") {
             $articleController = new ArticleController();
             // Page de l'affichage de l'ensemble des articles avec actions (edit, delete)
@@ -79,12 +83,22 @@ try {
                 // Action qui permet de supprimer un article
             } elseif ($_GET["action"] === "delete") {
                 $articleController->delete();
+                // Action qui permet de se diriger vers la page de gestion des utilisateurs
             } elseif ($_GET["action"] === "gestionUtilisateurs") {
                 $userController = new UserController();
                 $userController->gestion();
+                // Action qui permet traiter les données sur la validation d'un compte utilisateur
             } elseif ($_GET["action"] === "validateUser") {
                 $userController = new UserController();
                 $userController->validateUser();
+                // Action qui permet de se diriger vers la page de gestion des commentaires
+            } elseif ($_GET["action"] === "gestionCommentaires") {
+                $commentController = new CommentController();
+                $commentController->gestion();
+                // Action qui permet traiter les données sur la validation d'un commentaire
+            } elseif ($_GET["action"] === "validateComment") {
+                $commentController = new CommentController();
+                $commentController->validateComment();
             }
             if (isset($_GET["id"]) && $_GET["id"] > 0) {
                 $id = $_GET["id"];

@@ -14,7 +14,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                     <?php echo htmlspecialchars($user->getPrenom()) . ' ' . htmlspecialchars($user->getNom()); ?>
                 </p>
                 <p><strong>Date de la dernière mise à jour</strong> :
-                    <?php echo $article->getDateDerniereMaj()->format("d/m/Y"); ?>
+                    <?php echo htmlspecialchars($article->getDateDerniereMaj()->format("d/m/Y")); ?>
                 </p>
                 <hr>
                 <div class="fs-5 text-justify">
@@ -59,7 +59,8 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                 <?php if (isset($_GET["success"]) && $_GET["success"] == "1") { ?>
                     <br>
                     <div class="messageSuccess fw-bold bg-success text-white text-center p-3">
-                        Insertion du commentaire effectuée avec succès !
+                        Insertion du commentaire effectuée avec succès !<br>
+                        Votre commentaire sera visible dès que l'administrateur l'aura validé.
                     </div>
                     <br>
                 <?php } ?>
@@ -79,7 +80,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                                 <?php echo htmlspecialchars($commentaire->getNomUtilisateur()) . " " . htmlspecialchars($commentaire->getPreomUtilisateur()); ?>
                             </p>
                             <p><strong>Date</strong> :
-                                <?php echo $commentaire->getDateCreation()->format("d/m/Y") . " à " . $commentaire->getDateCreation()->format("H:i"); ?>
+                                <?php echo htmlspecialchars($commentaire->getDateCreation()->format("d/m/Y")) . " à " . htmlspecialchars($commentaire->getDateCreation()->format("H:i")); ?>
                             </p>
                         </div>
                         <div>

@@ -1,18 +1,18 @@
-<!--- VUE DE LA PAGE SUR LA GESTION DES UTILISATEURS --->
+<!--- VUE DE LA PAGE SUR LA GESTION DES COMMENTAIRES --->
 
-<?php $title = "Gestion des utilisateurs"; ?>
+<?php $title = "Gestion des commentaires"; ?>
 <?php ob_start();
 $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
 
-<section id="gestionUtilisateurs" class="py-3 bg-light bg-gradient">
+<section id="gestionCommentaires" class="py-3 bg-light bg-gradient">
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1 class="fw-bold text-decoration-underline text-center mt-5">Gestion des utilisateurs</h1><br><br>
+                <h1 class="fw-bold text-decoration-underline text-center mt-5">Gestion des commentaires</h1><br><br>
                 <?php
                 if (isset($_GET["successValidate"]) && $_GET["successValidate"] === "1") { ?>
                 <div class="messageSuccess fw-bold bg-success text-white text-center p-3 w-100">
-                    Validation de l'utilisateur effectuée effectuée avec succès !
+                    Validation du commentaire effectuée avec succès !
                 </div>
                 <br>
                 <?php } ?>
@@ -20,38 +20,41 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                     <thead>
                         <tr class="table-primary">
                             <th class="align-middle" scope="col">ID</th>
-                            <th class="align-middle" scope="col">Nom</th>
-                            <th class="align-middle" scope="col">Prénom</th>
-                            <th class="align-middle" scope="col">Adresse Mail</th>
-                            <th class="align-middle" scope="col">Rôle</th>
+                            <th class="align-middle" scope="col">IDArticle</th>
+                            <th class="align-middle" scope="col">Contenu</th>
+                            <th class="align-middle" scope="col">Date de Création</th>
+                            <th class="align-middle" scope="col">Auteur</th>
                             <th class="align-middle" scope="col">Validé</th>
                             <th class="align-middle" scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($utilisateurs as $utilisateur) { ?>
+                        <?php foreach ($commentaires as $commentaire) { ?>
                         <tr>
                             <td scope="row" class="align-middle" data-content="ID">
-                                <?php echo htmlspecialchars($utilisateur->getId()); ?>
+                                <?php echo htmlspecialchars($commentaire->getId()); ?>
                             </td>
-                            <td class="align-middle" data-content="Nom">
-                                <?php echo htmlspecialchars($utilisateur->getNom()); ?>
+                            <td class="align-middle" data-content="IDArticle">
+                                <?php $idArticle = htmlspecialchars($commentaire->getIdArticle()); ?>
+                                <a href="index.php?action=read&id=<?php echo $idArticle; ?>">
+                                    <?php echo $idArticle; ?>
+                                </a>
                             </td>
-                            <td class="align-middle" data-content="Prénom">
-                                <?php echo htmlspecialchars($utilisateur->getPrenom()); ?>
+                            <td class="align-middle" data-content="Contenu">
+                                <?php echo htmlspecialchars($commentaire->getContenu()); ?>
                             </td>
-                            <td class="align-middle" data-content="Adresse Mail">
-                                <?php echo htmlspecialchars($utilisateur->getAdresseMail()); ?>
+                            <td class="align-middle" data-content="Date de Création">
+                                <?php echo htmlspecialchars($commentaire->getDateCreation()->format("d/m/Y")); ?>
                             </td>
-                            <td class="align-middle" data-content="Rôle">
-                                <?php echo htmlspecialchars($utilisateur->getRole()); ?>
+                            <td class="align-middle" data-content="Auteur">
+                                <?php echo htmlspecialchars($commentaire->getPreomUtilisateur()) . ' ' . htmlspecialchars($commentaire->getNomUtilisateur()); ?>
                             </td>
-                            <?php $valide = ($utilisateur->getValide() === 1) ? "Oui" : "Non"; ?>
+                            <?php $valide = ($commentaire->getValide() === 1) ? "Oui" : "Non"; ?>
                             <td class="align-middle" data-content="Validé">
                                 <?php echo $valide; ?>
                             </td>
                             <td class="align-middle" data-content="Actions">
-                                <?php if ($utilisateur->getValide() === 0) { ?>
+                                <?php if ($commentaire->getValide() === 0) { ?>
                                 <a class="btnValider btn btn-primary text-white fw-bold" href="#" data-bs-toggle="modal"
                                     data-bs-target="#modalValider" title="Valider">Valider</a>
                                 <?php } else { ?>
@@ -83,11 +86,11 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalValiderLabel">Validation d'un compte utilisateur</h5>
+                <h5 class="modal-title" id="modalValiderLabel">Validation d'un commentaire</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-justify">
-                Etes-vous sûr de vouloir valider l'utilisateur n°<span id="spanID"></span> ?<br><br>
+                Etes-vous sûr de vouloir valider le commentaire n°<span id="spanID"></span> ?<br><br>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
@@ -96,7 +99,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
         </div>
     </div>
 </div>
-<form id="formValider" action="index.php?action=validateUser" method="POST">
+<form id="formValider" action="index.php?action=validateComment" method="POST">
     <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>">
 </form>
 

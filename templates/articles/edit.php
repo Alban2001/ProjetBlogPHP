@@ -9,10 +9,10 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                 <h1 class="fw-bold p-5 text-center">Editer un article</h1>
                 <br>
                 <p><strong>Date de création</strong> :
-                    <?php echo $article->getDateCreation()->format("d/m/Y"); ?>
+                    <?php echo htmlspecialchars($article->getDateCreation()->format("d/m/Y")); ?>
                 </p>
                 <p><strong>Date de dernière mise à jour</strong> :
-                    <?php echo $article->getDateDerniereMaj()->format("d/m/Y"); ?>
+                    <?php echo htmlspecialchars($article->getDateDerniereMaj()->format("d/m/Y")); ?>
                 </p>
                 <p><strong>Auteur (Dernière mise à jour)</strong> :
                     <?php echo htmlspecialchars($user->getPrenom()) . ' ' . htmlspecialchars($user->getNom()); ?>
@@ -34,10 +34,10 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                     <label class="fw-bold" for="image" class="form-label">Image</label>
                     <br>
                     <img id="imgEditArticle" class="imageArticle"
-                        src="<?php echo 'images/upload/' . $article->getImage(); ?>" />
+                        src="<?php echo 'images/upload/' . htmlspecialchars($article->getImage()); ?>" />
                     <input id="inputFileImage" class="inputAjoutArticle form-control border border-3" type="file"
                         name="image" accept="image/png, image/jpg, image/jpeg"
-                        value="<?php echo 'images/upload/' . $article->getImage(); ?>">
+                        value="<?php echo 'images/upload/' . htmlspecialchars($article->getImage()); ?>">
                     <?php if (isset($erreurExtension) && $erreurExtension == true) { ?>
                         <p class="bg-danger fst-italic fw-bold text-white p-1">
                             <?php echo $messageErreur; ?>

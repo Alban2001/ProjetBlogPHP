@@ -122,5 +122,5 @@ const messageSuccess = document.querySelector(".messageSuccess");
 if (messageSuccess !== null) {
   setTimeout(function () {
     messageSuccess.classList.add("d-none");
-  }, 3000);
+  }, 5000);
 }
