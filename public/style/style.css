@@ -200,8 +200,11 @@ section#erreur {
 }
 
 .image-article {
-  width: 125px;
-  height: 100px;
+  width: 100%;
+}
+
+.image-article img {
+  width: 100%;
 }
 
 .btnPaginationGestion {
@@ -216,7 +219,6 @@ section#erreur {
   font-weight: bold;
 }
 
-/************* GESTION ARTICLES ****************/
 .card {
   width: 100%;
 }
@@ -241,6 +243,10 @@ section#erreur {
 
 .btn-commentaire {
   background-color: rgb(3, 5, 115);
+  width: 100%;
+}
+
+.image-article-read {
   width: 100%;
 }
 
@@ -338,12 +344,13 @@ section#erreur {
 
   /************* GESTION ARTICLES ****************/
   .image-article {
-    width: 100%;
-    max-width: 500px;
-    height: 400px;
+    width: 250px;
   }
 
-  /************* GESTION ARTICLES ****************/
+  .image-article img {
+    width: 75%;
+  }
+
   .card {
     width: 25%;
   }
@@ -360,5 +367,9 @@ section#erreur {
 
   .btn-commentaire {
     width: auto;
+  }
+
+  .image-article-read {
+    width: 400px;
   }
 }

@@ -52,11 +52,12 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                                 <?php echo htmlspecialchars($article->getTitre()); ?>
                             </td>
                             <td class="align-middle" data-content="Image">
-                                <img class="w-100"
-                                    src="<?php echo 'images/upload/' . htmlspecialchars($article->getImage()); ?>"
-                                    alt="image article" />
+                                <div class="image-article d-flex align-items-center">
+                                    <img src="<?php echo 'images/upload/' . htmlspecialchars($article->getImage()); ?>"
+                                        alt="image article" />
+                                </div>
                             </td>
-                            <td class="align-middle" data-content="Chapô">
+                            <td class="align-middle text-justify" data-content="Chapô">
                                 <?php echo htmlspecialchars($article->getChapo()); ?>
                             </td>
                             <td class="align-middle" data-content="Date de Création">

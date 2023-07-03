@@ -66,7 +66,7 @@ $_SESSION['tokenCompte'] = bin2hex(random_bytes(35)); ?>
                         <?php if (isset($erreurPassword) && $erreurPassword == true) { ?>
                             <p id="msgErreurMdp2" class="fst-italic fw-bold text-danger">Votre mot de passe doit
                                 contenir au moins : <br>- 12 caractères<br>- 1 lettre en majuscule<br>- 1 lettre en
-                                miniscule<br>- 1 caractère spéciaux (?!@#$%^&*)(+=~.;:_-)
+                                minuscule<br>- 1 caractère spéciaux (?!@#$%^&*)(+=~.;:_-)
                             </p>
                         <?php } ?>
                         <label for="password-confirmed" class="form-label">Confirmer votre mot de passe</label>

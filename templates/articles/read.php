@@ -21,7 +21,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                     <?php echo htmlspecialchars($article->getChapo()); ?>
                 </div>
                 <div class="text-center m-5">
-                    <img class="image-article"
+                    <img class="image-article-read"
                         src="<?php echo 'images/upload/' . htmlspecialchars($article->getImage()); ?>"
                         alt="image article" />
                 </div>
@@ -39,21 +39,22 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                     <br>
                 <?php } ?>
                 <form action="index.php?action=comment" method="POST">
-                    <br>
                     <label for="textarea-commentaire" class="form-label fw-bold">Votre commentaire</label>
-                    <p class="text-danger">* Vous devez vous connecter pour écrire un commentaire !</p>
-                    <textarea id="textarea-commentaire" class="form-control" rows="5"
-                        placeholder="Ecrivez votre commentaire..." name="commentaire"></textarea>
-                    <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>">
-                    <p class="messageErreurCommentaire d-none fst-italic fw-bold text-danger">La saisie du commentaire
-                        est obligatoire !
-                    </p><br>
-                    <input id="btnEnvoyerCommentaire" class="btn btn-commentaire text-white fw-bold" type="submit"
-                        value="Envoyer le commentaire" disabled>
-                    <br>
-                    <br>
-                    <a class="btn btn-commentaire bg-dark text-white fw-bold"
-                        href="index.php?action=connexion">Connectez-vous</a>
+                    <?php if (isset($_SESSION["user"]["id"])) { ?>
+                        <textarea id="textarea-commentaire" class="form-control" rows="5"
+                            placeholder="Ecrivez votre commentaire..." name="commentaire"></textarea>
+                        <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>">
+                        <p class="messageErreurCommentaire d-none fst-italic fw-bold text-danger">La saisie du commentaire
+                            est obligatoire !
+                        </p><br>
+                        <input id="btnEnvoyerCommentaire" class="btn btn-commentaire text-white fw-bold" type="submit"
+                            value="Envoyer le commentaire" disabled>
+                    <?php } else { ?>
+                        <p class="text-danger">* Vous devez vous connecter pour écrire un commentaire !</p>
+                        <br>
+                        <a class="btn btn-commentaire bg-dark text-white fw-bold"
+                            href="index.php?action=connexion">Connectez-vous</a>
+                    <?php } ?>
                 </form>
                 <br>
                 <?php if (isset($_GET["success"]) && $_GET["success"] == "1") { ?>
