@@ -3,16 +3,16 @@
   --tmr-white: #eee;
   --tmr-table-header: #54667a;
   --tmr-row-divider-color: #3490dc;
-  --tmr-stripped-row-background-color: rgba(0, 0, 0, 0.05);
+  --tmr-stripped-row-background-color: rgba(0 0 0 / 0.05);
 }
 
-/*-- ==============================================================
+/*
  Screen smaller than 760px and iPads.
- ============================================================== */
+ */
 
-@media only screen and (max-width: 800px),
+@media (min-width: 375px) and (max-width: 800px),
   (min-device-width: 800px) and (max-device-width: 1024px) {
-  [data-content]:before {
+  [data-content]::before {
     content: attr(data-content);
   }
 
@@ -29,6 +29,7 @@
   .table-mobile-responsive.text-center {
     text-align: left !important;
   }
+
   .table-mobile-responsive caption {
     width: max-content;
   }
@@ -62,9 +63,10 @@
     padding-top: 1.5rem !important;
   }
 
-  .table-mobile-responsive td:before {
+  .table-mobile-responsive td::before {
     /* Now like a table header */
     position: absolute;
+
     /* Top/left values mimic padding */
     top: 0;
     left: 6px;
@@ -83,17 +85,19 @@
   .table-mobile-responsive.table-mobile-sided > :not(caption) > * > * {
     border-color: var(--bs-table-border-color);
   }
+
   .table-mobile-responsive.table-mobile-sided td {
     /* Behave  like a "row" */
     border: none;
     border-bottom: 1px solid var(--tmr-white);
     position: relative;
     padding-left: 50%;
-    padding-top: 0px !important;
+    padding-top: 0 !important;
     display: flex;
     justify-content: flex-end;
   }
-  .table-mobile-responsive.table-mobile-sided td:before {
+
+  .table-mobile-responsive.table-mobile-sided td::before {
     /* Now like a table header */
     position: absolute;
     /* Top/left values mimic padding */
