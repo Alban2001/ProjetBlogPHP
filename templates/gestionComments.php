@@ -20,7 +20,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                     <thead>
                         <tr class="table-primary">
                             <th class="align-middle" scope="col">ID</th>
-                            <th class="align-middle" scope="col">IDArticle</th>
+                            <th class="align-middle" scope="col">ID de l'article</th>
                             <th class="align-middle" scope="col">Contenu</th>
                             <th class="align-middle" scope="col">Date de Création</th>
                             <th class="align-middle" scope="col">Auteur</th>
@@ -34,13 +34,13 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                             <td scope="row" class="align-middle" data-content="ID">
                                 <?php echo htmlspecialchars($commentaire->getId()); ?>
                             </td>
-                            <td class="align-middle" data-content="IDArticle">
+                            <td class="align-middle" data-content="ID de l'article">
                                 <?php $idArticle = htmlspecialchars($commentaire->getIdArticle()); ?>
                                 <a href="index.php?action=read&id=<?php echo $idArticle; ?>">
                                     <?php echo $idArticle; ?>
                                 </a>
                             </td>
-                            <td class="align-middle" data-content="Contenu">
+                            <td class="align-middle text-justify" data-content="Contenu">
                                 <?php echo htmlspecialchars($commentaire->getContenu()); ?>
                             </td>
                             <td class="align-middle" data-content="Date de Création">

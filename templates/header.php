@@ -1,7 +1,7 @@
 <!--- VUE PARTIELLE : HEADER + NAV --->
 <?php if (isset($_SESSION["user"]["id"])) { ?>
 <div class="p-2 fw-bold text-black border bg-white text-center">
-  <?php echo "Bonjour " . $_SESSION["user"]["nom"] . " " . $_SESSION["user"]["prenom"] . ". Ravi de vous revoir ! :-)"; ?>
+  <?php echo "Bonjour " . $_SESSION["user"]["prenom"] . ". Ravi de vous revoir ! :-)"; ?>
 </div>
 <?php } ?>
 <header>
