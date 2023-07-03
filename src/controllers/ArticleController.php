@@ -27,8 +27,6 @@ class ArticleController
     // Permet de récupérer les données saisies de la page add.php, de les traiter et de faire une insertion dans la BDD
     public function retourAdd(array $img)
     {
-        $numErreur = false;
-        $erreurExtension = false;
         $inputs = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         $idUtilisateur = $_SESSION["user"]["id"];
 
