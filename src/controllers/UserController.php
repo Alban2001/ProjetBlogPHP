@@ -18,7 +18,6 @@ class UserController
     // Vérifie aussi si ces données sont correctes et correspondent dans la BDD
     public function retourConnexion()
     {
-        $numErreur = false;
         $options = array(
             "email" => FILTER_SANITIZE_EMAIL,
             "password" => FILTER_DEFAULT,
@@ -57,11 +56,6 @@ class UserController
     // Vérifie aussi si ces données sont correctes au niveau du format
     public function retourCreationCompte()
     {
-        $erreurChamp = false;
-        $erreurMail = false;
-        $erreurMailExistant = false;
-        $erreurPassword = false;
-        $erreurPasswordConfirmed = false;
         $options = array(
             "nom" => FILTER_DEFAULT,
             "prenom" => FILTER_DEFAULT,

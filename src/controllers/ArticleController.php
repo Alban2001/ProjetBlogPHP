@@ -81,8 +81,6 @@ class ArticleController
     public function retourEditArticle(array $img)
     {
         $articleManager = new ArticleManager();
-        $numErreur = false;
-        $erreurExtension = false;
         $inputs = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         $idUtilisateur = $_SESSION["user"]["id"];
         $idArticle = $_SESSION["article"]["id"];
