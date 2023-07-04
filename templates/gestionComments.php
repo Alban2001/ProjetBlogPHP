@@ -1,4 +1,9 @@
 <!--- VUE DE LA PAGE SUR LA GESTION DES COMMENTAIRES --->
+<?php use Lib\Globals;
+
+$globals = new Globals();
+$globals->setGET();
+$get = $globals->getGET(); ?>
 
 <?php $title = "Gestion des commentaires"; ?>
 <?php ob_start();
@@ -10,7 +15,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
             <div class="col">
                 <h1 class="fw-bold text-decoration-underline text-center mt-5">Gestion des commentaires</h1><br><br>
                 <?php
-                if (isset($_GET["successValidate"]) && $_GET["successValidate"] === "1") { ?>
+                if (isset($get["successValidate"]) && $get["successValidate"] === "1") { ?>
                 <div class="messageSuccess fw-bold bg-success text-white text-center p-3 w-100">
                     Validation du commentaire effectuée avec succès !
                 </div>

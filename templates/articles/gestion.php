@@ -1,5 +1,11 @@
 <!--- VUE DE LA PAGE SUR LA GESTION DES ARTICLES --->
 
+<?php use Lib\Globals;
+
+$globals = new Globals();
+$globals->setGET();
+$get = $globals->getGET(); ?>
+
 <?php $title = "Gestion des articles"; ?>
 <?php ob_start();
 $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
@@ -10,21 +16,21 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
             <div class="col">
                 <h1 class="fw-bold text-decoration-underline text-center mt-5">Gestion des articles</h1><br><br>
                 <?php
-                if (isset($_GET["successInsert"]) && $_GET["successInsert"] === "1") { ?>
+                if (isset($get["successInsert"]) && $get["successInsert"] === "1") { ?>
                 <div class="messageSuccess fw-bold bg-success text-white text-center p-3 w-100">
                     Insertion d'un article effectuée avec succès !
                 </div>
                 <br>
                 <?php } ?>
                 <?php
-                if (isset($_GET["successUpdate"]) && $_GET["successUpdate"] === "1") { ?>
+                if (isset($get["successUpdate"]) && $get["successUpdate"] === "1") { ?>
                 <div class="messageSuccess fw-bold bg-success text-white text-center p-3 w-100">
                     Mise à jour de l'article effectuée avec succès !
                 </div>
                 <br>
                 <?php } ?>
                 <?php
-                if (isset($_GET["successDelete"]) && $_GET["successDelete"] === "1") { ?>
+                if (isset($get["successDelete"]) && $get["successDelete"] === "1") { ?>
                 <div class="messageSuccess fw-bold bg-success text-white text-center p-3 w-100">
                     Suppression de l'article effectuée avec succès !
                 </div>

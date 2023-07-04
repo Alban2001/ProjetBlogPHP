@@ -19,44 +19,49 @@ error_reporting(-1);
 session_start();
 
 try {
+    $globals = new Globals();
+    $globals->setGET();
+    $get_action = $globals->getGET("action");
+    $get_id = $globals->getGET("id");
+
     // Page d'accueil
-    if (!isset($_GET["action"])) {
+    if (!isset($get_action)) {
         $homeController = new HomeController();
         $homeController->homepage();
-    } elseif (isset($_GET["action"])) {
+    } elseif (isset($get_action)) {
         // Mise en place d'une session pour le token
         $userController = new UserController();
         // Page de connexion
-        if ($_GET["action"] === "connexion") {
+        if ($get_action === "connexion") {
             $userController->connexion();
             // Page de retourConnexion
-        } elseif ($_GET["action"] === "retourConnexion") {
+        } elseif ($get_action === "retourConnexion") {
             $userController->retourConnexion();
             // Page de déconnexion (retour à la page d'accueil + fermeture des sessions)
-        } elseif ($_GET["action"] === "deconnexion") {
+        } elseif ($get_action === "deconnexion") {
             $userController->deconnexion();
             // Page pour la création d'un compte utilisateur
-        } elseif ($_GET["action"] === "creationCompte") {
+        } elseif ($get_action === "creationCompte") {
             $userController->creationCompte();
             // Page sur l'affichage de l'ensemble des articles
-        } elseif ($_GET["action"] === "retourCreationCompte") {
+        } elseif ($get_action === "retourCreationCompte") {
             $userController->retourCreationCompte();
             // Page sur l'affichage de l'ensemble des articles
-        } elseif ($_GET["action"] === "affichageArticles") {
+        } elseif ($get_action === "affichageArticles") {
             $articleController = new ArticleController();
             $articleController->affichage();
         }
-        if (isset($_GET["id"]) && $_GET["id"] > 0) {
-            $code = $_GET["id"];
+        if (isset($get_id) && $get_id > 0) {
+            $code = $get_id;
             // Page de modification d'un article
-            if ($_GET["action"] === "read") {
+            if ($get_action === "read") {
                 $articleController = new ArticleController();
                 $articleController->read($code);
             }
         }
         // Action qui permet traiter les données sur l'ajour d'un commentaire
         // Si on se dirige vers cette page, alors, on doit avoir les droits user (minimum)
-        if ($_GET["action"] === "comment") {
+        if ($get_action === "comment") {
             if (isset($_SESSION["user"]["id"])) {
                 $commentController = new CommentController();
                 $commentController->comment();
@@ -70,47 +75,47 @@ try {
         if (isset($_SESSION["user"]["id"]) && $_SESSION["user"]["role"] === "admin") {
             $articleController = new ArticleController();
             // Page de l'affichage de l'ensemble des articles avec actions (edit, delete)
-            if ($_GET["action"] === "gestionArticles") {
+            if ($get_action === "gestionArticles") {
                 $articleController->gestion();
                 // Page pour ajouter un article
-            } elseif ($_GET["action"] === "ajoutArticle") {
+            } elseif ($get_action === "ajoutArticle") {
                 $articleController->add();
                 // Page pour traiter les données sur l'ajout d'un article
-            } elseif ($_GET["action"] === "retourAjoutArticle") {
+            } elseif ($get_action === "retourAjoutArticle") {
                 $globals = new Globals();
                 $globals->setFILES();
                 $files = $globals->getFILES();
                 $articleController->retourAdd($files);
                 // Page pour traiter les données sur la modification d'un article
-            } elseif ($_GET["action"] === "retourEditArticle") {
+            } elseif ($get_action === "retourEditArticle") {
                 $globals = new Globals();
                 $globals->setFILES();
                 $files = $globals->getFILES();
                 $articleController->retourEditArticle($files);
                 // Action qui permet de supprimer un article
-            } elseif ($_GET["action"] === "delete") {
+            } elseif ($get_action === "delete") {
                 $articleController->delete();
                 // Action qui permet de se diriger vers la page de gestion des utilisateurs
-            } elseif ($_GET["action"] === "gestionUtilisateurs") {
+            } elseif ($get_action === "gestionUtilisateurs") {
                 $userController = new UserController();
                 $userController->gestion();
                 // Action qui permet traiter les données sur la validation d'un compte utilisateur
-            } elseif ($_GET["action"] === "validateUser") {
+            } elseif ($get_action === "validateUser") {
                 $userController = new UserController();
                 $userController->validateUser();
                 // Action qui permet de se diriger vers la page de gestion des commentaires
-            } elseif ($_GET["action"] === "gestionCommentaires") {
+            } elseif ($get_action === "gestionCommentaires") {
                 $commentController = new CommentController();
                 $commentController->gestion();
                 // Action qui permet traiter les données sur la validation d'un commentaire
-            } elseif ($_GET["action"] === "validateComment") {
+            } elseif ($get_action === "validateComment") {
                 $commentController = new CommentController();
                 $commentController->validateComment();
             }
-            if (isset($_GET["id"]) && $_GET["id"] > 0) {
-                $code = $_GET["id"];
+            if (isset($get_id) && $get_id > 0) {
+                $code = $get_id;
                 // Page de modification d'un article
-                if ($_GET["action"] === "edit") {
+                if ($get_action === "edit") {
                     $articleController->edit($code);
                 }
             } else {
