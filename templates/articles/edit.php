@@ -102,4 +102,4 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
 
 <?php $content = ob_get_clean(); ?>
 
-<?php include_once(__DIR__ . "/../layout.php"); ?>
+<?php include_once __DIR__ . "/../layout.php"; ?>

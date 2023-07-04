@@ -15,13 +15,13 @@ class ArticleController
     {
         $articleManager = new ArticleManager();
         $articles = $articleManager->getAll();
-        include_once(__DIR__ . "/../../templates/articles/gestion.php");
+        include_once __DIR__ . "/../../templates/articles/gestion.php";
     }
 
     // Permet de se diriger vers la page pour ajouter un nouvel article
     public function add()
     {
-        include_once(__DIR__ . "/../../templates/articles/add.php");
+        include_once __DIR__ . "/../../templates/articles/add.php";
     }
 
     // Permet de récupérer les données saisies de la page add.php, de les traiter et de faire une insertion dans la BDD
@@ -51,11 +51,11 @@ class ArticleController
                 } else {
                     $erreurExtension = true;
                     $messageErreur = "Ce type d'extension n'est pas accepté. Extensions autorisées : jpg, jpeg ou png";
-                    include_once(__DIR__ . '/../../templates/articles/add.php');
+                    include_once __DIR__ . '/../../templates/articles/add.php';
                 }
             } else {
                 $numErreur = true;
-                include_once(__DIR__ . '/../../templates/articles/add.php');
+                include_once __DIR__ . '/../../templates/articles/add.php';
             }
         } else {
             throw new Exception("Erreur 405 : la requête effectuée n'est pas autorisée !");
@@ -71,7 +71,7 @@ class ArticleController
             $article = $articleManager->getArticle($code);
             $user = $userManager->getUserById($article->getIdUtilisateur());
             $_SESSION["article"]["id"] = $article->getId();
-            include_once(__DIR__ . "/../../templates/articles/edit.php");
+            include_once __DIR__ . "/../../templates/articles/edit.php";
         } else {
             throw new Exception("Erreur 404 : l'identifiant de cet article n'existe pas !");
         }
@@ -118,7 +118,7 @@ class ArticleController
                         $user = $userManager->getUserById($article->getIdUtilisateur());
                         $erreurExtension = true;
                         $messageErreur = "Ce type d'extension n'est pas accepté. Extensions autorisées : jpg, jpeg ou png";
-                        include_once(__DIR__ . '/../../templates/articles/edit.php');
+                        include_once __DIR__ . '/../../templates/articles/edit.php';
                     }
                     // Sinon, si je ne change pas l'image, je ne mets pas la colonne image dans la requête UPDATE
                     // (ça évitera de duppliquer la même image dans le dossier upload)
@@ -135,7 +135,7 @@ class ArticleController
                 $article = $articleManager->getArticle($idArticle);
                 $user = $userManager->getUserById($article->getIdUtilisateur());
                 $numErreur = true;
-                include_once(__DIR__ . '/../../templates/articles/edit.php');
+                include_once __DIR__ . '/../../templates/articles/edit.php';
             }
         } else {
             throw new Exception("Erreur 405 : la requête effectuée n'est pas autorisée !");
@@ -172,7 +172,7 @@ class ArticleController
     {
         $articleManager = new ArticleManager();
         $articles = $articleManager->getAll();
-        include_once(__DIR__ . "/../../templates/articles/affichage.php");
+        include_once __DIR__ . "/../../templates/articles/affichage.php";
     }
 
     // Affichage l'ensemble des informations de l'article sélectionné + formulaire pour commentaire
@@ -187,7 +187,7 @@ class ArticleController
             $_SESSION["article"]["id"] = $article->getId();
             $commentaires = $commentManager->getComments($code);
             $nbrCommentaire = $commentManager->nbrComments($code);
-            include_once(__DIR__ . "/../../templates/articles/read.php");
+            include_once __DIR__ . "/../../templates/articles/read.php";
         } else {
             throw new Exception("Erreur 404 : l'identifiant de cet article n'existe pas !");
         }

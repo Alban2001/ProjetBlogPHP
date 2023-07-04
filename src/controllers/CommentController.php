@@ -47,7 +47,7 @@ class CommentController
     {
         $commentManager = new CommentManager();
         $commentaires = $commentManager->getAll();
-        include_once(__DIR__ . "/../../templates/gestionComments.php");
+        include_once __DIR__ . "/../../templates/gestionComments.php";
     }
 
     // Permet de récupérer les données sur la gestion des utilisateurs pour la validation du compte

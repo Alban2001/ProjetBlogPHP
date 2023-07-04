@@ -11,7 +11,7 @@ class UserController
     // Direction vers la page de connexion pour la saisie de l'adresse mail et mot de passe
     public function connexion()
     {
-        include_once(__DIR__ . '/../../templates/connexion.php');
+        include_once __DIR__ . '/../../templates/connexion.php';
     }
 
     // Permet de récupérer les données (adresse mail + mot de passe) de la page de connexion
@@ -40,7 +40,7 @@ class UserController
                 header("Location: index.php");
             } else {
                 $numErreur = true;
-                include_once(__DIR__ . '/../../templates/connexion.php');
+                include_once __DIR__ . '/../../templates/connexion.php';
             }
         } else {
             throw new Exception("Erreur 405 : la requête effectuée n'est pas autorisée !");
@@ -50,7 +50,7 @@ class UserController
     // Direction vers la page de création de compte pour les nouveaux utilisateurs
     public function creationCompte()
     {
-        include_once(__DIR__ . '/../../templates/creationCompte.php');
+        include_once __DIR__ . '/../../templates/creationCompte.php';
     }
 
     // Permet de récupérer les données (nom, prénom, adresse mail, mot de passe) de la page de création de compte
@@ -100,23 +100,23 @@ class UserController
                                 header("Location: index.php?action=creationCompte&success=1");
                             } else {
                                 $erreurPasswordConfirmed = true;
-                                include_once(__DIR__ . '/../../templates/creationCompte.php');
+                                include_once __DIR__ . '/../../templates/creationCompte.php';
                             }
                         } else {
                             $erreurPassword = true;
-                            include_once(__DIR__ . '/../../templates/creationCompte.php');
+                            include_once __DIR__ . '/../../templates/creationCompte.php';
                         }
                     } else {
                         $erreurMailExistant = true;
-                        include_once(__DIR__ . '/../../templates/creationCompte.php');
+                        include_once __DIR__ . '/../../templates/creationCompte.php';
                     }
                 } else {
                     $erreurMail = true;
-                    include_once(__DIR__ . '/../../templates/creationCompte.php');
+                    include_once __DIR__ . '/../../templates/creationCompte.php';
                 }
             } else {
                 $erreurChamp = true;
-                include_once(__DIR__ . '/../../templates/creationCompte.php');
+                include_once __DIR__ . '/../../templates/creationCompte.php';
             }
         } else {
             throw new Exception("Erreur 405 : la requête effectuée n'est pas autorisée !");
@@ -128,7 +128,7 @@ class UserController
     {
         $userManager = new UserManager();
         $utilisateurs = $userManager->getAll();
-        include_once(__DIR__ . "/../../templates/gestionUsers.php");
+        include_once __DIR__ . "/../../templates/gestionUsers.php";
     }
 
 
@@ -158,7 +158,7 @@ class UserController
     public function deconnexion()
     {
         header("Location: index.php");
-        include_once(__DIR__ . '/../../templates/accueil.php');
+        include_once __DIR__ . '/../../templates/accueil.php';
         session_destroy();
     }
 }

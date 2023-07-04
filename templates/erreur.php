@@ -18,4 +18,4 @@
 
 <?php $content = ob_get_clean(); ?>
 
-<?php include_once(__DIR__ . "/layout.php"); ?>
+<?php include_once __DIR__ . "/layout.php"; ?>

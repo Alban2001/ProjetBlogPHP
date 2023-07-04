@@ -6,6 +6,6 @@ class HomeController
 {
     public function homepage()
     {
-        include(__DIR__ . '/../../templates/accueil.php');
+        include_once __DIR__ . '/../../templates/accueil.php';
     }
 }
