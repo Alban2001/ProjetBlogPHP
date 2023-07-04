@@ -5,6 +5,7 @@ namespace Controllers;
 use Models\User;
 use Models\UserManager;
 use Exception;
+use Lib\Globals;
 
 class UserController
 {
@@ -23,7 +24,9 @@ class UserController
             "password" => FILTER_DEFAULT,
             "token" => FILTER_DEFAULT
         );
-        $inputs = filter_input_array(INPUT_POST, $options);
+        $globals = new Globals();
+        $globals->setPOST($options);
+        $inputs = $globals->getPOST();
         if (!empty($inputs["token"]) && $inputs["token"] === $_SESSION["token"]) {
             $userManager = new UserManager();
             // Si l'adresse mail et le mot de passe correspond
@@ -64,7 +67,9 @@ class UserController
             "passwordConfirmed" => FILTER_DEFAULT,
             "token" => FILTER_DEFAULT
         );
-        $inputs = filter_input_array(INPUT_POST, $options);
+        $globals = new Globals();
+        $globals->setPOST($options);
+        $inputs = $globals->getPOST();
         if (!empty($inputs["token"]) && $inputs["token"] === $_SESSION["tokenCompte"]) {
             // Si les champs ne sont pas vides
             if (!empty($inputs["nom"]) && !empty($inputs["prenom"]) && !empty($inputs["email"]) && !empty($inputs["password"]) && !empty($inputs["passwordConfirmed"])) {
@@ -133,7 +138,9 @@ class UserController
             "id" => FILTER_SANITIZE_NUMBER_INT,
             "token" => FILTER_DEFAULT
         );
-        $inputs = filter_input_array(INPUT_POST, $options);
+        $globals = new Globals();
+        $globals->setPOST($options);
+        $inputs = $globals->getPOST();
         if (!empty($inputs["token"]) && $inputs["token"] === $_SESSION["token"]) {
             $userManager = new UserManager();
             if ($userManager->verifierId($inputs["id"])) {

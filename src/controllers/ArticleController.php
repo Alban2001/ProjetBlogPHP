@@ -6,6 +6,7 @@ use Models\Article;
 use Models\ArticleManager;
 use Models\CommentManager;
 use Models\UserManager;
+use Lib\Globals;
 use Exception;
 
 class ArticleController
@@ -27,7 +28,9 @@ class ArticleController
     // Permet de récupérer les données saisies de la page add.php, de les traiter et de faire une insertion dans la BDD
     public function retourAdd(array $img)
     {
-        $inputs = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+        $globals = new Globals();
+        $globals->setPOST();
+        $inputs = $globals->getPOST();
         $idUtilisateur = $_SESSION["user"]["id"];
 
         if (!empty($inputs["token"]) && $inputs["token"] === $_SESSION["token"]) {
@@ -81,7 +84,9 @@ class ArticleController
     public function retourEditArticle(array $img)
     {
         $articleManager = new ArticleManager();
-        $inputs = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+        $globals = new Globals();
+        $globals->setPOST();
+        $inputs = $globals->getPOST();
         $idUtilisateur = $_SESSION["user"]["id"];
         $idArticle = $_SESSION["article"]["id"];
 
@@ -146,7 +151,10 @@ class ArticleController
             "id" => FILTER_SANITIZE_NUMBER_INT,
             "token" => FILTER_DEFAULT
         );
-        $inputs = filter_input_array(INPUT_POST, $options);
+        $globals = new Globals();
+        $globals->setPOST($options);
+        $inputs = $globals->getPOST();
+
         if (!empty($inputs["token"]) && $inputs["token"] === $_SESSION["token"]) {
             $articleManager = new ArticleManager();
             if ($articleManager->verifierId($inputs["id"])) {

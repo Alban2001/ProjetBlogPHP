@@ -65,7 +65,7 @@ valide, id_utilisateur) VALUES (?, ?, NOW(), ?, ?)");
     public function getAll(): array
     {
         $connection = new DatabaseConnection();
-        $statement = $connection->getConnection()->prepare("SELECT C.*, nom, prenom FROM commentaire C, utilisateur WHERE utilisateur.id = C.id_utilisateur ORDER BY valide ASC");
+        $statement = $connection->getConnection()->prepare("SELECT C.*, nom, prenom FROM commentaire C, utilisateur WHERE utilisateur.id = C.id_utilisateur ORDER BY valide ASC, date_creation DESC");
         $statement->execute();
         $commentaires = [];
 

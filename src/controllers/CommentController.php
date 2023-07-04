@@ -5,6 +5,7 @@ namespace Controllers;
 use Exception;
 use Models\Comment;
 use Models\CommentManager;
+use Lib\Globals;
 
 class CommentController
 {
@@ -15,9 +16,12 @@ class CommentController
             "commentaire" => FILTER_DEFAULT,
             "token" => FILTER_DEFAULT
         );
+        $globals = new Globals();
+        $globals->setPOST($options);
+        $inputs = $globals->getPOST();
+
         $idArticle = $_SESSION["article"]["id"];
         $idUtilisateur = $_SESSION["user"]["id"];
-        $inputs = filter_input_array(INPUT_POST, $options);
 
         if (!empty($inputs["token"]) && $inputs["token"] === $_SESSION["token"]) {
             // Si le commentaire n'est pas rempli
@@ -57,7 +61,9 @@ class CommentController
             "id" => FILTER_SANITIZE_NUMBER_INT,
             "token" => FILTER_DEFAULT
         );
-        $inputs = filter_input_array(INPUT_POST, $options);
+        $globals = new Globals();
+        $globals->setPOST($options);
+        $inputs = $globals->getPOST();
         if (!empty($inputs["token"]) && $inputs["token"] === $_SESSION["token"]) {
             $commentManager = new CommentManager();
             if ($commentManager->verifierId($inputs["id"])) {
