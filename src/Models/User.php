@@ -5,7 +5,7 @@ namespace Models;
 class User
 {
     // Attributs de l'entité User
-    private int $id;
+    private int $code;
     private string $nom;
     private string $prenom;
     private string $adresseMail;
@@ -14,16 +14,16 @@ class User
     private string $role = "user"; // Valeur par défaut : un utlisateur a le rôle "User" automatiquement lorsqu'il crééra un compte  
 
     // Attribution de l'ID
-    public function setId(int $id): self
+    public function setId(int $code): self
     {
-        $this->id = $id;
+        $this->code = $code;
 
         return $this;
     }
     // Affichage de l'ID
     public function getId(): int
     {
-        return $this->id;
+        return $this->code;
     }
 
     // Attribution du nom

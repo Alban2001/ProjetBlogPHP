@@ -25,20 +25,26 @@ $_SESSION['tokenCompte'] = bin2hex(random_bytes(35)); ?>
                     <br>
                     <form action="index.php?action=retourCreationCompte" method="POST">
                         <label for="nom" class="form-label">Nom</label>
-                        <input class="inputCompte form-control mb-3 border-2" type="text" name="nom"
-                            placeholder="Nom" />
+                        <input class="inputCompte form-control mb-3 border-2" type="text" name="nom" placeholder="Nom"
+                            value="<?php if (isset($inputs["nom"])) {
+                                echo $inputs["nom"];
+                            } ?>" />
                         <p class="msgErreurC d-none fst-italic fw-bold text-danger">La saisie de votre nom est
                             obligatoire !
                         </p>
                         <label for="prenom" class="form-label">Prénom</label>
                         <input class="inputCompte form-control mb-3 border-2" type="text" name="prenom"
-                            placeholder="Prénom" />
+                            placeholder="Prénom" value="<?php if (isset($inputs["prenom"])) {
+                                echo $inputs["prenom"];
+                            } ?>" />
                         <p class="msgErreurC d-none fst-italic fw-bold text-danger">La saisie de votre prénom est
                             obligatoire !
                         </p>
                         <label for="email" class="form-label">Email</label>
                         <input class="inputCompte form-control mb-3 border-2" type="email" name="email"
-                            placeholder="exemple@mail.fr" />
+                            placeholder="exemple@mail.fr" value="<?php if (isset($inputs["email"])) {
+                                echo $inputs["email"];
+                            } ?>" />
                         <p id="msgErreurEmail" class="d-none fst-italic fw-bold text-danger">Le format de l'email est
                             incorrect !
                         </p>
@@ -55,7 +61,9 @@ $_SESSION['tokenCompte'] = bin2hex(random_bytes(35)); ?>
                         <label for="password" class="form-label">Mot de Passe</label>
                         <div class="d-flex align-items-center bg-white border border-2 rounded mb-3">
                             <input id="input-password-connexion" class="inputCompte form-control w-100 border-0"
-                                type="password" name="password" placeholder="Mot de Passe" />
+                                type="password" name="password" placeholder="Mot de Passe" value="<?php if (isset($inputs["password"])) {
+                                    echo $inputs["password"];
+                                } ?>" />
                             <i id="eye-closed" class="d-block fa-sharp fa-solid fa-eye-slash p-2"></i>
                             <i id="eye-opened" class="d-none fa-solid fa-eye p-2"></i>
                         </div>
@@ -71,7 +79,9 @@ $_SESSION['tokenCompte'] = bin2hex(random_bytes(35)); ?>
                         <?php } ?>
                         <label for="password-confirmed" class="form-label">Confirmer votre mot de passe</label>
                         <input id="input-password-connexion-confirmed" class="inputCompte form-control border-2"
-                            type="password" name="passwordConfirmed" placeholder="Confirmer votre mot de passe" />
+                            type="password" name="passwordConfirmed" placeholder="Confirmer votre mot de passe" value="<?php if (isset($inputs["passwordConfirmed"])) {
+                                echo $inputs["passwordConfirmed"];
+                            } ?>" />
                         <p id="msgErreurMdpConfirmed" class="d-none fst-italic fw-bold text-danger">Ce mot de passe ne
                             correspond pas à celui du dessus !
                         </p>

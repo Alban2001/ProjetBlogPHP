@@ -48,23 +48,25 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                     <?php } ?>
                     <br>
                     <label class="fw-bold" for="chapo">Chapô</label><br>
+                    <?php $chapo = "";
+                    if (isset($inputs["chapo"]) && !empty($inputs["chapo"])) {
+                        $chapo = $inputs["chapo"];
+                    } else {
+                        $chapo = htmlspecialchars($article->getChapo());
+                    } ?>
                     <textarea class="inputAjoutArticle w-100 border border-3 p-3" name="chapo" id="chapo" rows="10"
-                        placeholder="Ecrivez votre chapô...">
-                        <?php if (isset($inputs["chapo"]) && !empty($inputs["chapo"])) {
-                            echo $inputs["chapo"];
-                        } else {
-                            echo htmlspecialchars($article->getChapo());
-                        } ?></textarea>
+                        placeholder="Ecrivez votre chapô..."><?php echo $chapo; ?></textarea>
                     <p class="messageErreurP d-none fst-italic fw-bold text-danger">La saisie du chapô est obligatoire !
                     </p><br><br>
                     <label class="fw-bold" for="content">Contenu</label><br>
+                    <?php $content = "";
+                    if (isset($inputs["content"]) && !empty($inputs["content"])) {
+                        $content = $inputs["content"];
+                    } else {
+                        $content = htmlspecialchars($article->getContenu());
+                    } ?>
                     <textarea class="inputAjoutArticle w-100 border border-3 p-3" name="content" id="content" rows="10"
-                        placeholder="Ecrivez votre contenu...">
-                        <?php if (isset($inputs["content"]) && !empty($inputs["content"])) {
-                            echo $inputs["content"];
-                        } else {
-                            echo htmlspecialchars($article->getContenu());
-                        } ?></textarea>
+                        placeholder="Ecrivez votre contenu..."><?php echo $content; ?></textarea>
                     <p class="messageErreurP d-none fst-italic fw-bold text-danger">La saisie du contenu est obligatoire
                         !</p><br><br>
                     <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>">

@@ -8,7 +8,7 @@ use Models\User;
 class Comment
 {
     // Attributs de l'entité Comment
-    private int $id;
+    private int $code;
     private int $idArticle;
     private string $contenu;
     private DateTime $dateCreation; //La date de création est la date du jour par défaut lors de la création du commentaire
@@ -18,16 +18,16 @@ class Comment
     private string $prenomUtilisateur;
 
     // Attribution de l'ID
-    public function setId(int $id): self
+    public function setId(int $code): self
     {
-        $this->id = $id;
+        $this->code = $code;
 
         return $this;
     }
     // Affichage de l'ID
     public function getId(): int
     {
-        return $this->id;
+        return $this->code;
     }
     // Attribution de l'ID article
     public function setIdArticle(int $idArticle): self

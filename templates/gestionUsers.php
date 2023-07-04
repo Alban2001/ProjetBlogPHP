@@ -12,7 +12,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                 <?php
                 if (isset($_GET["successValidate"]) && $_GET["successValidate"] === "1") { ?>
                 <div class="messageSuccess fw-bold bg-success text-white text-center p-3 w-100">
-                    Validation de l'utilisateur effectuée effectuée avec succès !
+                    Validation de l'utilisateur effectuée avec succès !
                 </div>
                 <br>
                 <?php } ?>

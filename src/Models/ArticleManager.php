@@ -74,11 +74,11 @@ class ArticleManager
         return $articles;
     }
     // Affichage de l'ensemble des articles du plus récent au plus ancien
-    public function getArticle($id): Article
+    public function getArticle($code): Article
     {
         $connection = new DatabaseConnection();
         $statement = $connection->getConnection()->prepare("SELECT * FROM article WHERE id = ?");
-        $statement->bindParam(1, $id);
+        $statement->bindParam(1, $code);
         $statement->execute();
         $row = $statement->fetch();
 
@@ -98,11 +98,11 @@ class ArticleManager
 
     // Permet de vérifier si l'ID de l'article existe dans la BDD.
     // Ca permettra d'éviter que l'utilisateur saisit un id au hasard dans le paramètre de l'URL et de générer un message d'erreur PHP
-    public function verifierId($id): bool
+    public function verifierId($code): bool
     {
         $connection = new DatabaseConnection();
         $statement = $connection->getConnection()->prepare("SELECT id FROM article WHERE id = ?");
-        $statement->bindParam(1, $id);
+        $statement->bindParam(1, $code);
         $statement->execute();
 
         if ($statement->rowCount() > 0) {
@@ -114,7 +114,7 @@ class ArticleManager
     // Affichage de l'ensemble des articles du plus récent au plus ancien
     public function update(Article $article)
     {
-        $id = $article->getId();
+        $code = $article->getId();
         $titre = $article->getTitre();
         $image = $article->getImage();
         $chapo = $article->getChapo();
@@ -132,22 +132,22 @@ class ArticleManager
         $statement->bindParam("chapo", $chapo);
         $statement->bindParam("contenu", $contenu);
         $statement->bindParam("idUser", $idUtilisateur);
-        $statement->bindParam("id", $id);
+        $statement->bindParam("id", $code);
         $statement->execute();
     }
 
     //Permet de supprimer une ligne (article) avec les commentaires associées dans la BDD
-    public function delete(int $id): void
+    public function delete(int $code): void
     {
         $connection = new DatabaseConnection();
         // On supprimer tout d'abord, les commentaires (clés étrangères)
         $statement = $connection->getConnection()->prepare("DELETE FROM commentaire WHERE id_article = ?");
-        $statement->bindParam(1, $id);
+        $statement->bindParam(1, $code);
         $statement->execute();
 
         // Puis l'article que l'on souhaite
         $statement2 = $connection->getConnection()->prepare("DELETE FROM article WHERE id = ?");
-        $statement2->bindParam(1, $id);
+        $statement2->bindParam(1, $code);
         $statement2->execute();
     }
 }

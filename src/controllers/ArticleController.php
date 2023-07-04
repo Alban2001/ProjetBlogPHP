@@ -63,12 +63,12 @@ class ArticleController
     }
 
     // Permet de se diriger vers la page pour éditer un article
-    public function edit($id)
+    public function edit($code)
     {
         $articleManager = new ArticleManager();
         $userManager = new UserManager();
-        if ($articleManager->verifierId($id)) {
-            $article = $articleManager->getArticle($id);
+        if ($articleManager->verifierId($code)) {
+            $article = $articleManager->getArticle($code);
             $user = $userManager->getUserById($article->getIdUtilisateur());
             $_SESSION["article"]["id"] = $article->getId();
             include_once(__DIR__ . "/../../templates/articles/edit.php");
@@ -176,17 +176,17 @@ class ArticleController
     }
 
     // Affichage l'ensemble des informations de l'article sélectionné + formulaire pour commentaire
-    public function read($id)
+    public function read($code)
     {
         $articleManager = new ArticleManager();
-        if ($articleManager->verifierId($id)) {
+        if ($articleManager->verifierId($code)) {
             $userManager = new UserManager();
             $commentManager = new CommentManager();
-            $article = $articleManager->getArticle($id);
+            $article = $articleManager->getArticle($code);
             $user = $userManager->getUserById($article->getIdUtilisateur());
             $_SESSION["article"]["id"] = $article->getId();
-            $commentaires = $commentManager->getComments($id);
-            $nbrCommentaire = $commentManager->nbrComments($id);
+            $commentaires = $commentManager->getComments($code);
+            $nbrCommentaire = $commentManager->nbrComments($code);
             include_once(__DIR__ . "/../../templates/articles/read.php");
         } else {
             throw new Exception("Erreur 404 : l'identifiant de cet article n'existe pas !");

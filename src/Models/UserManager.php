@@ -24,11 +24,11 @@ class UserManager
     }
 
     // Permet de vérifier si l'ID de l'utilisateur existe dans la BDD.
-    public function verifierId($id): bool
+    public function verifierId($code): bool
     {
         $connection = new DatabaseConnection();
         $statement = $connection->getConnection()->prepare("SELECT id FROM utilisateur WHERE id = ?");
-        $statement->bindParam(1, $id);
+        $statement->bindParam(1, $code);
         $statement->execute();
 
         if ($statement->rowCount() > 0) {
@@ -76,11 +76,11 @@ class UserManager
     }
 
     // Validation du compte utilisateur
-    public function valide(int $id): void
+    public function valide(int $code): void
     {
         $connection = new DatabaseConnection();
         $statement = $connection->getConnection()->prepare("UPDATE utilisateur SET valide = 1 WHERE id = ?");
-        $statement->bindParam(1, $id);
+        $statement->bindParam(1, $code);
         $statement->execute();
     }
 
@@ -131,11 +131,11 @@ class UserManager
     }
 
     //Permet d'obtenir toutes les informations d'un utilisateur (id, nom, prenom, adresse mail, mot de passe et rôle) avec un id en paramètre
-    public function getUserById(int $id): User
+    public function getUserById(int $code): User
     {
         $connection = new DatabaseConnection();
         $statement = $connection->getConnection()->prepare("SELECT * FROM utilisateur WHERE id = ?");
-        $statement->bindParam(1, $id);
+        $statement->bindParam(1, $code);
         $statement->execute();
 
         $row = $statement->fetch();

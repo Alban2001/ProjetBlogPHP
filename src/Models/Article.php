@@ -7,7 +7,7 @@ use DateTime;
 class Article
 {
     // Attributs de l'entité Article
-    private int $id;
+    private int $code;
     private string $titre;
     private string $image;
     private string $chapo;
@@ -17,16 +17,16 @@ class Article
     private int $idUtilisateur;
 
     // Attribution de l'ID
-    public function setId(int $id): self
+    public function setId(int $code): self
     {
-        $this->id = $id;
+        $this->code = $code;
 
         return $this;
     }
     // Affichage de l'ID
     public function getId(): int
     {
-        return $this->id;
+        return $this->code;
     }
 
     // Attribution du titre

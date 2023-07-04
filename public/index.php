@@ -46,11 +46,11 @@ try {
             $articleController->affichage();
         }
         if (isset($_GET["id"]) && $_GET["id"] > 0) {
-            $id = $_GET["id"];
+            $code = $_GET["id"];
             // Page de modification d'un article
             if ($_GET["action"] === "read") {
                 $articleController = new ArticleController();
-                $articleController->read($id);
+                $articleController->read($code);
             }
         }
         // Action qui permet traiter les données sur l'ajour d'un commentaire
@@ -101,10 +101,10 @@ try {
                 $commentController->validateComment();
             }
             if (isset($_GET["id"]) && $_GET["id"] > 0) {
-                $id = $_GET["id"];
+                $code = $_GET["id"];
                 // Page de modification d'un article
                 if ($_GET["action"] === "edit") {
-                    $articleController->edit($id);
+                    $articleController->edit($code);
                 }
             } else {
                 throw new Exception("Erreur 404 : aucun identifiant d'article envoyé !");

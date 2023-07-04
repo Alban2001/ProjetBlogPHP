@@ -86,11 +86,11 @@ valide, id_utilisateur) VALUES (?, ?, NOW(), ?, ?)");
     }
 
     // Permet de vérifier si l'ID du commentaire existe dans la BDD.
-    public function verifierId($id): bool
+    public function verifierId($code): bool
     {
         $connection = new DatabaseConnection();
         $statement = $connection->getConnection()->prepare("SELECT id FROM commentaire WHERE id = ?");
-        $statement->bindParam(1, $id);
+        $statement->bindParam(1, $code);
         $statement->execute();
 
         if ($statement->rowCount() > 0) {
@@ -100,11 +100,11 @@ valide, id_utilisateur) VALUES (?, ?, NOW(), ?, ?)");
     }
 
     // Validation d'un commentaire
-    public function valide(int $id): void
+    public function valide(int $code): void
     {
         $connection = new DatabaseConnection();
         $statement = $connection->getConnection()->prepare("UPDATE commentaire SET valide = 1 WHERE id = ?");
-        $statement->bindParam(1, $id);
+        $statement->bindParam(1, $code);
         $statement->execute();
     }
 }
