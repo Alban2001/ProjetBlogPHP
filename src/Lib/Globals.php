@@ -7,6 +7,7 @@ class Globals
     private $POST;
     private $GET;
     private $SESSION;
+    private $FILES;
 
     public function setPOST(array $options = null)
     {
@@ -21,6 +22,17 @@ class Globals
             return $this->POST[$key] ?? null;
         }
         return $this->POST;
+    }
+    public function setFILES()
+    {
+        $this->FILES = $_FILES;
+    }
+    public function getFILES($key = null)
+    {
+        if ($key !== null) {
+            return $this->FILES[$key] ?? null;
+        }
+        return $this->FILES;
     }
     public function getGET($key = null)
     {

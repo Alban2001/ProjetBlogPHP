@@ -10,6 +10,7 @@ use Controllers\HomeController;
 use Controllers\UserController;
 use Controllers\ArticleController;
 use Controllers\CommentController;
+use Lib\Globals;
 
 ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
@@ -76,10 +77,16 @@ try {
                 $articleController->add();
                 // Page pour traiter les données sur l'ajout d'un article
             } elseif ($_GET["action"] === "retourAjoutArticle") {
-                $articleController->retourAdd($_FILES);
+                $globals = new Globals();
+                $globals->setFILES();
+                $files = $globals->getFILES();
+                $articleController->retourAdd($files);
                 // Page pour traiter les données sur la modification d'un article
             } elseif ($_GET["action"] === "retourEditArticle") {
-                $articleController->retourEditArticle($_FILES);
+                $globals = new Globals();
+                $globals->setFILES();
+                $files = $globals->getFILES();
+                $articleController->retourEditArticle($files);
                 // Action qui permet de supprimer un article
             } elseif ($_GET["action"] === "delete") {
                 $articleController->delete();
