@@ -5,10 +5,10 @@
 **Auteur** : Alban VOIRIOT
 **Informations techniques** :
 
-- **Langages** : HTML, CSS, PHP, SQL, JavaScript, Bootstrap, MySQL
-- **Version de PHP** : 8.2.6
-- **Version de MySQL** : 5.7.11
-- **Version de Bootstrap** : 5.0.2
+-     **Langages** : HTML, CSS, PHP, SQL, JavaScript, Bootstrap, MySQL
+-     **Version de PHP** : 8.2.6
+-     **Version de MySQL** : 5.7.11
+-     **Version de Bootstrap** : 5.0.2
 
 # Sommaire
 
@@ -32,24 +32,24 @@ Ce projet a été conçu dans le cadre de ma formation de développeur d'applica
 
 ### Configurer la base de données
 
-- => Mettez le nom de l'hôte (ex: localhost), nom de la base de données, nom de l'utilisateur et mot de passe dans le fichier **_config.php.dist_** qui se trouve dans le dossier **/src**.
+-     => Mettez le nom de l'hôte (ex: localhost), nom de la base de données, nom de l'utilisateur et mot de passe dans le fichier **_config.php.dist_** qui se trouve dans le dossier **/src**.
 
-      ```
-      $_ENV["DB_HOST"] = "nom de l'hôte";
-      $_ENV["DB_NAME"] = "nom de la bdd";
-      $_ENV["DB_USERNAME"] = "votre username";
-      $_ENV["DB_PASSWORD"] = "votre mot de passe";
-      ```
+```
+$_ENV["DB_HOST"] = "nom de l'hôte";
+$_ENV["DB_NAME"] = "nom de la bdd";
+$_ENV["DB_USERNAME"] = "votre username";
+$_ENV["DB_PASSWORD"] = "votre mot de passe";
+```
 
-  Ces variables d'environnements viendront s'appliquer à la chaîne de connexion pour la connexion avec la base de données :
+Ces variables d'environnements viendront s'appliquer à la chaîne de connexion pour la connexion avec la base de données :
 
       ```
       $this->database = new PDO('mysql:host=' . $_ENV["DB_HOST"] . ';dbname=' . $_ENV["DB_NAME"] . ';charset=utf8', $_ENV["DB_USERNAME"], $_ENV["DB_PASSWORD"]);
       ```
 
-  - => Ensuite, veuillez renommer le fichier **_config.php.dist_** avec le nom suivant : **_config.php_** afin que ce fichier soit pris en compte lors de l'inclusion pour la DatabaseConnection.
+-     => Ensuite, veuillez renommer le fichier **_config.php.dist_** avec le nom suivant : **_config.php_** afin que ce fichier soit pris en compte lors de l'inclusion pour la DatabaseConnection.
 
-  - => Et pour finir, importez le fichier **_bdd_blogpro.sql_** qui se trouve à la racine du projet contenant l'ensemble des tables et les jeux de données.
+-     => Et pour finir, importez le fichier **_bdd_blogpro.sql_** qui se trouve à la racine du projet contenant l'ensemble des tables et les jeux de données.
 
 ### Dossier upload
 

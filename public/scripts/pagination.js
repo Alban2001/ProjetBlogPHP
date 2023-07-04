@@ -112,7 +112,7 @@ function pagination(elements, nbrElementsParPage, typeAffichage) {
 
   // Affichage de la liste des lignes avec l'index concerné
   function afficherListe(index) {
-    if (index == 0) {
+    if (index === 0) {
       for (let i = index * elementsParPage; i < elementsParPage; i++) {
         if (nbrElements[i] !== null) {
           nbrElements[i].classList.replace("d-none", typeAffichage);
