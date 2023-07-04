@@ -1,4 +1,4 @@
-/******************** SYSTEME DE PAGINATION ********************/
+// SYSTEME DE PAGINATION
 
 function pagination(elements, nbrElementsParPage, typeAffichage) {
   const pagination = document.getElementById("pagination");

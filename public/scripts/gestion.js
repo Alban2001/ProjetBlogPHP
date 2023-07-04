@@ -1,8 +1,6 @@
-/***
- * Ce fichier concerne les fichiers PHP suivants :
- * - gestionUsers.php
- * - gestionComments.php
- */
+/*Ce fichier concerne les fichiers PHP suivants :
+ *- gestionUsers.php
+ *- gestionComments.php*/
 
 // Permet de valider un utilisateur/commentaire au choix dans la BDD
 const btnValider = document.querySelectorAll(".btnValider");

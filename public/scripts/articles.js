@@ -1,11 +1,9 @@
-/***
- * Ce fichier concerne les fichiers PHP suivants :
- * - articles/add.php
- * - articles/affichage.php
- * - articles/edit.php
- * - articles/gestion.php
- * - articles/read.php
- */
+/*Ce fichier concerne les fichiers PHP suivants :
+ *- articles/add.php
+ *- articles/affichage.php
+ *- articles/edit.php
+ *- articles/gestion.php
+ *- articles/read.php*/
 
 // Permet de supprimer un article au choix dans la BDD
 const btnSupprimerArticle = document.querySelectorAll(".btnSupprimerArticle");

@@ -1,8 +1,6 @@
-/***
- * Ce fichier concerne les fichiers PHP suivants :
- * - connexion.php
- * - creationComptes.php
- */
+/*Ce fichier concerne les fichiers PHP suivants :
+ *- connexion.php
+ *- creationComptes.php*/
 
 // Fichier JavaScript de la page connexion
 const eyeOpened = document.getElementById("eye-opened");
@@ -40,7 +38,6 @@ const msgErreurMdpConfirmed2 = document.getElementById(
 const msgErreurEmail = document.getElementById("msgErreurEmail");
 const msgErreurEmail2 = document.getElementById("msgErreurEmail2");
 const msgErreurEmail3 = document.getElementById("msgErreurEmail3");
-const btnCreationCompte = document.getElementById("btnCreationCompte");
 
 // Fonction qui permet d'afficher ou non les messages d'erreurs avec les bordures sur les champs
 function conditionCreationCompte(condition, input, messageErreur) {
