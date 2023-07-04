@@ -12,7 +12,7 @@ body {
 header {
   position: sticky;
   top: 0;
-  margin-bottom: 0px;
+  margin-bottom: 0;
   z-index: 2;
 }
 
@@ -54,8 +54,9 @@ section#accueil .div-accueil1 {
   from {
     left: -2000px;
   }
+
   to {
-    left: 0px;
+    left: 0;
   }
 }
 
@@ -75,8 +76,9 @@ section#accueil .div-accueil-photo {
   from {
     right: -2000px;
   }
+
   to {
-    right: 0px;
+    right: 0;
   }
 }
 
@@ -105,8 +107,9 @@ section#accueil .div-accueil-photo {
   from {
     left: -2000px;
   }
+
   to {
-    left: 0px;
+    left: 0;
   }
 }
 
@@ -123,8 +126,9 @@ section#presentation {
   from {
     left: -4000px;
   }
+
   to {
-    left: 0px;
+    left: 0;
   }
 }
 
@@ -194,7 +198,7 @@ section#erreur {
 
 /************* GESTION ARTICLES ****************/
 
-.btnAjoutArticle {
+.btn-ajout-article {
   background: rgb(3, 5, 115);
   width: 50px;
 }
@@ -207,7 +211,7 @@ section#erreur {
   width: 100%;
 }
 
-.btnPaginationGestion {
+.btn-pagination-gestion {
   background-color: rgb(3, 5, 115);
   color: #fff;
   border: 3px solid gray;
@@ -215,7 +219,7 @@ section#erreur {
 }
 
 /*** POUR JAVASCRIPT (pagination.js) ***/
-.btnPaginationActive {
+.btn-pagination-active {
   font-weight: bold;
 }
 
@@ -228,7 +232,7 @@ section#erreur {
   height: 150px;
 }
 
-.btnAffichageArticle {
+.btn-affichage-article {
   background-color: rgb(3, 5, 115);
 }
 
@@ -287,7 +291,7 @@ section#erreur {
   }
 
   .div-presentation:nth-child(3) {
-    left: 0px;
+    left: 0;
     top: 80px;
   }
 

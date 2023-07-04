@@ -30,7 +30,7 @@
                                         <?php echo "Dernière modification : " . htmlspecialchars($article->getDateDerniereMaj()->format("d/m/Y")); ?>
                                     </small></p>
                                 <a href="index.php?action=read&id=<?php echo htmlspecialchars($article->getId()); ?>"
-                                    class="btn btnAffichageArticle text-white">Lire cet article...</a>
+                                    class="btn btn-affichage-article text-white">Lire cet article...</a>
                             </div>
                         </div>
                         <?php } ?>
@@ -41,12 +41,12 @@
 </section>
 <div class="d-flex justify-content-center align-items-end">
     <div>
-        <button id="btnPaginationLeft" class="btnPaginationGestion p-2 m-2"><i
+        <button id="btnPaginationLeft" class="btn-pagination-gestion p-2 m-2"><i
                 class="fa-solid fa-angle-left"></i></button>
     </div>
     <div id="pagination" class="mt-5 text-center"></div>
     <div>
-        <button id="btnPaginationRight" class="btnPaginationGestion p-2 m-2"><i
+        <button id="btnPaginationRight" class="btn-pagination-gestion p-2 m-2"><i
                 class="fa-solid fa-angle-right"></i></button>
     </div>
 </div>

@@ -11,7 +11,7 @@ function pagination(elements, nbrElementsParPage, typeAffichage) {
   // Création des boutons
   for (let i = 1; i <= nbrBtn; i++) {
     const btn = document.createElement("button");
-    btn.classList.add("p-2", "m-2", "btnPagination", "btnPaginationGestion");
+    btn.classList.add("p-2", "m-2", "btnPagination", "btn-pagination-gestion");
     const textBtn = document.createTextNode(i);
     btn.appendChild(textBtn);
     pagination.appendChild(btn);
@@ -24,14 +24,14 @@ function pagination(elements, nbrElementsParPage, typeAffichage) {
       el.classList.add("d-none");
     }
     for (let btn of btnPagination) {
-      btn.classList.remove("btnPaginationActive");
+      btn.classList.remove("btn-pagination-active");
     }
   }
 
   // Affichage des 5 premières lignes (par défaut: premier bouton)
   updateList();
   if (btnPagination[0] !== undefined) {
-    btnPagination[0].classList.add("btnPaginationActive");
+    btnPagination[0].classList.add("btn-pagination-active");
     for (let i = 0; i < elementsParPage; i++) {
       if (nbrElements[i] !== undefined) {
         nbrElements[i].classList.replace("d-none", typeAffichage);
@@ -40,9 +40,9 @@ function pagination(elements, nbrElementsParPage, typeAffichage) {
   }
 
   // Permet d'afficher ou non le bouton de gauche
-  // Il ne s'affiche si le premier bouton contient la classe btnPaginationActive (s'il est actif)
+  // Il ne s'affiche si le premier bouton contient la classe btn-pagination-active (s'il est actif)
   function afficherBtnLeft() {
-    if (btnPagination[0].classList.contains("btnPaginationActive")) {
+    if (btnPagination[0].classList.contains("btn-pagination-active")) {
       btnLeft.classList.add("d-none");
     } else {
       btnLeft.classList.replace("d-none", "d-block");
@@ -50,11 +50,11 @@ function pagination(elements, nbrElementsParPage, typeAffichage) {
   }
 
   // Permet d'afficher ou non le bouton de droit
-  // Il ne s'affiche si le dernier bouton contient la classe btnPaginationActive (s'il est actif)
+  // Il ne s'affiche si le dernier bouton contient la classe btn-pagination-active (s'il est actif)
   function afficherBtnRight() {
     if (
       btnPagination[btnPagination.length - 1].classList.contains(
-        "btnPaginationActive"
+        "btn-pagination-active"
       )
     ) {
       btnRight.classList.add("d-none");
@@ -71,7 +71,7 @@ function pagination(elements, nbrElementsParPage, typeAffichage) {
   for (let k = 0; k < btnPagination.length; k++) {
     btnPagination[k].onclick = () => {
       updateList();
-      btnPagination[k].classList.add("btnPaginationActive");
+      btnPagination[k].classList.add("btn-pagination-active");
       afficherListe(k);
       afficherBtnLeft();
       afficherBtnRight();
@@ -82,11 +82,11 @@ function pagination(elements, nbrElementsParPage, typeAffichage) {
   btnLeft.onclick = () => {
     let index = 0;
     for (let i = 0; i < btnPagination.length; i++) {
-      if (btnPagination[i].classList.contains("btnPaginationActive")) {
+      if (btnPagination[i].classList.contains("btn-pagination-active")) {
         updateList();
         index = i - 1;
         afficherListe(index);
-        btnPagination[index].classList.add("btnPaginationActive");
+        btnPagination[index].classList.add("btn-pagination-active");
         afficherBtnLeft();
         afficherBtnRight();
         break;
@@ -98,12 +98,12 @@ function pagination(elements, nbrElementsParPage, typeAffichage) {
   btnRight.onclick = () => {
     let index = 0;
     for (let i = 0; i < btnPagination.length; i++) {
-      if (btnPagination[i].classList.contains("btnPaginationActive")) {
+      if (btnPagination[i].classList.contains("btn-pagination-active")) {
         updateList();
         index = i + 1;
         afficherListe(index);
         afficherBtnLeft();
-        btnPagination[index].classList.add("btnPaginationActive");
+        btnPagination[index].classList.add("btn-pagination-active");
         afficherBtnRight();
         break;
       }

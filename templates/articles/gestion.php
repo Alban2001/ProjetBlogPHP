@@ -76,18 +76,18 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                         <?php } ?>
                     </tbody>
                 </table>
-                <a class="btn btnAjoutArticle text-white fw-bold p-2" href="index.php?action=ajoutArticle"><i
+                <a class="btn btn-ajout-article text-white fw-bold p-2" href="index.php?action=ajoutArticle"><i
                         class="fa-solid fa-plus"></i></a>
             </div>
         </div>
         <div class="d-flex justify-content-center align-items-end">
             <div>
-                <button id="btnPaginationLeft" class="btnPaginationGestion p-2 m-2"><i
+                <button id="btnPaginationLeft" class="btn-pagination-gestion p-2 m-2"><i
                         class="fa-solid fa-angle-left"></i></button>
             </div>
             <div id="pagination" class="mt-5 text-center"></div>
             <div>
-                <button id="btnPaginationRight" class="btnPaginationGestion p-2 m-2"><i
+                <button id="btnPaginationRight" class="btn-pagination-gestion p-2 m-2"><i
                         class="fa-solid fa-angle-right"></i></button>
             </div>
         </div>
