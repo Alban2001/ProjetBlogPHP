@@ -37,26 +37,26 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                         <?php foreach ($commentaires as $commentaire) { ?>
                         <tr>
                             <td scope="row" class="align-middle" data-content="ID">
-                                <?php echo htmlspecialchars($commentaire->getId()); ?>
+                                <?php print_r(htmlspecialchars($commentaire->getId())); ?>
                             </td>
                             <td class="align-middle" data-content="ID de l'article">
                                 <?php $idArticle = htmlspecialchars($commentaire->getIdArticle()); ?>
-                                <a href="index.php?action=read&id=<?php echo $idArticle; ?>">
-                                    <?php echo $idArticle; ?>
+                                <a href="index.php?action=read&id=<?php print_r($idArticle); ?>">
+                                    <?php print_r($idArticle); ?>
                                 </a>
                             </td>
                             <td class="align-middle text-justify" data-content="Contenu">
-                                <?php echo htmlspecialchars($commentaire->getContenu()); ?>
+                                <?php print_r(htmlspecialchars($commentaire->getContenu())); ?>
                             </td>
                             <td class="align-middle" data-content="Date de Création">
-                                <?php echo htmlspecialchars($commentaire->getDateCreation()->format("d/m/Y")); ?>
+                                <?php print_r(htmlspecialchars($commentaire->getDateCreation()->format("d/m/Y"))); ?>
                             </td>
                             <td class="align-middle" data-content="Auteur">
-                                <?php echo htmlspecialchars($commentaire->getPreomUtilisateur()) . ' ' . htmlspecialchars($commentaire->getNomUtilisateur()); ?>
+                                <?php print_r(htmlspecialchars($commentaire->getPreomUtilisateur()) . ' ' . htmlspecialchars($commentaire->getNomUtilisateur())); ?>
                             </td>
                             <?php $valide = ($commentaire->getValide() === 1) ? "Oui" : "Non"; ?>
                             <td class="align-middle" data-content="Validé">
-                                <?php echo $valide; ?>
+                                <?php print_r($valide); ?>
                             </td>
                             <td class="align-middle" data-content="Actions">
                                 <?php if ($commentaire->getValide() === 0) { ?>

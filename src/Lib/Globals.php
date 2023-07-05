@@ -65,6 +65,11 @@ class Globals
     }
 
     // VARIABLES GLOBALES SESSION
+    public function setSESSION()
+    {
+        $this->SESSION = $_SESSION;
+    }
+
     public function getSESSION($key = null, $key2 = null)
     {
         if ($key !== null && $key2 !== null) {

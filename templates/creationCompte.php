@@ -35,7 +35,7 @@ $_SESSION['tokenCompte'] = bin2hex(random_bytes(35)); ?>
                         <label for="nom" class="form-label">Nom</label>
                         <input class="inputCompte form-control mb-3 border-2" type="text" name="nom" placeholder="Nom"
                             value="<?php if (isset($inputs["nom"])) {
-                                echo $inputs["nom"];
+                                print_r($inputs["nom"]);
                             } ?>" />
                         <p class="msgErreurC d-none fst-italic fw-bold text-danger">La saisie de votre nom est
                             obligatoire !
@@ -43,7 +43,7 @@ $_SESSION['tokenCompte'] = bin2hex(random_bytes(35)); ?>
                         <label for="prenom" class="form-label">Prénom</label>
                         <input class="inputCompte form-control mb-3 border-2" type="text" name="prenom"
                             placeholder="Prénom" value="<?php if (isset($inputs["prenom"])) {
-                                echo $inputs["prenom"];
+                                print_r($inputs["prenom"]);
                             } ?>" />
                         <p class="msgErreurC d-none fst-italic fw-bold text-danger">La saisie de votre prénom est
                             obligatoire !
@@ -51,7 +51,7 @@ $_SESSION['tokenCompte'] = bin2hex(random_bytes(35)); ?>
                         <label for="email" class="form-label">Email</label>
                         <input class="inputCompte form-control mb-3 border-2" type="email" name="email"
                             placeholder="exemple@mail.fr" value="<?php if (isset($inputs["email"])) {
-                                echo $inputs["email"];
+                                print_r($inputs["email"]);
                             } ?>" />
                         <p id="msgErreurEmail" class="d-none fst-italic fw-bold text-danger">Le format de l'email est
                             incorrect !
@@ -70,7 +70,7 @@ $_SESSION['tokenCompte'] = bin2hex(random_bytes(35)); ?>
                         <div class="d-flex align-items-center bg-white border border-2 rounded mb-3">
                             <input id="input-password-connexion" class="inputCompte form-control w-100 border-0"
                                 type="password" name="password" placeholder="Mot de Passe" value="<?php if (isset($inputs["password"])) {
-                                    echo $inputs["password"];
+                                    print_r($inputs["password"]);
                                 } ?>" />
                             <i id="eye-closed" class="d-block fa-sharp fa-solid fa-eye-slash p-2"></i>
                             <i id="eye-opened" class="d-none fa-solid fa-eye p-2"></i>
@@ -88,7 +88,7 @@ $_SESSION['tokenCompte'] = bin2hex(random_bytes(35)); ?>
                         <label for="password-confirmed" class="form-label">Confirmer votre mot de passe</label>
                         <input id="input-password-connexion-confirmed" class="inputCompte form-control border-2"
                             type="password" name="passwordConfirmed" placeholder="Confirmer votre mot de passe" value="<?php if (isset($inputs["passwordConfirmed"])) {
-                                echo $inputs["passwordConfirmed"];
+                                print_r($inputs["passwordConfirmed"]);
                             } ?>" />
                         <p id="msgErreurMdpConfirmed" class="d-none fst-italic fw-bold text-danger">Ce mot de passe ne
                             correspond pas à celui du dessus !

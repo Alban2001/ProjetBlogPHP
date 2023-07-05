@@ -52,28 +52,28 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                         <?php foreach ($articles as $article) { ?>
                         <tr>
                             <td scope="row" class="align-middle" data-content="ID">
-                                <?php echo htmlspecialchars($article->getId()); ?>
+                                <?php print_r(htmlspecialchars($article->getId())); ?>
                             </td>
                             <td class="align-middle" data-content="Titre">
-                                <?php echo htmlspecialchars($article->getTitre()); ?>
+                                <?php print_r(htmlspecialchars($article->getTitre())); ?>
                             </td>
                             <td class="align-middle" data-content="Image">
                                 <div class="image-article d-flex align-items-center">
-                                    <img src="<?php echo 'images/upload/' . htmlspecialchars($article->getImage()); ?>"
+                                    <img src="<?php print_r('images/upload/' . htmlspecialchars($article->getImage())); ?>"
                                         alt="image article" />
                                 </div>
                             </td>
                             <td class="align-middle text-justify" data-content="Chapô">
-                                <?php echo htmlspecialchars($article->getChapo()); ?>
+                                <?php print_r(htmlspecialchars($article->getChapo())); ?>
                             </td>
                             <td class="align-middle" data-content="Date de Création">
-                                <?php echo htmlspecialchars($article->getDateCreation()->format("d/m/Y")); ?>
+                                <?php print_r(htmlspecialchars($article->getDateCreation()->format("d/m/Y"))); ?>
                             </td>
                             <td class="align-middle" data-content="Date de dernière MAJ">
-                                <?php echo htmlspecialchars($article->getDateDerniereMaj()->format("d/m/Y")); ?>
+                                <?php print_r(htmlspecialchars($article->getDateDerniereMaj()->format("d/m/Y"))); ?>
                             </td>
                             <td class="align-middle" data-content="Actions"><a
-                                    href="<?php echo "index.php?action=edit&id=" . htmlspecialchars($article->getId()); ?>"
+                                    href="<?php print_r("index.php?action=edit&id=" . htmlspecialchars($article->getId())); ?>"
                                     class="me-4 me-md-3"><i class="fa-solid fa-pen-to-square text-dark"></i></a>
                                 <a class="btnSupprimerArticle" href="#" data-bs-toggle="modal"
                                     data-bs-target="#modalDelete"><i class="fa-solid fa-trash text-dark"></i></a>

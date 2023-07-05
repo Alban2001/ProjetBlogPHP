@@ -15,26 +15,26 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
         <div class="row">
             <div class="col overflow-auto bg-light bg-gradient p-4 p-md-5">
                 <h1 class="fw-bold text-center">Article n°
-                    <?php echo htmlspecialchars($article->getId()) . ' : ' . htmlspecialchars($article->getTitre()); ?>
+                    <?php print_r(htmlspecialchars($article->getId()) . ' : ' . htmlspecialchars($article->getTitre())); ?>
                 </h1>
                 <br>
                 <p><strong>Auteur</strong> :
-                    <?php echo htmlspecialchars($user->getPrenom()) . ' ' . htmlspecialchars($user->getNom()); ?>
+                    <?php print_r(htmlspecialchars($user->getPrenom()) . ' ' . htmlspecialchars($user->getNom())); ?>
                 </p>
                 <p><strong>Date de la dernière mise à jour</strong> :
-                    <?php echo htmlspecialchars($article->getDateDerniereMaj()->format("d/m/Y")); ?>
+                    <?php print_r(htmlspecialchars($article->getDateDerniereMaj()->format("d/m/Y"))); ?>
                 </p>
                 <hr>
                 <div class="fs-5 text-justify">
-                    <?php echo htmlspecialchars($article->getChapo()); ?>
+                    <?php print_r(htmlspecialchars($article->getChapo())); ?>
                 </div>
                 <div class="text-center m-5">
                     <img class="image-article-read"
-                        src="<?php echo 'images/upload/' . htmlspecialchars($article->getImage()); ?>"
+                        src="<?php print_r('images/upload/' . htmlspecialchars($article->getImage())); ?>"
                         alt="image article" />
                 </div>
                 <div class="fs-6 text-justify">
-                    <?php echo htmlspecialchars($article->getContenu()); ?>
+                    <?php print_r(htmlspecialchars($article->getContenu())); ?>
                 </div>
             </div>
         </div>
@@ -75,25 +75,25 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                 <?php } ?>
                 <?php if ($nbrCommentaire > 0) { ?>
                 <h3>
-                    <?php echo $nbrCommentaire . ' commentaires'; ?>
+                    <?php print_r($nbrCommentaire . ' commentaires'); ?>
                 </h3>
                 <?php } else { ?>
                 <h3>
-                    <?php echo 'Auncun commentaire'; ?>
+                    <?php print_r('Auncun commentaire'); ?>
                 </h3>
                 <?php } ?>
                 <?php foreach ($commentaires as $commentaire) { ?>
                 <div class="border bg-light bg-gradient">
                     <div>
                         <p><strong>De</strong> :
-                            <?php echo htmlspecialchars($commentaire->getNomUtilisateur()) . " " . htmlspecialchars($commentaire->getPreomUtilisateur()); ?>
+                            <?php print_r(htmlspecialchars($commentaire->getNomUtilisateur()) . " " . htmlspecialchars($commentaire->getPreomUtilisateur())); ?>
                         </p>
                         <p><strong>Date</strong> :
-                            <?php echo htmlspecialchars($commentaire->getDateCreation()->format("d/m/Y")) . " à " . htmlspecialchars($commentaire->getDateCreation()->format("H:i")); ?>
+                            <?php print_r(htmlspecialchars($commentaire->getDateCreation()->format("d/m/Y")) . " à " . htmlspecialchars($commentaire->getDateCreation()->format("H:i"))); ?>
                         </p>
                     </div>
                     <div>
-                        <?php echo htmlspecialchars($commentaire->getContenu()); ?>
+                        <?php print_r(htmlspecialchars($commentaire->getContenu())); ?>
                     </div>
                 </div>
                 <br>

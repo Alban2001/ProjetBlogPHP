@@ -9,13 +9,13 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                 <h1 class="fw-bold p-5 text-center">Editer un article</h1>
                 <br>
                 <p><strong>Date de création</strong> :
-                    <?php echo htmlspecialchars($article->getDateCreation()->format("d/m/Y")); ?>
+                    <?php print_r(htmlspecialchars($article->getDateCreation()->format("d/m/Y"))); ?>
                 </p>
                 <p><strong>Date de dernière mise à jour</strong> :
-                    <?php echo htmlspecialchars($article->getDateDerniereMaj()->format("d/m/Y")); ?>
+                    <?php print_r(htmlspecialchars($article->getDateDerniereMaj()->format("d/m/Y"))); ?>
                 </p>
                 <p><strong>Auteur (Dernière mise à jour)</strong> :
-                    <?php echo htmlspecialchars($user->getPrenom()) . ' ' . htmlspecialchars($user->getNom()); ?>
+                    <?php print_r(htmlspecialchars($user->getPrenom()) . ' ' . htmlspecialchars($user->getNom())); ?>
                 </p>
                 <br>
                 <?php if (isset($numErreur) && $numErreur == true) { ?>
@@ -28,45 +28,45 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                     <label class="fw-bold" for="title" class="form-label">Titre</label>
                     <input class="inputAjoutArticle form-control border border-3" type="text" name="title"
                         placeholder="Titre" maxlength="255" value="<?php if (isset($inputs["title"]) && !empty($inputs["title"])) {
-                            echo $inputs["title"];
+                            print_r(htmlspecialchars($inputs["title"]));
                         } else {
-                            echo htmlspecialchars($article->getTitre());
+                            print_r(htmlspecialchars($article->getTitre()));
                         } ?>">
                     <p class="messageErreurP d-none fst-italic fw-bold text-danger">La saisie du titre est obligatoire !
                     </p><br>
                     <label class="fw-bold" for="image" class="form-label">Image</label>
                     <br>
                     <img id="imgEditArticle" class="imageArticle"
-                        src="<?php echo 'images/upload/' . htmlspecialchars($article->getImage()); ?>" />
+                        src="<?php print_r('images/upload/' . htmlspecialchars($article->getImage())); ?>" />
                     <input id="inputFileImage" class="form-control border border-3" type="file" name="image"
                         accept="image/png, image/jpg, image/jpeg"
-                        value="<?php echo 'images/upload/' . htmlspecialchars($article->getImage()); ?>">
+                        value="<?php print_r('images/upload/' . htmlspecialchars($article->getImage())); ?>">
                     <?php if (isset($erreurExtension) && $erreurExtension == true) { ?>
                         <p class="bg-danger fst-italic fw-bold text-white p-1">
-                            <?php echo $messageErreur; ?>
+                            <?php print_r($messageErreur); ?>
                         </p><br>
                     <?php } ?>
                     <br>
                     <label class="fw-bold" for="chapo">Chapô</label><br>
                     <?php $chapo = "";
                     if (isset($inputs["chapo"]) && !empty($inputs["chapo"])) {
-                        $chapo = $inputs["chapo"];
+                        $chapo = htmlspecialchars($inputs["chapo"]);
                     } else {
                         $chapo = htmlspecialchars($article->getChapo());
                     } ?>
                     <textarea class="inputAjoutArticle w-100 border border-3 p-3" name="chapo" id="chapo" rows="10"
-                        placeholder="Ecrivez votre chapô..."><?php echo $chapo; ?></textarea>
+                        placeholder="Ecrivez votre chapô..."><?php print_r($chapo); ?></textarea>
                     <p class="messageErreurP d-none fst-italic fw-bold text-danger">La saisie du chapô est obligatoire !
                     </p><br><br>
                     <label class="fw-bold" for="content">Contenu</label><br>
                     <?php $content = "";
                     if (isset($inputs["content"]) && !empty($inputs["content"])) {
-                        $content = $inputs["content"];
+                        $content = htmlspecialchars($inputs["content"]);
                     } else {
                         $content = htmlspecialchars($article->getContenu());
                     } ?>
                     <textarea class="inputAjoutArticle w-100 border border-3 p-3" name="content" id="content" rows="10"
-                        placeholder="Ecrivez votre contenu..."><?php echo $content; ?></textarea>
+                        placeholder="Ecrivez votre contenu..."><?php print_r($content); ?></textarea>
                     <p class="messageErreurP d-none fst-italic fw-bold text-danger">La saisie du contenu est obligatoire
                         !</p><br><br>
                     <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>">

@@ -1,3 +1,5 @@
+<!-- VUE DE LA PAGE POUR L'AJOUT D'UN ARTICLE -->
+
 <?php $title = "Ajouter un article"; ?>
 <?php ob_start();
 $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
@@ -18,7 +20,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                     <label class="fw-bold" for="title" class="form-label">Titre</label>
                     <input class="inputAjoutArticle form-control border border-3" type="text" name="title"
                         placeholder="Titre" maxlength="255" value="<?php if (isset($inputs["title"])) {
-                            echo $inputs["title"];
+                            print_r(htmlspecialchars($inputs["title"]));
                         } ?>">
                     <p class="messageErreurP d-none fst-italic fw-bold text-danger">La saisie du titre est obligatoire !
                     </p><br>
@@ -29,21 +31,21 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                         accept="image/png, image/jpg, image/jpeg">
                     <?php if (isset($erreurExtension) && $erreurExtension == true) { ?>
                         <p class="bg-danger fst-italic fw-bold text-white p-1">
-                            <?php echo $messageErreur; ?>
+                            <?php print_r(htmlspecialchars($messageErreur)); ?>
                         </p><br>
                     <?php } ?>
                     <br>
                     <label class="fw-bold" for="chapo">Chapô</label><br>
                     <textarea class="inputAjoutArticle w-100 border border-3 p-3" name="chapo" id="chapo" rows="10"
                         placeholder="Ecrivez votre chapô..."><?php if (isset($inputs["chapo"])) {
-                            echo $inputs["chapo"];
+                            print_r(htmlspecialchars($inputs["chapo"]));
                         } ?></textarea>
                     <p class="messageErreurP d-none fst-italic fw-bold text-danger">La saisie du chapô est obligatoire !
                     </p><br><br>
                     <label class="fw-bold" for="content">Contenu</label><br>
                     <textarea class="inputAjoutArticle w-100 border border-3 p-3" name="content" id="content" rows="10"
                         placeholder="Ecrivez votre contenu..."><?php if (isset($inputs["content"])) {
-                            echo $inputs["content"];
+                            print_r(htmlspecialchars($inputs["content"]));
                         } ?></textarea>
                     <p class="messageErreurP d-none fst-italic fw-bold text-danger">La saisie du contenu est obligatoire
                         !</p><br><br>

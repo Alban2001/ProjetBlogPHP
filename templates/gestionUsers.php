@@ -37,23 +37,23 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                         <?php foreach ($utilisateurs as $utilisateur) { ?>
                         <tr>
                             <td scope="row" class="align-middle" data-content="ID">
-                                <?php echo htmlspecialchars($utilisateur->getId()); ?>
+                                <?php print_r(htmlspecialchars($utilisateur->getId())); ?>
                             </td>
                             <td class="align-middle" data-content="Nom">
-                                <?php echo htmlspecialchars($utilisateur->getNom()); ?>
+                                <?php print_r(htmlspecialchars($utilisateur->getNom())); ?>
                             </td>
                             <td class="align-middle" data-content="Prénom">
-                                <?php echo htmlspecialchars($utilisateur->getPrenom()); ?>
+                                <?php print_r(htmlspecialchars($utilisateur->getPrenom())); ?>
                             </td>
                             <td class="align-middle" data-content="Adresse Mail">
-                                <?php echo htmlspecialchars($utilisateur->getAdresseMail()); ?>
+                                <?php print_r(htmlspecialchars($utilisateur->getAdresseMail())); ?>
                             </td>
                             <td class="align-middle" data-content="Rôle">
-                                <?php echo htmlspecialchars($utilisateur->getRole()); ?>
+                                <?php print_r(htmlspecialchars($utilisateur->getRole())); ?>
                             </td>
                             <?php $valide = ($utilisateur->getValide() === 1) ? "Oui" : "Non"; ?>
                             <td class="align-middle" data-content="Validé">
-                                <?php echo $valide; ?>
+                                <?php print_r($valide); ?>
                             </td>
                             <td class="align-middle" data-content="Actions">
                                 <?php if ($utilisateur->getValide() === 0) { ?>
