@@ -76,7 +76,7 @@ class Globals
      */
     public function setFILES()
     {
-        $this->FILES = (isset($_FILES)) ? $_FILES : null;
+        $this->FILES = filter_var_array($_FILES, FILTER_DEFAULT);
     }
 
     /**
@@ -86,11 +86,8 @@ class Globals
      *
      * @return array
      */
-    public function getFILES($key = null)
+    public function getFILES()
     {
-        if ($key !== null) {
-            return $this->FILES[$key] ?? null;
-        }
         return $this->FILES;
     }
 
