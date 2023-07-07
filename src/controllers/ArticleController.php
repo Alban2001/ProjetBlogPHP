@@ -26,11 +26,14 @@ class ArticleController
     }
 
     // Permet de récupérer les données saisies de la page add.php, de les traiter et de faire une insertion dans la BDD
-    public function retourAdd(array $img)
+    public function retourAdd()
     {
         $globals = new Globals();
         $globals->setPOST();
         $inputs = $globals->getPOST();
+
+        $globals->setFILES();
+        $img = $globals->getFILES();
         $idUtilisateur = $_SESSION["user"]["id"];
 
         if (!empty($inputs["token"]) && $inputs["token"] === $_SESSION["token"]) {
@@ -81,12 +84,15 @@ class ArticleController
     }
 
     // Permet de récupérer les données saisies de la page edit.php, de les traiter et de faire une insertion dans la BDD
-    public function retourEditArticle(array $img)
+    public function retourEditArticle()
     {
         $articleManager = new ArticleManager();
         $globals = new Globals();
         $globals->setPOST();
         $inputs = $globals->getPOST();
+
+        $globals->setFILES();
+        $img = $globals->getFILES();
         $idUtilisateur = $_SESSION["user"]["id"];
         $idArticle = $_SESSION["article"]["id"];
 

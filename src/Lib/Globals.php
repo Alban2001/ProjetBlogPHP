@@ -4,19 +4,54 @@ namespace Lib;
 
 class Globals
 {
-    // Variable $_POST
+    /**
+     * Variable globale POST
+     *
+     * @var mixed
+     */
     private $POST;
 
-    // Variable $_GET
+    /**
+     * Variable globale GET
+     *
+     * @var mixed
+     */
     private $GET;
 
-    // Variable $_SESSION
-    private $SESSION;
+    /**
+     * Variable globale ENV
+     *
+     * @var mixed
+     */
+    private $_ENV;
 
-    // Variable $_FILES
-    private $FILES;
+    /**
+     * Variable globale SESSION
+     *
+     * @var mixed
+     */
+    private $_SESSION;
 
-    // VARIABLES GLOBALES POST
+    /**
+     * Variable globale FILES
+     *
+     * @var mixed
+     */
+    private $_FILES;
+
+    // private function define_superglobals()
+    // {
+    //     $this->_ENV = (isset($_ENV)) ? $_ENV : null;
+    //     $this->_SESSION = (isset($_SESSION)) ? $_SESSION : null;
+    // }
+
+    /**
+     * Method setPOST
+     *
+     * @param array $options [explicite description]
+     *
+     * @return void
+     */
     public function setPOST(array $options = null)
     {
         if ($options !== null) {
@@ -25,6 +60,13 @@ class Globals
         $this->POST = filter_input_array(INPUT_POST, FILTER_DEFAULT) ?? null;
     }
 
+    /**
+     * Method getPOST
+     *
+     * @param $key $key [explicite description]
+     *
+     * @return array
+     */
     public function getPOST($key = null)
     {
         if ($key !== null) {
@@ -33,21 +75,38 @@ class Globals
         return $this->POST;
     }
 
-    // VARIABLES GLOBALES FILES
+    /**
+     * Method setFILES
+     *
+     * @return void
+     */
     public function setFILES()
     {
-        $this->FILES = $_FILES;
+        $this->_FILES = (isset($_FILES)) ? $_FILES : null;
     }
 
+    /**
+     * Method getFILES
+     *
+     * @param $key $key [explicite description]
+     *
+     * @return array
+     */
     public function getFILES($key = null)
     {
         if ($key !== null) {
-            return $this->FILES[$key] ?? null;
+            return $this->_FILES[$key] ?? null;
         }
-        return $this->FILES;
+        return $this->_FILES;
     }
 
-    // VARIABLES GLOBALES GET
+    /**
+     * Method setGET
+     *
+     * @param array $options [explicite description]
+     *
+     * @return void
+     */
     public function setGET(array $options = null)
     {
         if ($options !== null) {
@@ -56,6 +115,13 @@ class Globals
         $this->GET = filter_input_array(INPUT_GET, FILTER_DEFAULT) ?? null;
     }
 
+    /**
+     * Method getGET
+     *
+     * @param $key $key [explicite description]
+     *
+     * @return array
+     */
     public function getGET($key = null)
     {
         if ($key !== null) {
@@ -64,17 +130,32 @@ class Globals
         return $this->GET;
     }
 
-    // VARIABLES GLOBALES SESSION
-    public function setSESSION()
-    {
-        $this->SESSION = $_SESSION;
-    }
+    // // VARIABLES GLOBALES SESSION
+    // public function setSESSION()
+    // {
+    //     $this->SESSION = $_SESSION;
+    // }
 
-    public function getSESSION($key = null, $key2 = null)
-    {
-        if ($key !== null && $key2 !== null) {
-            return $this->SESSION[$key][$key2] ?? null;
-        }
-        return $this->SESSION;
-    }
+    // public function getSESSION($key = null, $key2 = null)
+    // {
+    //     if ($key !== null && $key2 !== null) {
+    //         return $this->SESSION[$key][$key2] ?? null;
+    //     }
+    //     return $this->SESSION;
+    // }
+
+
+    // // VARIABLES GLOBALES POST
+    // public function setENV($key, $value)
+    // {
+    //     $this->ENV[$key] = $value;
+    // }
+
+    // public function getENV($key = null)
+    // {
+    //     if ($key !== null) {
+    //         return $this->ENV[$key] ?? null;
+    //     }
+    //     return $this->ENV;
+    // }
 }

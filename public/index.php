@@ -82,16 +82,10 @@ try {
                 $articleController->add();
                 // Page pour traiter les données sur l'ajout d'un article
             } elseif ($get_action === "retourAjoutArticle") {
-                $globals = new Globals();
-                $globals->setFILES();
-                $files = $globals->getFILES();
-                $articleController->retourAdd($files);
+                $articleController->retourAdd();
                 // Page pour traiter les données sur la modification d'un article
             } elseif ($get_action === "retourEditArticle") {
-                $globals = new Globals();
-                $globals->setFILES();
-                $files = $globals->getFILES();
-                $articleController->retourEditArticle($files);
+                $articleController->retourEditArticle();
                 // Action qui permet de supprimer un article
             } elseif ($get_action === "delete") {
                 $articleController->delete();
