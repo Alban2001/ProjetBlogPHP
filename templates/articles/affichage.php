@@ -14,22 +14,22 @@
                         <div class="card col-12 col-md-4 ms-0 ms-md-3 mb-5" style="width: 20rem;">
                             <div style="width:300px;height:250px;">
                                 <img class="w-100 h-75"
-                                    src="<?php echo 'images/upload/' . htmlspecialchars($article->getImage()); ?>"
+                                    src="<?php echo 'images/upload/' . htmlspecialchars($article->getImage(), ENT_QUOTES); ?>"
                                     alt="image article">
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">
                                     <strong>
-                                        <?php echo htmlspecialchars($article->getTitre()); ?>
+                                        <?php echo htmlspecialchars($article->getTitre(), ENT_QUOTES); ?>
                                     </strong>
                                 </h5>
                                 <p class="card-text text-justify">
-                                    <?php echo htmlspecialchars($article->getChapo()); ?>
+                                    <?php echo htmlspecialchars($article->getChapo(), ENT_QUOTES); ?>
                                 </p>
                                 <p class="card-text"><small class="text-muted">
-                                        <?php echo "Dernière modification : " . htmlspecialchars($article->getDateDerniereMaj()->format("d/m/Y")); ?>
+                                        <?php echo "Dernière modification : " . htmlspecialchars($article->getDateDerniereMaj()->format("d/m/Y"), ENT_QUOTES); ?>
                                     </small></p>
-                                <a href="index.php?action=read&id=<?php echo htmlspecialchars($article->getId()); ?>"
+                                <a href="index.php?action=read&id=<?php echo htmlspecialchars($article->getId(), ENT_QUOTES); ?>"
                                     class="btn btn-affichage-article text-white">Lire cet article...</a>
                             </div>
                         </div>
