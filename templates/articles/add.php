@@ -20,7 +20,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                     <label class="fw-bold" for="title" class="form-label">Titre</label>
                     <input class="inputAjoutArticle form-control border border-3" type="text" name="title"
                         placeholder="Titre" maxlength="255" value="<?php if (isset($inputs["title"])) {
-                            echo htmlspecialchars($inputs["title"], ENT_COMPAT, 'utf-8');
+                            echo addslashes(htmlspecialchars($inputs["title"], ENT_COMPAT, 'utf-8'));
                         } ?>">
                     <p class="messageErreurP d-none fst-italic fw-bold text-danger">La saisie du titre est obligatoire !
                     </p><br>
@@ -31,26 +31,26 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                         accept="image/png, image/jpg, image/jpeg">
                     <?php if (isset($erreurExtension) && $erreurExtension == true) { ?>
                         <p class="bg-danger fst-italic fw-bold text-white p-1">
-                            <?php echo htmlspecialchars($messageErreur, ENT_COMPAT, 'utf-8'); ?>
+                            <?php echo addslashes(htmlspecialchars($messageErreur, ENT_COMPAT, 'utf-8')); ?>
                         </p><br>
                     <?php } ?>
                     <br>
                     <label class="fw-bold" for="chapo">Chapô</label><br>
                     <textarea class="inputAjoutArticle w-100 border border-3 p-3" name="chapo" id="chapo" rows="10"
                         placeholder="Ecrivez votre chapô..."><?php if (isset($inputs["chapo"])) {
-                            echo htmlspecialchars($inputs["chapo"], ENT_COMPAT, 'utf-8');
+                            echo addslashes(htmlspecialchars($inputs["chapo"], ENT_COMPAT, 'utf-8'));
                         } ?></textarea>
                     <p class="messageErreurP d-none fst-italic fw-bold text-danger">La saisie du chapô est obligatoire !
                     </p><br><br>
                     <label class="fw-bold" for="content">Contenu</label><br>
                     <textarea class="inputAjoutArticle w-100 border border-3 p-3" name="content" id="content" rows="10"
                         placeholder="Ecrivez votre contenu..."><?php if (isset($inputs["content"])) {
-                            echo htmlspecialchars($inputs["content"], ENT_COMPAT, 'utf-8');
+                            echo addslashes(htmlspecialchars($inputs["content"], ENT_COMPAT, 'utf-8'));
                         } ?></textarea>
                     <p class="messageErreurP d-none fst-italic fw-bold text-danger">La saisie du contenu est obligatoire
                         !</p><br><br>
                     <input type="hidden" name="token"
-                        value="<?php echo htmlspecialchars($_SESSION['token'], ENT_COMPAT, 'utf-8'); ?>">
+                        value="<?php echo addslashes(htmlspecialchars($_SESSION['token'], ENT_COMPAT, 'utf-8')); ?>">
                     <input class="btn btn-primary bg-gradient w-100 fw-bold p-2 mb-3" type="submit"
                         value="Ajouter l'article">
                     <button id="btnAnnulerArticle" class="btn btn-secondary bg-gradient w-100 fw-bold p-2" type="button"

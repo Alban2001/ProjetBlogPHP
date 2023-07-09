@@ -14,22 +14,22 @@
                         <div class="card col-12 col-md-4 ms-0 ms-md-3 mb-5" style="width: 20rem;">
                             <div style="width:300px;height:250px;">
                                 <img class="w-100 h-75"
-                                    src="<?php echo 'images/upload/' . htmlspecialchars($article->getImage(), ENT_COMPAT, 'utf-8'); ?>"
+                                    src="<?php echo 'images/upload/' . addslashes(htmlspecialchars($article->getImage(), ENT_COMPAT, 'utf-8')); ?>"
                                     alt="image article">
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">
                                     <strong>
-                                        <?php echo htmlspecialchars($article->getTitre(), ENT_COMPAT, 'utf-8'); ?>
+                                        <?php echo addslashes(htmlspecialchars($article->getTitre(), ENT_COMPAT, 'utf-8')); ?>
                                     </strong>
                                 </h5>
                                 <p class="card-text text-justify">
-                                    <?php echo htmlspecialchars($article->getChapo(), ENT_COMPAT, 'utf-8'); ?>
+                                    <?php echo addslashes(htmlspecialchars($article->getChapo(), ENT_COMPAT, 'utf-8')); ?>
                                 </p>
                                 <p class="card-text"><small class="text-muted">
-                                        <?php echo "Dernière modification : " . htmlspecialchars($article->getDateDerniereMaj()->format("d/m/Y"), ENT_COMPAT, 'utf-8'); ?>
+                                        <?php echo "Dernière modification : " . addslashes(htmlspecialchars($article->getDateDerniereMaj()->format("d/m/Y"), ENT_COMPAT, 'utf-8')); ?>
                                     </small></p>
-                                <a href="index.php?action=read&id=<?php echo htmlspecialchars($article->getId(), ENT_COMPAT, 'utf-8'); ?>"
+                                <a href="index.php?action=read&id=<?php echo addslashes(htmlspecialchars($article->getId(), ENT_COMPAT, 'utf-8')); ?>"
                                     class="btn btn-affichage-article text-white">Lire cet article...</a>
                             </div>
                         </div>

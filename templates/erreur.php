@@ -8,7 +8,7 @@
             <div class="col">
                 <div class="div-erreur bg-danger bg-gradient p-4 text-white fw-bold">
                     <h2>
-                        <?php echo htmlspecialchars($messageErreur, ENT_COMPAT, 'utf-8'); ?>
+                        <?php echo addslashes(htmlspecialchars($messageErreur, ENT_COMPAT, 'utf-8')); ?>
                     </h2>
                 </div>
             </div>
