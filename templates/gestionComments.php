@@ -37,26 +37,26 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                         <?php foreach ($commentaires as $commentaire) { ?>
                         <tr>
                             <td scope="row" class="align-middle" data-content="ID">
-                                <?php print_r(htmlspecialchars($commentaire->getId())); ?>
+                                <?php echo htmlspecialchars($commentaire->getId()); ?>
                             </td>
                             <td class="align-middle" data-content="ID de l'article">
                                 <?php $idArticle = htmlspecialchars($commentaire->getIdArticle()); ?>
-                                <a href="index.php?action=read&id=<?php print_r($idArticle); ?>">
-                                    <?php print_r($idArticle); ?>
+                                <a href="index.php?action=read&id=<?php echo $idArticle; ?>">
+                                    <?php echo $idArticle; ?>
                                 </a>
                             </td>
                             <td class="align-middle text-justify" data-content="Contenu">
-                                <?php print_r(htmlspecialchars($commentaire->getContenu())); ?>
+                                <?php echo htmlspecialchars($commentaire->getContenu()); ?>
                             </td>
                             <td class="align-middle" data-content="Date de Création">
-                                <?php print_r(htmlspecialchars($commentaire->getDateCreation()->format("d/m/Y"))); ?>
+                                <?php echo htmlspecialchars($commentaire->getDateCreation()->format("d/m/Y")); ?>
                             </td>
                             <td class="align-middle" data-content="Auteur">
-                                <?php print_r(htmlspecialchars($commentaire->getPreomUtilisateur()) . ' ' . htmlspecialchars($commentaire->getNomUtilisateur())); ?>
+                                <?php echo htmlspecialchars($commentaire->getPreomUtilisateur()) . ' ' . htmlspecialchars($commentaire->getNomUtilisateur()); ?>
                             </td>
                             <?php $valide = ($commentaire->getValide() === 1) ? "Oui" : "Non"; ?>
                             <td class="align-middle" data-content="Validé">
-                                <?php print_r($valide); ?>
+                                <?php echo $valide; ?>
                             </td>
                             <td class="align-middle" data-content="Actions">
                                 <?php if ($commentaire->getValide() === 0) { ?>
@@ -105,7 +105,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
     </div>
 </div>
 <form id="formValider" action="index.php?action=validateComment" method="POST">
-    <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>">
+    <input type="hidden" name="token" value="<?php echo htmlspecialchars($_SESSION['token']); ?>">
 </form>
 
 <script type="text/javascript" src="scripts/pagination.js"></script>

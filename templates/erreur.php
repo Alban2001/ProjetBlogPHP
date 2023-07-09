@@ -8,7 +8,7 @@
             <div class="col">
                 <div class="div-erreur bg-danger bg-gradient p-4 text-white fw-bold">
                     <h2>
-                        <?php print_r($messageErreur); ?>
+                        <?php echo htmlspecialchars($messageErreur); ?>
                     </h2>
                 </div>
             </div>

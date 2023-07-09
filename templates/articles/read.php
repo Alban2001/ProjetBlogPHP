@@ -15,26 +15,26 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
         <div class="row">
             <div class="col overflow-auto bg-light bg-gradient p-4 p-md-5">
                 <h1 class="fw-bold text-center">Article n°
-                    <?php print_r(htmlspecialchars($article->getId()) . ' : ' . htmlspecialchars($article->getTitre())); ?>
+                    <?php echo htmlspecialchars($article->getId()) . ' : ' . htmlspecialchars($article->getTitre()); ?>
                 </h1>
                 <br>
                 <p><strong>Auteur</strong> :
-                    <?php print_r(htmlspecialchars($user->getPrenom()) . ' ' . htmlspecialchars($user->getNom())); ?>
+                    <?php echo htmlspecialchars($user->getPrenom()) . ' ' . htmlspecialchars($user->getNom()); ?>
                 </p>
                 <p><strong>Date de la dernière mise à jour</strong> :
-                    <?php print_r(htmlspecialchars($article->getDateDerniereMaj()->format("d/m/Y"))); ?>
+                    <?php echo htmlspecialchars($article->getDateDerniereMaj()->format("d/m/Y")); ?>
                 </p>
                 <hr>
                 <div class="fs-5 text-justify">
-                    <?php print_r(htmlspecialchars($article->getChapo())); ?>
+                    <?php echo htmlspecialchars($article->getChapo()); ?>
                 </div>
                 <div class="text-center m-5">
                     <img class="image-article-read"
-                        src="<?php print_r('images/upload/' . htmlspecialchars($article->getImage())); ?>"
+                        src="<?php echo 'images/upload/' . htmlspecialchars($article->getImage()); ?>"
                         alt="image article" />
                 </div>
                 <div class="fs-6 text-justify">
-                    <?php print_r(htmlspecialchars($article->getContenu())); ?>
+                    <?php echo htmlspecialchars($article->getContenu()); ?>
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                     <?php if (isset($_SESSION["user"]["id"])) { ?>
                     <textarea id="textarea-commentaire" class="form-control" rows="5"
                         placeholder="Ecrivez votre commentaire..." name="commentaire"></textarea>
-                    <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>">
+                    <input type="hidden" name="token" value="<?php echo htmlspecialchars($_SESSION['token']); ?>">
                     <p class="messageErreurCommentaire d-none fst-italic fw-bold text-danger">La saisie du commentaire
                         est obligatoire !
                     </p><br>
@@ -75,25 +75,25 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                 <?php } ?>
                 <?php if ($nbrCommentaire > 0) { ?>
                 <h3>
-                    <?php print_r($nbrCommentaire . ' commentaires'); ?>
+                    <?php echo $nbrCommentaire . ' commentaires'; ?>
                 </h3>
                 <?php } else { ?>
                 <h3>
-                    <?php print_r('Auncun commentaire'); ?>
+                    <?php echo 'Auncun commentaire'; ?>
                 </h3>
                 <?php } ?>
                 <?php foreach ($commentaires as $commentaire) { ?>
                 <div class="border bg-light bg-gradient">
                     <div>
                         <p><strong>De</strong> :
-                            <?php print_r(htmlspecialchars($commentaire->getNomUtilisateur()) . " " . htmlspecialchars($commentaire->getPreomUtilisateur())); ?>
+                            <?php echo htmlspecialchars($commentaire->getNomUtilisateur()) . " " . htmlspecialchars($commentaire->getPreomUtilisateur()); ?>
                         </p>
                         <p><strong>Date</strong> :
-                            <?php print_r(htmlspecialchars($commentaire->getDateCreation()->format("d/m/Y")) . " à " . htmlspecialchars($commentaire->getDateCreation()->format("H:i"))); ?>
+                            <?php echo htmlspecialchars($commentaire->getDateCreation()->format("d/m/Y")) . " à " . htmlspecialchars($commentaire->getDateCreation()->format("H:i")); ?>
                         </p>
                     </div>
                     <div>
-                        <?php print_r(htmlspecialchars($commentaire->getContenu())); ?>
+                        <?php echo htmlspecialchars($commentaire->getContenu()); ?>
                     </div>
                 </div>
                 <br>

@@ -37,23 +37,23 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                         <?php foreach ($utilisateurs as $utilisateur) { ?>
                         <tr>
                             <td scope="row" class="align-middle" data-content="ID">
-                                <?php print_r(htmlspecialchars($utilisateur->getId())); ?>
+                                <?php echo htmlspecialchars($utilisateur->getId()); ?>
                             </td>
                             <td class="align-middle" data-content="Nom">
-                                <?php print_r(htmlspecialchars($utilisateur->getNom())); ?>
+                                <?php echo htmlspecialchars($utilisateur->getNom()); ?>
                             </td>
                             <td class="align-middle" data-content="Prénom">
-                                <?php print_r(htmlspecialchars($utilisateur->getPrenom())); ?>
+                                <?php echo htmlspecialchars($utilisateur->getPrenom()); ?>
                             </td>
                             <td class="align-middle" data-content="Adresse Mail">
-                                <?php print_r(htmlspecialchars($utilisateur->getAdresseMail())); ?>
+                                <?php echo htmlspecialchars($utilisateur->getAdresseMail()); ?>
                             </td>
                             <td class="align-middle" data-content="Rôle">
-                                <?php print_r(htmlspecialchars($utilisateur->getRole())); ?>
+                                <?php echo htmlspecialchars($utilisateur->getRole()); ?>
                             </td>
                             <?php $valide = ($utilisateur->getValide() === 1) ? "Oui" : "Non"; ?>
                             <td class="align-middle" data-content="Validé">
-                                <?php print_r($valide); ?>
+                                <?php echo $valide; ?>
                             </td>
                             <td class="align-middle" data-content="Actions">
                                 <?php if ($utilisateur->getValide() === 0) { ?>
@@ -102,7 +102,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
     </div>
 </div>
 <form id="formValider" action="index.php?action=validateUser" method="POST">
-    <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>">
+    <input type="hidden" name="token" value="<?php echo htmlspecialchars($_SESSION['token']); ?>">
 </form>
 
 <script type="text/javascript" src="scripts/pagination.js"></script>
