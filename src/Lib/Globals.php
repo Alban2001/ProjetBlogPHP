@@ -19,20 +19,6 @@ class Globals
     private $GET;
 
     /**
-     * Variable globale ENV
-     *
-     * @var mixed
-     */
-    private $_ENV;
-
-    /**
-     * Variable globale SESSION
-     *
-     * @var mixed
-     */
-    private $_SESSION;
-
-    /**
      * Variable globale FILES
      *
      * @var mixed
@@ -119,13 +105,5 @@ class Globals
             return $this->GET[$key] ?? null;
         }
         return $this->GET;
-    }
-
-    public function getENV($key = null)
-    {
-        if ($key !== null) {
-            return $this->_ENV[$key] ?? null;
-        }
-        return $this->_ENV;
     }
 }
