@@ -28,14 +28,14 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE article (
-  id smallint(5) UNSIGNED NOT NULL,
-  titre varchar(125) NOT NULL,
-  image varchar(30) NOT NULL,
-  chapo longtext NOT NULL,
-  contenu longtext NOT NULL,
-  date_creation datetime NOT NULL,
-  date_derniere_maj datetime NOT NULL,
-  id_utilisateur smallint(5) UNSIGNED NOT NULL
+  id SMALLINT(5) UNSIGNED NOT NULL,
+  titre VARCHAR(125) NOT NULL,
+  image VARCHAR(30) NOT NULL,
+  chapo LONGTEXT NOT NULL,
+  contenu LONGTEXT NOT NULL,
+  date_creation DATETIME NOT NULL,
+  date_derniere_maj DATETIME NOT NULL,
+  id_utilisateur SMALLINT(5) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -57,12 +57,12 @@ INSERT INTO article (id, titre, image, chapo, contenu, date_creation, date_derni
 --
 
 CREATE TABLE commentaire (
-  id smallint(5) UNSIGNED NOT NULL,
-  id_article smallint(5) UNSIGNED NOT NULL,
-  contenu longtext NOT NULL,
-  date_creation datetime NOT NULL,
-  valide tinyint(1) NOT NULL,
-  id_utilisateur smallint(5) UNSIGNED NOT NULL
+  id SMALLINT(5) UNSIGNED NOT NULL,
+  id_article SMALLINT(5) UNSIGNED NOT NULL,
+  contenu LONGTEXT NOT NULL,
+  date_creation DATETIME NOT NULL,
+  valide TINYINT(1) NOT NULL,
+  id_utilisateur SMALLINT(5) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -86,13 +86,13 @@ INSERT INTO commentaire (id, id_article, contenu, date_creation, valide, id_util
 --
 
 CREATE TABLE utilisateur (
-  id smallint(5) UNSIGNED NOT NULL,
-  nom varchar(50) DEFAULT NULL,
-  prenom varchar(50) NOT NULL,
-  adresse_mail varchar(125) NOT NULL,
-  mot_de_passe varchar(125) NOT NULL,
-  valide tinyint(1) UNSIGNED NOT NULL,
-  role varchar(5) NOT NULL
+  id SMALLINT(5) UNSIGNED NOT NULL,
+  nom VARCHAR(50) DEFAULT NULL,
+  prenom VARCHAR(50) NOT NULL,
+  adresse_mail VARCHAR(125) NOT NULL,
+  mot_de_passe VARCHAR(125) NOT NULL,
+  valide TINYINT(1) UNSIGNED NOT NULL,
+  role VARCHAR(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -140,19 +140,19 @@ ALTER TABLE utilisateur
 -- AUTO_INCREMENT pour la table `article`
 --
 ALTER TABLE article
-  MODIFY id smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY id SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT pour la table `commentaire`
 --
 ALTER TABLE commentaire
-  MODIFY id smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY id SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE utilisateur
-  MODIFY id smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY id SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
