@@ -52,28 +52,28 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                         <?php foreach ($articles as $article) { ?>
                         <tr>
                             <td scope="row" class="align-middle" data-content="ID">
-                                <?php echo addslashes(htmlspecialchars($article->getId(), ENT_COMPAT, 'utf-8')); ?>
+                                <?php echo htmlspecialchars(addslashes($article->getId()), ENT_COMPAT, 'utf-8'); ?>
                             </td>
                             <td class="align-middle" data-content="Titre">
-                                <?php echo addslashes(htmlspecialchars($article->getTitre(), ENT_COMPAT, 'utf-8')); ?>
+                                <?php echo htmlspecialchars(addslashes($article->getTitre()), ENT_COMPAT, 'utf-8'); ?>
                             </td>
                             <td class="align-middle" data-content="Image">
                                 <div class="image-article d-flex align-items-center">
-                                    <img src="<?php echo 'images/upload/' . addslashes(htmlspecialchars($article->getImage(), ENT_COMPAT, 'utf-8')); ?>"
+                                    <img src="<?php echo 'images/upload/' . htmlspecialchars(addslashes($article->getImage()), ENT_COMPAT, 'utf-8'); ?>"
                                         alt="image article" />
                                 </div>
                             </td>
                             <td class="align-middle text-justify" data-content="Chapô">
-                                <?php echo addslashes(htmlspecialchars($article->getChapo(), ENT_COMPAT, 'utf-8')); ?>
+                                <?php echo htmlspecialchars(addslashes($article->getChapo()), ENT_COMPAT, 'utf-8'); ?>
                             </td>
                             <td class="align-middle" data-content="Date de Création">
-                                <?php echo addslashes(htmlspecialchars($article->getDateCreation()->format("d/m/Y"), ENT_COMPAT, 'utf-8')); ?>
+                                <?php echo htmlspecialchars(addslashes($article->getDateCreation()->format("d/m/Y")), ENT_COMPAT, 'utf-8'); ?>
                             </td>
                             <td class="align-middle" data-content="Date de dernière MAJ">
-                                <?php echo addslashes(htmlspecialchars($article->getDateDerniereMaj()->format("d/m/Y"), ENT_COMPAT, 'utf-8')); ?>
+                                <?php echo htmlspecialchars(addslashes($article->getDateDerniereMaj()->format("d/m/Y")), ENT_COMPAT, 'utf-8'); ?>
                             </td>
                             <td class="align-middle" data-content="Actions"><a
-                                    href="<?php echo "index.php?action=edit&id=" . addslashes(htmlspecialchars($article->getId(), ENT_COMPAT, 'utf-8')); ?>"
+                                    href="<?php echo "index.php?action=edit&id=" . htmlspecialchars(addslashes($article->getId()), ENT_COMPAT, 'utf-8'); ?>"
                                     class="me-4 me-md-3"><i class="fa-solid fa-pen-to-square text-dark"></i></a>
                                 <a class="btnSupprimerArticle" href="#" data-bs-toggle="modal"
                                     data-bs-target="#modalDelete"><i class="fa-solid fa-trash text-dark"></i></a>
@@ -121,7 +121,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
 </div>
 <form id="formDelete" action="index.php?action=delete" method="POST">
     <input type="hidden" name="token"
-        value="<?php echo addslashes(htmlspecialchars($_SESSION['token'], ENT_COMPAT, 'utf-8')); ?>">
+        value="<?php echo htmlspecialchars(addslashes($_SESSION['token']), ENT_COMPAT, 'utf-8'); ?>">
 </form>
 
 <script type="text/javascript" src="scripts/pagination.js"></script>

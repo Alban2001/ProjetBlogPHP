@@ -37,19 +37,19 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                         <?php foreach ($utilisateurs as $utilisateur) { ?>
                         <tr>
                             <td scope="row" class="align-middle" data-content="ID">
-                                <?php echo addslashes(htmlspecialchars($utilisateur->getId(), ENT_COMPAT, 'utf-8')); ?>
+                                <?php echo htmlspecialchars(addslashes($utilisateur->getId()), ENT_COMPAT, 'utf-8'); ?>
                             </td>
                             <td class="align-middle" data-content="Nom">
-                                <?php echo addslashes(htmlspecialchars($utilisateur->getNom(), ENT_COMPAT, 'utf-8')); ?>
+                                <?php echo htmlspecialchars(addslashes($utilisateur->getNom()), ENT_COMPAT, 'utf-8'); ?>
                             </td>
                             <td class="align-middle" data-content="Prénom">
-                                <?php echo addslashes(htmlspecialchars($utilisateur->getPrenom(), ENT_COMPAT, 'utf-8')); ?>
+                                <?php echo htmlspecialchars(addslashes($utilisateur->getPrenom()), ENT_COMPAT, 'utf-8'); ?>
                             </td>
                             <td class="align-middle" data-content="Adresse Mail">
-                                <?php echo addslashes(htmlspecialchars($utilisateur->getAdresseMail(), ENT_COMPAT, 'utf-8')); ?>
+                                <?php echo htmlspecialchars(addslashes($utilisateur->getAdresseMail()), ENT_COMPAT, 'utf-8'); ?>
                             </td>
                             <td class="align-middle" data-content="Rôle">
-                                <?php echo addslashes(htmlspecialchars($utilisateur->getRole(), ENT_COMPAT, 'utf-8')); ?>
+                                <?php echo htmlspecialchars(addslashes($utilisateur->getRole()), ENT_COMPAT, 'utf-8'); ?>
                             </td>
                             <?php $valide = ($utilisateur->getValide() === 1) ? "Oui" : "Non"; ?>
                             <td class="align-middle" data-content="Validé">
@@ -103,7 +103,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
 </div>
 <form id="formValider" action="index.php?action=validateUser" method="POST">
     <input type="hidden" name="token"
-        value="<?php echo addslashes(htmlspecialchars($_SESSION['token'], ENT_COMPAT, 'utf-8')); ?>">
+        value="<?php echo htmlspecialchars(addslashes($_SESSION['token']), ENT_COMPAT, 'utf-8'); ?>">
 </form>
 
 <script type="text/javascript" src="scripts/pagination.js"></script>

@@ -37,23 +37,23 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                         <?php foreach ($commentaires as $commentaire) { ?>
                         <tr>
                             <td scope="row" class="align-middle" data-content="ID">
-                                <?php echo addslashes(htmlspecialchars($commentaire->getId(), ENT_COMPAT, 'utf-8')); ?>
+                                <?php echo htmlspecialchars(addslashes($commentaire->getId()), ENT_COMPAT, 'utf-8'); ?>
                             </td>
                             <td class="align-middle" data-content="ID de l'article">
-                                <?php $idArticle = addslashes(htmlspecialchars($commentaire->getIdArticle(), ENT_COMPAT, 'utf-8')); ?>
+                                <?php $idArticle = htmlspecialchars(addslashes($commentaire->getIdArticle()), ENT_COMPAT, 'utf-8'); ?>
                                 <a
-                                    href="index.php?action=read&id=<?php echo addslashes(htmlspecialchars($idArticle, ENT_COMPAT, 'utf-8')); ?>">
-                                    <?php echo addslashes(htmlspecialchars($idArticle, ENT_COMPAT, 'utf-8')); ?>
+                                    href="index.php?action=read&id=<?php echo htmlspecialchars(addslashes($idArticle), ENT_COMPAT, 'utf-8'); ?>">
+                                    <?php echo htmlspecialchars(addslashes($idArticle), ENT_COMPAT, 'utf-8'); ?>
                                 </a>
                             </td>
                             <td class="align-middle text-justify" data-content="Contenu">
-                                <?php echo addslashes(htmlspecialchars($commentaire->getContenu(), ENT_COMPAT, 'utf-8')); ?>
+                                <?php echo htmlspecialchars(addslashes($commentaire->getContenu()), ENT_COMPAT, 'utf-8'); ?>
                             </td>
                             <td class="align-middle" data-content="Date de Création">
-                                <?php echo addslashes(htmlspecialchars($commentaire->getDateCreation()->format("d/m/Y"), ENT_COMPAT, 'utf-8')); ?>
+                                <?php echo htmlspecialchars(addslashes($commentaire->getDateCreation()->format("d/m/Y")), ENT_COMPAT, 'utf-8'); ?>
                             </td>
                             <td class="align-middle" data-content="Auteur">
-                                <?php echo addslashes(htmlspecialchars($commentaire->getPreomUtilisateur(), ENT_COMPAT, 'utf-8')) . ' ' . addslashes(htmlspecialchars($commentaire->getNomUtilisateur(), ENT_COMPAT, 'utf-8')); ?>
+                                <?php echo htmlspecialchars(addslashes($commentaire->getPreomUtilisateur()), ENT_COMPAT, 'utf-8') . ' ' . htmlspecialchars(addslashes($commentaire->getNomUtilisateur()), ENT_COMPAT, 'utf-8'); ?>
                             </td>
                             <?php $valide = ($commentaire->getValide() === 1) ? "Oui" : "Non"; ?>
                             <td class="align-middle" data-content="Validé">
@@ -107,7 +107,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
 </div>
 <form id="formValider" action="index.php?action=validateComment" method="POST">
     <input type="hidden" name="token"
-        value="<?php echo addslashes(htmlspecialchars($_SESSION['token'], ENT_COMPAT, 'utf-8')); ?>">
+        value="<?php echo htmlspecialchars(addslashes($_SESSION['token']), ENT_COMPAT, 'utf-8'); ?>">
 </form>
 
 <script type="text/javascript" src="scripts/pagination.js"></script>
