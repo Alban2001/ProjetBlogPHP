@@ -28,26 +28,26 @@ try {
     if (!isset($get_action)) {
         $homeController = new HomeController();
         $homeController->homepage();
-    } elseif (isset($get_action)) {
+    } else if (isset($get_action)) {
         // Mise en place d'une session pour le token
         $userController = new UserController();
         // Page de connexion
         if ($get_action === "connexion") {
             $userController->connexion();
             // Page de retourConnexion
-        } elseif ($get_action === "retourConnexion") {
+        } else if ($get_action === "retourConnexion") {
             $userController->retourConnexion();
             // Page de déconnexion (retour à la page d'accueil + fermeture des sessions)
-        } elseif ($get_action === "deconnexion") {
+        } else if ($get_action === "deconnexion") {
             $userController->deconnexion();
             // Page pour la création d'un compte utilisateur
-        } elseif ($get_action === "creationCompte") {
+        } else if ($get_action === "creationCompte") {
             $userController->creationCompte();
             // Page sur l'affichage de l'ensemble des articles
-        } elseif ($get_action === "retourCreationCompte") {
+        } else if ($get_action === "retourCreationCompte") {
             $userController->retourCreationCompte();
             // Page sur l'affichage de l'ensemble des articles
-        } elseif ($get_action === "affichageArticles") {
+        } else if ($get_action === "affichageArticles") {
             $articleController = new ArticleController();
             $articleController->affichage();
         }
@@ -78,31 +78,31 @@ try {
             if ($get_action === "gestionArticles") {
                 $articleController->gestion();
                 // Page pour ajouter un article
-            } elseif ($get_action === "ajoutArticle") {
+            } else if ($get_action === "ajoutArticle") {
                 $articleController->add();
                 // Page pour traiter les données sur l'ajout d'un article
-            } elseif ($get_action === "retourAjoutArticle") {
+            } else if ($get_action === "retourAjoutArticle") {
                 $articleController->retourAdd();
                 // Page pour traiter les données sur la modification d'un article
-            } elseif ($get_action === "retourEditArticle") {
+            } else if ($get_action === "retourEditArticle") {
                 $articleController->retourEditArticle();
                 // Action qui permet de supprimer un article
-            } elseif ($get_action === "delete") {
+            } else if ($get_action === "delete") {
                 $articleController->delete();
                 // Action qui permet de se diriger vers la page de gestion des utilisateurs
-            } elseif ($get_action === "gestionUtilisateurs") {
+            } else if ($get_action === "gestionUtilisateurs") {
                 $userController = new UserController();
                 $userController->gestion();
                 // Action qui permet traiter les données sur la validation d'un compte utilisateur
-            } elseif ($get_action === "validateUser") {
+            } else if ($get_action === "validateUser") {
                 $userController = new UserController();
                 $userController->validateUser();
                 // Action qui permet de se diriger vers la page de gestion des commentaires
-            } elseif ($get_action === "gestionCommentaires") {
+            } else if ($get_action === "gestionCommentaires") {
                 $commentController = new CommentController();
                 $commentController->gestion();
                 // Action qui permet traiter les données sur la validation d'un commentaire
-            } elseif ($get_action === "validateComment") {
+            } else if ($get_action === "validateComment") {
                 $commentController = new CommentController();
                 $commentController->validateComment();
             }

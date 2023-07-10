@@ -10,7 +10,7 @@
  Screen smaller than 760px and iPads.
  */
 
-@media (min-width: 375px) and (max-width: 800px),
+@media screen and (min-width: 375px) and (max-width: 800px),
   (min-device-width: 800px) and (max-device-width: 1024px) {
   [data-content]::before {
     content: attr(data-content);
