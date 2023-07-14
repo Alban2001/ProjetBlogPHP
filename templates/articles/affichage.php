@@ -14,22 +14,22 @@
                         <div class="card col-12 col-md-4 ms-0 ms-md-3 mb-5" style="width: 20rem;">
                             <div style="width:300px;height:250px;">
                                 <img class="w-100 h-75"
-                                    src="<?php echo 'images/upload/' . strip_tags($article->getImage()); ?>"
+                                    src="<?php echo 'images/upload/' . strip_tags($article->getImage(), "<br>"); ?>"
                                     alt="image article">
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">
                                     <strong>
-                                        <?php echo strip_tags($article->getTitre()); ?>
+                                        <?php echo strip_tags($article->getTitre(), "<br>"); ?>
                                     </strong>
                                 </h5>
                                 <p class="card-text text-justify">
-                                    <?php echo strip_tags($article->getChapo()); ?>
+                                    <?php echo strip_tags($article->getChapo(), "<br>"); ?>
                                 </p>
                                 <p class="card-text"><small class="text-muted">
-                                        <?php echo "Dernière modification : " . strip_tags($article->getDateDerniereMaj()->format("d/m/Y")); ?>
+                                        <?php echo "Dernière modification : " . strip_tags($article->getDateDerniereMaj()->format("d/m/Y"), "<br>"); ?>
                                     </small></p>
-                                <a href="index.php?action=read&id=<?php echo strip_tags($article->getId()); ?>"
+                                <a href="index.php?action=read&id=<?php echo strip_tags($article->getId(), "<br>"); ?>"
                                     class="btn btn-affichage-article text-white">Lire cet article...</a>
                             </div>
                         </div>
