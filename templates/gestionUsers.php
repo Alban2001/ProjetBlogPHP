@@ -37,23 +37,23 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                         <?php foreach ($utilisateurs as $utilisateur) { ?>
                         <tr>
                             <td scope="row" class="align-middle" data-content="ID">
-                                <?php echo strip_tags($utilisateur->getId()); ?>
+                                <?php echo htmlspecialchars($utilisateur->getId(), ENT_QUOTES); ?>
                             </td>
                             <td class="align-middle" data-content="Nom">
-                                <?php echo strip_tags($utilisateur->getNom()); ?>
+                                <?php echo htmlspecialchars($utilisateur->getNom(), ENT_QUOTES); ?>
                             </td>
                             <td class="align-middle" data-content="Prénom">
-                                <?php echo strip_tags($utilisateur->getPrenom()); ?>
+                                <?php echo htmlspecialchars($utilisateur->getPrenom(), ENT_QUOTES); ?>
                             </td>
                             <td class="align-middle" data-content="Adresse Mail">
-                                <?php echo strip_tags($utilisateur->getAdresseMail()); ?>
+                                <?php echo htmlspecialchars($utilisateur->getAdresseMail(), ENT_QUOTES); ?>
                             </td>
                             <td class="align-middle" data-content="Rôle">
-                                <?php echo strip_tags($utilisateur->getRole()); ?>
+                                <?php echo htmlspecialchars($utilisateur->getRole(), ENT_QUOTES); ?>
                             </td>
                             <?php $valide = ($utilisateur->getValide() === 1) ? "Oui" : "Non"; ?>
                             <td class="align-middle" data-content="Validé">
-                                <?php echo strip_tags($valide); ?>
+                                <?php echo htmlspecialchars($valide, ENT_QUOTES); ?>
                             </td>
                             <td class="align-middle" data-content="Actions">
                                 <?php if ($utilisateur->getValide() === 0) { ?>
@@ -102,7 +102,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
     </div>
 </div>
 <form id="formValider" action="index.php?action=validateUser" method="POST">
-    <input type="hidden" name="token" value="<?php echo strip_tags($_SESSION['token']); ?>">
+    <input type="hidden" name="token" value="<?php echo htmlspecialchars($_SESSION['token'], ENT_QUOTES); ?>">
 </form>
 
 <script type="text/javascript" src="scripts/pagination.js"></script>

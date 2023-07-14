@@ -15,25 +15,26 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
         <div class="row">
             <div class="col overflow-auto bg-light bg-gradient p-4 p-md-5">
                 <h1 class="fw-bold text-center">Article n°
-                    <?php echo strip_tags($article->getId()) . ' : ' . strip_tags($article->getTitre()); ?>
+                    <?php echo htmlspecialchars($article->getId(), ENT_QUOTES) . ' : ' . htmlspecialchars($article->getTitre(), ENT_QUOTES); ?>
                 </h1>
                 <br>
                 <p><strong>Auteur</strong> :
-                    <?php echo strip_tags($user->getPrenom()) . ' ' . strip_tags($user->getNom()); ?>
+                    <?php echo htmlspecialchars($user->getPrenom(), ENT_QUOTES) . ' ' . htmlspecialchars($user->getNom(), ENT_QUOTES); ?>
                 </p>
                 <p><strong>Date de la dernière mise à jour</strong> :
-                    <?php echo strip_tags($article->getDateDerniereMaj()->format("d/m/Y")); ?>
+                    <?php echo htmlspecialchars($article->getDateDerniereMaj()->format("d/m/Y"), ENT_QUOTES); ?>
                 </p>
                 <hr>
                 <div class="fs-5 text-justify">
-                    <?php echo strip_tags($article->getChapo()); ?>
+                    <?php echo htmlspecialchars($article->getChapo(), ENT_QUOTES); ?>
                 </div>
                 <div class="text-center m-5">
                     <img class="image-article-read"
-                        src="<?php echo 'images/upload/' . strip_tags($article->getImage()); ?>" alt="image article" />
+                        src="<?php echo 'images/upload/' . htmlspecialchars($article->getImage(), ENT_QUOTES); ?>"
+                        alt="image article" />
                 </div>
                 <div class="fs-6 text-justify">
-                    <?php echo strip_tags($article->getContenu()); ?>
+                    <?php echo htmlspecialchars($article->getContenu(), ENT_QUOTES); ?>
                 </div>
             </div>
         </div>
@@ -50,7 +51,8 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                     <?php if (isset($_SESSION["user"]["id"])) { ?>
                     <textarea id="textarea-commentaire" class="form-control" rows="5"
                         placeholder="Ecrivez votre commentaire..." name="commentaire"></textarea>
-                    <input type="hidden" name="token" value="<?php echo strip_tags($_SESSION['token']); ?>">
+                    <input type="hidden" name="token"
+                        value="<?php echo htmlspecialchars($_SESSION['token'], ENT_QUOTES); ?>">
                     <p class="messageErreurCommentaire d-none fst-italic fw-bold text-danger">La saisie du commentaire
                         est obligatoire !
                     </p><br>
@@ -85,14 +87,14 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                 <div class="border bg-light bg-gradient">
                     <div>
                         <p><strong>De</strong> :
-                            <?php echo strip_tags($commentaire->getNomUtilisateur()) . " " . strip_tags($commentaire->getPreomUtilisateur()); ?>
+                            <?php echo htmlspecialchars($commentaire->getNomUtilisateur(), ENT_QUOTES) . " " . htmlspecialchars($commentaire->getPreomUtilisateur(), ENT_QUOTES); ?>
                         </p>
                         <p><strong>Date</strong> :
-                            <?php echo strip_tags($commentaire->getDateCreation()->format("d/m/Y")) . " à " . strip_tags($commentaire->getDateCreation()->format("H:i")); ?>
+                            <?php echo htmlspecialchars($commentaire->getDateCreation()->format("d/m/Y"), ENT_QUOTES) . " à " . htmlspecialchars($commentaire->getDateCreation()->format("H:i"), ENT_QUOTES); ?>
                         </p>
                     </div>
                     <div>
-                        <?php echo strip_tags($commentaire->getContenu()); ?>
+                        <?php echo htmlspecialchars($commentaire->getContenu(), ENT_QUOTES); ?>
                     </div>
                 </div>
                 <br>

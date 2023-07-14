@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?= strip_tags($title); ?>
+        <?= htmlspecialchars($title, ENT_QUOTES); ?>
     </title>
     <script src="https://kit.fontawesome.com/41b8d6857f.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
