@@ -35,7 +35,7 @@ $_SESSION['tokenCompte'] = bin2hex(random_bytes(35)); ?>
                         <label for="nom" class="form-label">Nom</label>
                         <input class="inputCompte form-control mb-3 border-2" type="text" name="nom" placeholder="Nom"
                             value="<?php if (isset($inputs["nom"])) {
-                                echo htmlspecialchars(addslashes($inputs["nom"]), ENT_COMPAT, 'utf-8');
+                                echo strip_tags($inputs["nom"]);
                             } ?>" />
                         <p class="msgErreurC d-none fst-italic fw-bold text-danger">La saisie de votre nom est
                             obligatoire !
@@ -43,7 +43,7 @@ $_SESSION['tokenCompte'] = bin2hex(random_bytes(35)); ?>
                         <label for="prenom" class="form-label">Prénom</label>
                         <input class="inputCompte form-control mb-3 border-2" type="text" name="prenom"
                             placeholder="Prénom" value="<?php if (isset($inputs["prenom"])) {
-                                echo htmlspecialchars(addslashes($inputs["prenom"]), ENT_COMPAT, 'utf-8');
+                                echo strip_tags($inputs["prenom"]);
                             } ?>" />
                         <p class="msgErreurC d-none fst-italic fw-bold text-danger">La saisie de votre prénom est
                             obligatoire !
@@ -51,7 +51,7 @@ $_SESSION['tokenCompte'] = bin2hex(random_bytes(35)); ?>
                         <label for="email" class="form-label">Email</label>
                         <input class="inputCompte form-control mb-3 border-2" type="email" name="email"
                             placeholder="exemple@mail.fr" value="<?php if (isset($inputs["email"])) {
-                                echo htmlspecialchars(addslashes($inputs["email"]), ENT_COMPAT, 'utf-8');
+                                echo strip_tags($inputs["email"]);
                             } ?>" />
                         <p id="msgErreurEmail" class="d-none fst-italic fw-bold text-danger">Le format de l'email est
                             incorrect !
@@ -95,8 +95,7 @@ $_SESSION['tokenCompte'] = bin2hex(random_bytes(35)); ?>
                         </p>
                         <?php } ?>
                         <br>
-                        <input type="hidden" name="token"
-                            value="<?php echo htmlspecialchars(addslashes($_SESSION['tokenCompte']), ENT_COMPAT, 'utf-8'); ?>">
+                        <input type="hidden" name="token" value="<?php echo strip_tags($_SESSION['tokenCompte']); ?>">
                         <input id="btnCreationCompte" class="btn btn-dark w-100" type="submit" name="btnCreationCompte"
                             value="Valider" />
                     </form>

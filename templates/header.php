@@ -1,7 +1,7 @@
 <!--- VUE PARTIELLE : HEADER + NAV --->
 <?php if (isset($_SESSION["user"]["id"])) { ?>
 <div class="p-2 fw-bold text-black border bg-white text-center">
-  <?php echo "Bonjour " . htmlspecialchars(addslashes($_SESSION["user"]["prenom"]), ENT_COMPAT, 'utf-8') . ". Ravi de vous revoir ! :-)"; ?>
+  <?php echo "Bonjour " . strip_tags($_SESSION["user"]["prenom"]) . ". Ravi de vous revoir ! :-)"; ?>
 </div>
 <?php } ?>
 <header>

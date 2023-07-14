@@ -31,8 +31,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                         <br>
                         <a class="text-center" href="#">Mot de passe oublié ?</a>
                         <br><br>
-                        <input type="hidden" name="token"
-                            value="<?php echo htmlspecialchars(addslashes($_SESSION['token']), ENT_COMPAT, 'utf-8'); ?>">
+                        <input type="hidden" name="token" value="<?php echo strip_tags($_SESSION['token']); ?>">
                         <input class="btn btn-dark w-100" type="submit" name="btnConnecter" value="Se connecter" />
                         <hr class="border border-2 border-dark">
                         <a href="index.php?action=creationCompte" class="btn btn-primary w-100">Créer un compte</a>

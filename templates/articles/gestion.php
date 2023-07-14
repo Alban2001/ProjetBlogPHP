@@ -52,28 +52,28 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                         <?php foreach ($articles as $article) { ?>
                         <tr>
                             <td scope="row" class="align-middle" data-content="ID">
-                                <?php echo htmlspecialchars(addslashes($article->getId()), ENT_COMPAT, 'utf-8'); ?>
+                                <?php echo strip_tags($article->getId()); ?>
                             </td>
                             <td class="align-middle" data-content="Titre">
-                                <?php echo htmlspecialchars(addslashes($article->getTitre()), ENT_COMPAT, 'utf-8'); ?>
+                                <?php echo strip_tags($article->getTitre()); ?>
                             </td>
                             <td class="align-middle" data-content="Image">
                                 <div class="image-article d-flex align-items-center">
-                                    <img src="<?php echo 'images/upload/' . htmlspecialchars(addslashes($article->getImage()), ENT_COMPAT, 'utf-8'); ?>"
+                                    <img src="<?php echo 'images/upload/' . strip_tags($article->getImage()); ?>"
                                         alt="image article" />
                                 </div>
                             </td>
                             <td class="align-middle text-justify" data-content="Chapô">
-                                <?php echo htmlspecialchars(addslashes($article->getChapo()), ENT_COMPAT, 'utf-8'); ?>
+                                <?php echo strip_tags($article->getChapo()); ?>
                             </td>
                             <td class="align-middle" data-content="Date de Création">
-                                <?php echo htmlspecialchars(addslashes($article->getDateCreation()->format("d/m/Y")), ENT_COMPAT, 'utf-8'); ?>
+                                <?php echo strip_tags($article->getDateCreation()->format("d/m/Y")); ?>
                             </td>
                             <td class="align-middle" data-content="Date de dernière MAJ">
-                                <?php echo htmlspecialchars(addslashes($article->getDateDerniereMaj()->format("d/m/Y")), ENT_COMPAT, 'utf-8'); ?>
+                                <?php echo strip_tags($article->getDateDerniereMaj()->format("d/m/Y")); ?>
                             </td>
                             <td class="align-middle" data-content="Actions"><a
-                                    href="<?php echo "index.php?action=edit&id=" . htmlspecialchars(addslashes($article->getId()), ENT_COMPAT, 'utf-8'); ?>"
+                                    href="<?php echo "index.php?action=edit&id=" . strip_tags($article->getId()); ?>"
                                     class="me-4 me-md-3"><i class="fa-solid fa-pen-to-square text-dark"></i></a>
                                 <a class="btnSupprimerArticle" href="#" data-bs-toggle="modal"
                                     data-bs-target="#modalDelete"><i class="fa-solid fa-trash text-dark"></i></a>
@@ -120,8 +120,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
     </div>
 </div>
 <form id="formDelete" action="index.php?action=delete" method="POST">
-    <input type="hidden" name="token"
-        value="<?php echo htmlspecialchars(addslashes($_SESSION['token']), ENT_COMPAT, 'utf-8'); ?>">
+    <input type="hidden" name="token" value="<?php echo strip_tags($_SESSION['token']); ?>">
 </form>
 
 <script type="text/javascript" src="scripts/pagination.js"></script>

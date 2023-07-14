@@ -37,27 +37,26 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                         <?php foreach ($commentaires as $commentaire) { ?>
                         <tr>
                             <td scope="row" class="align-middle" data-content="ID">
-                                <?php echo htmlspecialchars(addslashes($commentaire->getId()), ENT_COMPAT, 'utf-8'); ?>
+                                <?php echo strip_tags($commentaire->getId()); ?>
                             </td>
                             <td class="align-middle" data-content="ID de l'article">
-                                <?php $idArticle = htmlspecialchars(addslashes($commentaire->getIdArticle()), ENT_COMPAT, 'utf-8'); ?>
-                                <a
-                                    href="index.php?action=read&id=<?php echo htmlspecialchars(addslashes($idArticle), ENT_COMPAT, 'utf-8'); ?>">
-                                    <?php echo htmlspecialchars(addslashes($idArticle), ENT_COMPAT, 'utf-8'); ?>
+                                <?php $idArticle = strip_tags($commentaire->getIdArticle()); ?>
+                                <a href="index.php?action=read&id=<?php echo strip_tags($idArticle); ?>">
+                                    <?php echo strip_tags($idArticle); ?>
                                 </a>
                             </td>
                             <td class="align-middle text-justify" data-content="Contenu">
-                                <?php echo htmlspecialchars(addslashes($commentaire->getContenu()), ENT_COMPAT, 'utf-8'); ?>
+                                <?php echo strip_tags($commentaire->getContenu()); ?>
                             </td>
                             <td class="align-middle" data-content="Date de Création">
-                                <?php echo htmlspecialchars(addslashes($commentaire->getDateCreation()->format("d/m/Y")), ENT_COMPAT, 'utf-8'); ?>
+                                <?php echo strip_tags($commentaire->getDateCreation()->format("d/m/Y")); ?>
                             </td>
                             <td class="align-middle" data-content="Auteur">
-                                <?php echo htmlspecialchars(addslashes($commentaire->getPreomUtilisateur()), ENT_COMPAT, 'utf-8') . ' ' . htmlspecialchars(addslashes($commentaire->getNomUtilisateur()), ENT_COMPAT, 'utf-8'); ?>
+                                <?php echo strip_tags($commentaire->getPreomUtilisateur()) . ' ' . strip_tags($commentaire->getNomUtilisateur()); ?>
                             </td>
                             <?php $valide = ($commentaire->getValide() === 1) ? "Oui" : "Non"; ?>
                             <td class="align-middle" data-content="Validé">
-                                <?php echo $valide; ?>
+                                <?php echo strip_tags($valide); ?>
                             </td>
                             <td class="align-middle" data-content="Actions">
                                 <?php if ($commentaire->getValide() === 0) { ?>
@@ -106,8 +105,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
     </div>
 </div>
 <form id="formValider" action="index.php?action=validateComment" method="POST">
-    <input type="hidden" name="token"
-        value="<?php echo htmlspecialchars(addslashes($_SESSION['token']), ENT_COMPAT, 'utf-8'); ?>">
+    <input type="hidden" name="token" value="<?php echo strip_tags($_SESSION['token']); ?>">
 </form>
 
 <script type="text/javascript" src="scripts/pagination.js"></script>

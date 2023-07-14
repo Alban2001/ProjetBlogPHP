@@ -15,26 +15,25 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
         <div class="row">
             <div class="col overflow-auto bg-light bg-gradient p-4 p-md-5">
                 <h1 class="fw-bold text-center">Article n°
-                    <?php echo htmlspecialchars(addslashes($article->getId()), ENT_COMPAT, 'utf-8') . ' : ' . htmlspecialchars(addslashes($article->getTitre()), ENT_COMPAT, 'utf-8'); ?>
+                    <?php echo strip_tags($article->getId()) . ' : ' . strip_tags($article->getTitre()); ?>
                 </h1>
                 <br>
                 <p><strong>Auteur</strong> :
-                    <?php echo htmlspecialchars(addslashes($user->getPrenom()), ENT_COMPAT, 'utf-8') . ' ' . htmlspecialchars(addslashes($user->getNom()), ENT_COMPAT, 'utf-8'); ?>
+                    <?php echo strip_tags($user->getPrenom()) . ' ' . strip_tags($user->getNom()); ?>
                 </p>
                 <p><strong>Date de la dernière mise à jour</strong> :
-                    <?php echo htmlspecialchars(addslashes($article->getDateDerniereMaj()->format("d/m/Y")), ENT_COMPAT, 'utf-8'); ?>
+                    <?php echo strip_tags($article->getDateDerniereMaj()->format("d/m/Y")); ?>
                 </p>
                 <hr>
                 <div class="fs-5 text-justify">
-                    <?php echo htmlspecialchars(addslashes($article->getChapo()), ENT_COMPAT, 'utf-8'); ?>
+                    <?php echo strip_tags($article->getChapo()); ?>
                 </div>
                 <div class="text-center m-5">
                     <img class="image-article-read"
-                        src="<?php echo 'images/upload/' . htmlspecialchars(addslashes($article->getImage()), ENT_COMPAT, 'utf-8'); ?>"
-                        alt="image article" />
+                        src="<?php echo 'images/upload/' . strip_tags($article->getImage()); ?>" alt="image article" />
                 </div>
                 <div class="fs-6 text-justify">
-                    <?php echo htmlspecialchars(addslashes($article->getContenu()), ENT_COMPAT, 'utf-8'); ?>
+                    <?php echo strip_tags($article->getContenu()); ?>
                 </div>
             </div>
         </div>
@@ -51,8 +50,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                     <?php if (isset($_SESSION["user"]["id"])) { ?>
                     <textarea id="textarea-commentaire" class="form-control" rows="5"
                         placeholder="Ecrivez votre commentaire..." name="commentaire"></textarea>
-                    <input type="hidden" name="token"
-                        value="<?php echo htmlspecialchars(addslashes($_SESSION['token']), ENT_COMPAT, 'utf-8'); ?>">
+                    <input type="hidden" name="token" value="<?php echo strip_tags($_SESSION['token']); ?>">
                     <p class="messageErreurCommentaire d-none fst-italic fw-bold text-danger">La saisie du commentaire
                         est obligatoire !
                     </p><br>
@@ -87,14 +85,14 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                 <div class="border bg-light bg-gradient">
                     <div>
                         <p><strong>De</strong> :
-                            <?php echo htmlspecialchars(addslashes($commentaire->getNomUtilisateur()), ENT_COMPAT, 'utf-8') . " " . htmlspecialchars(addslashes($commentaire->getPreomUtilisateur()), ENT_COMPAT, 'utf-8'); ?>
+                            <?php echo strip_tags($commentaire->getNomUtilisateur()) . " " . strip_tags($commentaire->getPreomUtilisateur()); ?>
                         </p>
                         <p><strong>Date</strong> :
-                            <?php echo htmlspecialchars(addslashes($commentaire->getDateCreation()->format("d/m/Y")), ENT_COMPAT, 'utf-8') . " à " . htmlspecialchars(addslashes($commentaire->getDateCreation()->format("H:i")), ENT_COMPAT, 'utf-8'); ?>
+                            <?php echo strip_tags($commentaire->getDateCreation()->format("d/m/Y")) . " à " . strip_tags($commentaire->getDateCreation()->format("H:i")); ?>
                         </p>
                     </div>
                     <div>
-                        <?php echo htmlspecialchars(addslashes($commentaire->getContenu()), ENT_COMPAT, 'utf-8'); ?>
+                        <?php echo strip_tags($commentaire->getContenu()); ?>
                     </div>
                 </div>
                 <br>
