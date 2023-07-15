@@ -7,17 +7,41 @@ class User
     /*
      * Attributs de l'entité User
      */
+
+    /**
+     * @var integer Code
+     */
     private int $code;
+
+    /**
+     * @var string Nom
+     */
     private string $nom;
+
+    /**
+     * @var string Prenom
+     */
     private string $prenom;
+
+    /**
+     * @var string AdresseMail
+     */
     private string $adresseMail;
+
+    /**
+     * @var string MotDePasse
+     */
     private string $motDePasse;
+
+    /**
+     * @var integer Valide
+     */
     private int $valide = 0;
+
     /**
      * Valeur par défaut : un utlisateur a le rôle "User" automatiquement lorsqu'il crééra un compte
      * @var string Role
      */
-
     private string $role = "user";
 
     /**
