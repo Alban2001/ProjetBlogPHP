@@ -11,7 +11,10 @@ class User
     private string $adresseMail;
     private string $motDePasse;
     private int $valide = 0;
-    private string $role = "user"; // Valeur par défaut : un utlisateur a le rôle "User" automatiquement lorsqu'il crééra un compte  
+    /**
+     * Valeur par défaut : un utlisateur a le rôle "User" automatiquement lorsqu'il crééra un compte
+     */
+    private string $role = "user";
 
     /**
      * Method setId

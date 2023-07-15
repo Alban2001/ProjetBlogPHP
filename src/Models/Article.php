@@ -12,10 +12,16 @@ class Article
     private string $image;
     private string $chapo;
     private string $contenu;
-    //La date de création est la date du jour par défaut lors de la création de l'article
+    /**
+     * La date de création est la date du jour par défaut lors de la création de l'article
+     */
     private DateTime $dateCreation;
-    //La date de création est la date du jour par défaut lors de la création de l'article
+
+    /**
+     * La date de création est la date du jour par défaut lors de la création de l'article
+     */
     private DateTime $dateDerniereMaj;
+
     private int $idUtilisateur;
 
     /**

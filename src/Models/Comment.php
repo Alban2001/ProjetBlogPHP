@@ -11,7 +11,11 @@ class Comment
     private int $code;
     private int $idArticle;
     private string $contenu;
-    private DateTime $dateCreation; //La date de création est la date du jour par défaut lors de la création du commentaire
+    /**
+     * La date de création est la date du jour par défaut lors de la création du commentaire
+     */
+    private DateTime $dateCreation;
+
     private int $valide = 0;
     private int $idUtilisateur;
     private string $nomUtilisateur;

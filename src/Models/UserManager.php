@@ -24,7 +24,7 @@ class UserManager
         $statement->execute();
         $row = $statement->fetch();
 
-        if (($row["nbr"]) > 0 && ($adresseMail == $row["adresse_mail"]) && (password_verify($motDePasse, $row["mot_de_passe"]))) {
+        if (($row["nbr"]) > 0 && ($adresseMail === $row["adresse_mail"]) && (password_verify($motDePasse, $row["mot_de_passe"]))) {
             return true;
         }
         return false;

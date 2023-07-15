@@ -10,7 +10,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
             <div class="col">
                 <h1 class="fw-bold p-5 text-center">Ajouter un article</h1>
                 <br>
-                <?php if (isset($numErreur) && $numErreur == true) { ?>
+                <?php if (isset($numErreur) && $numErreur === true) { ?>
                     <div class="bg-danger text-white fw-bold p-3">
                         La saisie de tout les champs est obligatoire !
                     </div>
@@ -29,7 +29,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                     <img id="imgEditArticle" class="imageArticle d-none" />
                     <input id="inputFileImage" class="form-control border border-3" type="file" name="image"
                         accept="image/png, image/jpg, image/jpeg">
-                    <?php if (isset($erreurExtension) && $erreurExtension == true) { ?>
+                    <?php if (isset($erreurExtension) && $erreurExtension === true) { ?>
                         <p class="bg-danger fst-italic fw-bold text-white p-1">
                             <?php echo htmlspecialchars($messageErreur, ENT_QUOTES); ?>
                         </p><br>
