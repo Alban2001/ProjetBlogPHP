@@ -22,8 +22,6 @@ class ArticleController
         $articles = $articleManager->getAll();
         include_once __DIR__ . "/../../templates/articles/gestion.php";
     }
-    // end gestion()
-
 
     /**
      * Permet de se diriger vers la page pour ajouter un nouvel article
@@ -34,8 +32,6 @@ class ArticleController
     {
         include_once __DIR__ . "/../../templates/articles/add.php";
     }
-    // end add()
-
 
     /**
      * Permet de récupérer les données saisies de la page add.php, de les traiter et de faire une insertion dans la BDD
@@ -83,8 +79,6 @@ class ArticleController
             throw new Exception("Erreur 405 : la requête effectuée n'est pas autorisée !");
         }
     }
-    // end retourAdd()
-
 
     /**
      * Permet de se diriger vers la page pour éditer un article
