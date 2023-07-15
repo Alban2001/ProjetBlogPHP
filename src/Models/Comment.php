@@ -10,18 +10,46 @@ class Comment
     /* 
      * Attributs de l'entité Comment
      */
+
+    /**
+     * @var integer Code
+     */
     private int $code;
+
+    /**
+     * @var integer IdArticle
+     */
     private int $idArticle;
+
+    /**
+     * @var string Contenu
+     */
     private string $contenu;
+
     /**
      * La date de création est la date du jour par défaut lors de la création du commentaire
      * @var DateTime DateCreation
      */
     private DateTime $dateCreation;
 
+    /**
+     * @var integer Valide
+     */
     private int $valide = 0;
+
+    /**
+     * @var integer IdUtilisateur
+     */
     private int $idUtilisateur;
+
+    /**
+     * @var integer NomUtilisateur
+     */
     private string $nomUtilisateur;
+
+    /**
+     * @var integer PrenomUtilisateur
+     */
     private string $prenomUtilisateur;
 
     /**
