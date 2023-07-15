@@ -5,10 +5,10 @@
 **Auteur** : Alban VOIRIOT
 **Informations techniques** :
 
--     **Langages** : HTML, CSS, PHP, SQL, JavaScript, Bootstrap, MySQL
--     **Version de PHP** : 8.2.6
--     **Version de MySQL** : 5.7.11
--     **Version de Bootstrap** : 5.0.2
+-     **Langages**  : HTML, CSS, PHP, SQL, JavaScript, Bootstrap, MySQL
+-     **Version de PHP**  : 8.2.6
+-     **Version de MySQL**  : 5.7.11
+-     **Version de Bootstrap**  : 5.0.2
 
 # Sommaire
 

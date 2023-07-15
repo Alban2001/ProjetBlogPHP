@@ -11,7 +11,11 @@ use Exception;
 
 class ArticleController
 {
-    // Permet d'afficher l'ensemble des articles pour sa gestion (modification, suppression)
+    /**
+     * Permet d'afficher l'ensemble des articles pour sa gestion (modification, suppression)
+     *
+     * @return void
+     */
     public function gestion()
     {
         $articleManager = new ArticleManager();
@@ -19,13 +23,21 @@ class ArticleController
         include_once __DIR__ . "/../../templates/articles/gestion.php";
     }
 
-    // Permet de se diriger vers la page pour ajouter un nouvel article
+    /**
+     * Permet de se diriger vers la page pour ajouter un nouvel article
+     *
+     * @return void
+     */
     public function add()
     {
         include_once __DIR__ . "/../../templates/articles/add.php";
     }
 
-    // Permet de récupérer les données saisies de la page add.php, de les traiter et de faire une insertion dans la BDD
+    /**
+     * Permet de récupérer les données saisies de la page add.php, de les traiter et de faire une insertion dans la BDD
+     *
+     * @return void
+     */
     public function retourAdd()
     {
         $globals = new Globals();
@@ -68,7 +80,13 @@ class ArticleController
         }
     }
 
-    // Permet de se diriger vers la page pour éditer un article
+    /**
+     * Permet de se diriger vers la page pour éditer un article
+     *
+     * @param $code $code [code de l'article]
+     *
+     * @return void
+     */
     public function edit($code)
     {
         $articleManager = new ArticleManager();
@@ -83,7 +101,11 @@ class ArticleController
         }
     }
 
-    // Permet de récupérer les données saisies de la page edit.php, de les traiter et de faire une insertion dans la BDD
+    /**
+     * Permet de récupérer les données saisies de la page edit.php, de les traiter et de faire une insertion dans la BDD
+     *
+     * @return void
+     */
     public function retourEditArticle()
     {
         $articleManager = new ArticleManager();
@@ -150,7 +172,12 @@ class ArticleController
             throw new Exception("Erreur 405 : la requête effectuée n'est pas autorisée !");
         }
     }
-    // Permet de supprimer un article de la BDD
+
+    /**
+     * Permet de supprimer un article de la BDD
+     *
+     * @return void
+     */
     public function delete()
     {
         $options = array(
@@ -179,7 +206,11 @@ class ArticleController
         }
     }
 
-    // Permet d'afficher l'ensemble des articles
+    /**
+     * Permet d'afficher l'ensemble des articles
+     *
+     * @return void
+     */
     public function affichage()
     {
         $articleManager = new ArticleManager();
@@ -187,7 +218,13 @@ class ArticleController
         include_once __DIR__ . "/../../templates/articles/affichage.php";
     }
 
-    // Affichage l'ensemble des informations de l'article sélectionné + formulaire pour commentaire
+    /**
+     * Affichage de l'ensemble des informations de l'article sélectionné + formulaire pour écrire un commentaire
+     *
+     * @param $code $code [explicite description]
+     *
+     * @return void
+     */
     public function read($code)
     {
         $articleManager = new ArticleManager();

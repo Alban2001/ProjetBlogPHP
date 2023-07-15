@@ -9,7 +9,11 @@ use Lib\Globals;
 
 class CommentController
 {
-    // Permet d'ajouter un commentaire pour l'article correspondant
+    /**
+     * Permet d'ajouter un commentaire pour l'article correspondant
+     *
+     * @return void
+     */
     function comment()
     {
         $options = array(
@@ -46,7 +50,11 @@ class CommentController
         }
     }
 
-    // Permet d'afficher l'ensemble des utilisateurs (users + admin)
+    /**
+     * Permet d'afficher l'ensemble des commentaires
+     *
+     * @return void
+     */
     public function gestion()
     {
         $commentManager = new CommentManager();
@@ -54,7 +62,11 @@ class CommentController
         include_once __DIR__ . "/../../templates/gestionComments.php";
     }
 
-    // Permet de récupérer les données sur la gestion des utilisateurs pour la validation du compte
+    /**
+     * Permet de récupérer les données sur la gestion des commentaires pour leur validation
+     *
+     * @return void
+     */
     public function validateComment()
     {
         $options = array(

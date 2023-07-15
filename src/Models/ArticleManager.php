@@ -9,8 +9,14 @@ use PDO;
 
 class ArticleManager
 {
-    //Permet de vérifier si l'adresse mail et le mot de passe de l'utilisateur correspondent
-    // Ici, pour le mot de passe, on va le comparer avec celui qui a été saisit par l'utilisateur et celui qui a été crypté dans la BDD
+    /**
+     * Permet de vérifier si l'adresse mail et le mot de passe de l'utilisateur correspondent
+     * Ici, pour le mot de passe, on va le comparer avec celui qui a été saisit par l'utilisateur et celui qui a été crypté dans la BDD
+     * 
+     * @param Article $article [objet Article]
+     *
+     * @return void
+     */
     public function add(Article $article): void
     {
         $titre = $article->getTitre();
@@ -29,12 +35,19 @@ class ArticleManager
 
         $statement->execute();
     }
-    // Permet de générer une image pour les articles
+
+    /**
+     * Permet de générer une image pour les articles
+     *
+     * @param array $img [variable globale $_FILES]
+     *
+     * @return string
+     */
     public function addImage(array $img): string
     {
         $chercheExtension = explode(".", $img["image"]["name"]);
         $extension = strtolower(end($chercheExtension)); // Récupère le dernier mot du tableau (donc l'extension du fichier)
-        $emplacementOrigine = $img["image"]["tmp_name"]; // Récupère le chemin complet du fichier temporaire du serveur
+        $pathOrigine = $img["image"]["tmp_name"]; // Récupère le chemin complet du fichier temporaire du serveur
         $extensions = ["jpg", "jpeg", "png"]; // Extensions d'image accepté
         $typeFichier = ["image/jpg", "image/jpeg", "image/png"]; // types de fichier accepté
 
@@ -42,8 +55,8 @@ class ArticleManager
             $nomImage = uniqid('', true); // Génère un id unique pour le nom de l'image
             $image = $nomImage . "." . $extension;
             // Définit le nouveau de destination pour les images uploadées
-            $emplacementDestination = __DIR__ . "/../../public/images/upload/" . $image;
-            move_uploaded_file($emplacementOrigine, $emplacementDestination);
+            $pathDestination = __DIR__ . "/../../public/images/upload/" . $image;
+            move_uploaded_file($pathOrigine, $pathDestination);
 
             return $image;
         } else {
@@ -51,7 +64,11 @@ class ArticleManager
         }
     }
 
-    // Affichage de l'ensemble des articles du plus récent au plus ancien
+    /**
+     * Affichage de l'ensemble des articles du plus récent au plus ancien
+     *
+     * @return array
+     */
     public function getAll(): array
     {
         $connection = new DatabaseConnection();
@@ -73,7 +90,14 @@ class ArticleManager
         }
         return $articles;
     }
-    // Affichage de l'ensemble des articles du plus récent au plus ancien
+
+    /**
+     * Affichage de l'ensemble des articles du plus récent au plus ancien
+     *
+     * @param $code $code [variable code de l'article]
+     *
+     * @return Article
+     */
     public function getArticle($code): Article
     {
         $connection = new DatabaseConnection();
@@ -96,8 +120,14 @@ class ArticleManager
         return $article;
     }
 
-    // Permet de vérifier si l'ID de l'article existe dans la BDD.
-    // Ca permettra d'éviter que l'utilisateur saisit un id au hasard dans le paramètre de l'URL et de générer un message d'erreur PHP
+    /**
+     * Permet de vérifier si l'ID de l'article existe dans la BDD.
+     * Ca permettra d'éviter que l'utilisateur saisit un id au hasard dans le paramètre de l'URL et de générer un message d'erreur PHP
+     *
+     * @param $code $code [explicite description]
+     *
+     * @return bool
+     */
     public function verifierId($code): bool
     {
         $connection = new DatabaseConnection();
@@ -111,7 +141,13 @@ class ArticleManager
         return false;
     }
 
-    // Affichage de l'ensemble des articles du plus récent au plus ancien
+    /**
+     * Affichage de l'ensemble des articles du plus récent au plus ancien
+     *
+     * @param Article $article [objet Article]
+     *
+     * @return void
+     */
     public function update(Article $article)
     {
         $code = $article->getId();
@@ -136,7 +172,13 @@ class ArticleManager
         $statement->execute();
     }
 
-    //Permet de supprimer une ligne (article) avec les commentaires associées dans la BDD
+    /**
+     * Permet de supprimer une ligne (article) avec les commentaires associées dans la BDD
+     *
+     * @param int $code [variable code de l'article]
+     *
+     * @return void
+     */
     public function delete(int $code): void
     {
         $connection = new DatabaseConnection();

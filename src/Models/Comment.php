@@ -17,71 +17,133 @@ class Comment
     private string $nomUtilisateur;
     private string $prenomUtilisateur;
 
-    // Attribution de l'ID
+    /**
+     * Method setId
+     *
+     * @param int $code [Attribution de l'ID]
+     *
+     * @return self
+     */
     public function setId(int $code): self
     {
         $this->code = $code;
 
         return $this;
     }
-    // Affichage de l'ID
+
+    /**
+     * Affichage de l'ID
+     *
+     * @return int
+     */
     public function getId(): int
     {
         return $this->code;
     }
-    // Attribution de l'ID article
+
+    /**
+     * Method setIdArticle
+     *
+     * @param int $idArticle [Attribution de l'ID article]
+     *
+     * @return self
+     */
     public function setIdArticle(int $idArticle): self
     {
         $this->idArticle = $idArticle;
 
         return $this;
     }
-    // Affichage de l'article 
+
+    /**
+     * Affichage de l'article
+     *
+     * @return int
+     */
     public function getIdArticle(): int
     {
         return $this->idArticle;
     }
 
-    // Attribution du contenu
+    /**
+     * Method setContenu
+     *
+     * @param string $contenu [Attribution du contenu]
+     *
+     * @return self
+     */
     public function setContenu(string $contenu): self
     {
         $this->contenu = $contenu;
 
         return $this;
     }
-    // Affichage du contenu
+
+    /**
+     * Affichage du contenu
+     *
+     * @return string
+     */
     public function getContenu(): string
     {
         return $this->contenu;
     }
 
-    // Attribution de la date de création
+    /**
+     * Method setDateCreation
+     *
+     * @param DateTime $dateCreation [Attribution de la date de création]
+     *
+     * @return self
+     */
     public function setDateCreation(DateTime $dateCreation): self
     {
         $this->dateCreation = $dateCreation;
 
         return $this;
     }
-    // Affichage de la date de création
+
+    /**
+     * Affichage de la date de création
+     *
+     * @return DateTime
+     */
     public function getDateCreation(): DateTime
     {
         return $this->dateCreation;
     }
 
-    // Attribution de valide
+    /**
+     * Method setValide
+     *
+     * @param int $valide [Attribution de valide]
+     *
+     * @return self
+     */
     public function setValide(int $valide): self
     {
         $this->valide = $valide;
 
         return $this;
     }
-    // Affichage de valide
+
+    /**
+     * Affichage de valide
+     *
+     * @return int
+     */
     public function getValide(): int
     {
         return $this->valide;
     }
 
-    // Attribution de l'ID utilisateur
+    /**
+     * Method setIdUtilisateur
+     *
+     * @param int $idUtilisateur [Attribution de l'ID utilisateur]
+     *
+     * @return self
+     */
     public function setIdUtilisateur(int $idUtilisateur): self
     {
         $this->idUtilisateur = $idUtilisateur;
@@ -89,32 +151,59 @@ class Comment
         return $this;
     }
 
-    // Affichage de l'ID utilisateur
+    /**
+     * Affichage de l'ID utilisateur
+     *
+     * @return int
+     */
     public function getIdUtilisateur(): int
     {
         return $this->idUtilisateur;
     }
-    // Attribution du nom de l'utilisateur
+
+    /**
+     * Method setNomUtilisateur
+     *
+     * @param string $nomUtilisateur [Attribution du nom de l'utilisateur]
+     *
+     * @return self
+     */
     public function setNomUtilisateur(string $nomUtilisateur): self
     {
         $this->nomUtilisateur = $nomUtilisateur;
 
         return $this;
     }
-    // Affichage du nom de l'utilisateur
+
+    /**
+     * Affichage du nom de l'utilisateur
+     *
+     * @return string
+     */
     public function getNomUtilisateur(): string
     {
         return $this->nomUtilisateur;
     }
 
-    // Attribution du nom de l'utilisateur
+    /**
+     * Method setPrenomUtilisateur
+     *
+     * @param string $prenomUtilisateur [Attribution du nom de l'utilisateur]
+     *
+     * @return self
+     */
     public function setPrenomUtilisateur(string $prenomUtilisateur): self
     {
         $this->prenomUtilisateur = $prenomUtilisateur;
 
         return $this;
     }
-    // Affichage du nom de l'utilisateur
+
+    /**
+     * Affichage du nom de l'utilisateur
+     *
+     * @return string
+     */
     public function getPreomUtilisateur(): string
     {
         return $this->prenomUtilisateur;

@@ -25,7 +25,7 @@ header {
 }
 
 .nav-item:hover {
-  background: rgb(3, 5, 115);
+  background: rgb(3 5 115 / 100%);
   height: 100%;
   font-weight: bold;
 }
@@ -93,7 +93,7 @@ section#accueil .div-accueil-photo {
 }
 
 .div-inter-accueil-presentation {
-  background: rgb(3 5 115 / 1);
+  background: rgb(3 5 115 / 100%);
   height: 150px;
   transform: skewY(10deg);
   position: relative;
@@ -115,7 +115,7 @@ section#accueil .div-accueil-photo {
 
 section#presentation {
   height: 1100px;
-  background: rgb(3 5 115 / 1);
+  background: rgb(3 5 115 / 100%);
   position: relative;
   z-index: 1;
   animation-name: animation-presentation;
@@ -144,7 +144,7 @@ section#presentation {
 }
 
 section#cv {
-  background: rgb(3 5 115 / 1);
+  background: rgb(3 5 115 / 100%);
 }
 
 .logo-competences {
@@ -152,7 +152,7 @@ section#cv {
 }
 
 .progress-bar {
-  background: rgb(3 5 115 / 1);
+  background: rgb(3 5 115 / 100%);
 }
 
 /************* CONNEXION ****************/
@@ -166,8 +166,8 @@ section#cv {
 }
 
 .div-connexion {
-  background-color: rgb(255 255 255 / 1);
-  background-color: rgb(255 255 255 / 0.65);
+  background-color: rgb(255 255 255 / 100%);
+  background-color: rgb(255 255 255 / 65%);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -199,7 +199,7 @@ section#erreur {
 /************* GESTION ARTICLES ****************/
 
 .btn-ajout-article {
-  background: rgb(3 5 115 / 1);
+  background: rgb(3 5 115 / 100%);
   width: 50px;
 }
 
@@ -212,7 +212,7 @@ section#erreur {
 }
 
 .btn-pagination-gestion {
-  background-color: rgb(3 5 115 / 1);
+  background-color: rgb(3 5 115 / 100%);
   color: #fff;
   border: 3px solid gray;
   border-radius: 5px;
@@ -233,7 +233,7 @@ section#erreur {
 }
 
 .btn-affichage-article {
-  background-color: rgb(3 5 115 / 1);
+  background-color: rgb(3 5 115 / 100%);
 }
 
 .text-justify {
@@ -246,7 +246,7 @@ section#erreur {
 }
 
 .btn-commentaire {
-  background-color: rgb(3 5 115 / 1);
+  background-color: rgb(3 5 115 / 100%);
   width: 100%;
 }
 
@@ -302,13 +302,13 @@ section#erreur {
 
   .div-coordonnees {
     display: block;
-    background: rgb(3 5 115 / 1);
+    background: rgb(3 5 115 / 100%);
     width: 200px;
     height: 200px;
     position: relative;
     top: 90px;
     transform: skewY(-10deg);
-    box-shadow: rgb(3 5 115 / 1) 10px 10px 15px;
+    box-shadow: rgb(3 5 115 / 100%) 10px 10px 15px;
     animation-name: animation-coordonnees;
     animation-duration: 2.5s;
     animation-iteration-count: infinite;
@@ -320,7 +320,7 @@ section#erreur {
     }
 
     to {
-      box-shadow: rgb(3 5 115 / 1) 10px 10px 15px;
+      box-shadow: rgb(3 5 115 / 100%) 10px 10px 15px;
     }
   }
 

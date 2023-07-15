@@ -7,8 +7,15 @@ use Lib\DatabaseConnection;
 
 class UserManager
 {
-    //Permet de vérifier si l'adresse mail et le mot de passe de l'utilisateur correspondent
-    // Ici, pour le mot de passe, on va le comparer avec celui qui a été saisit par l'utilisateur et celui qui a été crypté dans la BDD
+    /**
+     * Permet de vérifier si l'adresse mail et le mot de passe de l'utilisateur correspondent
+     * Ici, pour le mot de passe, on va le comparer avec celui qui a été saisit par l'utilisateur et celui qui a été crypté dans la BDD
+     *
+     * @param string $adresseMail [adresse mail de l'utilisateur saisie]
+     * @param string $motDePasse [mot de passe de l'utilisateur saisi]
+     *
+     * @return bool
+     */
     public function verifierCompte(string $adresseMail, string $motDePasse): bool
     {
         $connection = new DatabaseConnection();
@@ -23,7 +30,13 @@ class UserManager
         return false;
     }
 
-    // Permet de vérifier si l'ID de l'utilisateur existe dans la BDD.
+    /**
+     * Permet de vérifier si l'ID de l'utilisateur existe dans la BDD.
+     *
+     * @param $code $code [identifiant de l'utilisateur]
+     *
+     * @return bool
+     */
     public function verifierId($code): bool
     {
         $connection = new DatabaseConnection();
@@ -37,7 +50,13 @@ class UserManager
         return false;
     }
 
-    //Permet de vérifier si l'adresse mail est déjà présente dans la BDD
+    /**
+     * Permet de vérifier si l'adresse mail est déjà présente dans la BDD
+     *
+     * @param string $adresseMail [adresse mail saisie de l'utilisateur]
+     *
+     * @return bool
+     */
     public function verifierMail(string $adresseMail): bool
     {
         $connection = new DatabaseConnection();
@@ -52,8 +71,14 @@ class UserManager
         return true;
     }
 
-    // Permet d'ajouter un nouvel utilisateur dans la BDD avec le role "user" par défaut
-    // Ici, on va aussi crypté le mot de passe
+    /**
+     * Permet d'ajouter un nouvel utilisateur dans la BDD avec le role "user" par défaut
+     * Ici, on va aussi crypté le mot de passe
+     *
+     * @param User $user [objet user]
+     *
+     * @return void
+     */
     public function add(User $user): void
     {
         $nom = $user->getNom();
@@ -75,7 +100,13 @@ class UserManager
         $statement->execute();
     }
 
-    // Validation du compte utilisateur
+    /**
+     * Validation du compte utilisateur
+     *
+     * @param int $code [identifiant de l'utilisateur]
+     *
+     * @return void
+     */
     public function valide(int $code): void
     {
         $connection = new DatabaseConnection();
@@ -84,7 +115,11 @@ class UserManager
         $statement->execute();
     }
 
-    // Affichage de l'ensemble des utilisateurs
+    /**
+     * Affichage de l'ensemble des utilisateurs
+     *
+     * @return array
+     */
     public function getAll(): array
     {
         $connection = new DatabaseConnection();
@@ -107,7 +142,14 @@ class UserManager
         return $users;
     }
 
-    //Permet d'obtenir toutes les informations d'un utilisateur (id, nom, prenom, adresse mail, mot de passe et rôle)
+    /**
+     * Permet d'obtenir toutes les informations d'un utilisateur (id, nom, prenom, adresse mail, mot de passe et rôle)
+     *
+     * @param string $adresseMail [adresse mail saisie par l'utilisateur]
+     * @param string $motDePasse [mot de passe saisi par l'utilisateur]
+     *
+     * @return User
+     */
     public function getUser(string $adresseMail, string $motDePasse): User
     {
         $connection = new DatabaseConnection();
@@ -130,7 +172,13 @@ class UserManager
         return $user;
     }
 
-    //Permet d'obtenir toutes les informations d'un utilisateur (id, nom, prenom, adresse mail, mot de passe et rôle) avec un id en paramètre
+    /**
+     * Permet d'obtenir toutes les informations d'un utilisateur (id, nom, prenom, adresse mail, mot de passe et rôle) avec un id en paramètre
+     *
+     * @param int $code [identifiant de l'utilisateur]
+     *
+     * @return User
+     */
     public function getUserById(int $code): User
     {
         $connection = new DatabaseConnection();

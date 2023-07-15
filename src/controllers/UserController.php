@@ -9,14 +9,22 @@ use Lib\Globals;
 
 class UserController
 {
-    // Direction vers la page de connexion pour la saisie de l'adresse mail et mot de passe
+    /**
+     * Direction vers la page de connexion pour la saisie de l'adresse mail et mot de passe
+     *
+     * @return void
+     */
     public function connexion()
     {
         include_once __DIR__ . '/../../templates/connexion.php';
     }
 
-    // Permet de récupérer les données (adresse mail + mot de passe) de la page de connexion
-    // Vérifie aussi si ces données sont correctes et correspondent dans la BDD
+    /**
+     * Permet de récupérer les données (adresse mail + mot de passe) de la page de connexion
+     * Permet de récupérer les données (adresse mail + mot de passe) de la page de connexion
+     *
+     * @return void
+     */
     public function retourConnexion()
     {
         $options = array(
@@ -49,14 +57,22 @@ class UserController
         }
     }
 
-    // Direction vers la page de création de compte pour les nouveaux utilisateurs
+    /**
+     * Direction vers la page de création de compte pour les nouveaux utilisateurs
+     *
+     * @return void
+     */
     public function creationCompte()
     {
         include_once __DIR__ . '/../../templates/creationCompte.php';
     }
 
-    // Permet de récupérer les données (nom, prénom, adresse mail, mot de passe) de la page de création de compte
-    // Vérifie aussi si ces données sont correctes au niveau du format
+    /**
+     * Permet de récupérer les données (nom, prénom, adresse mail, mot de passe) de la page de création de compte
+     * Vérifie aussi si ces données sont correctes au niveau du format
+     *
+     * @return void
+     */
     public function retourCreationCompte()
     {
         $options = array(
@@ -98,7 +114,7 @@ class UserController
                                 $userManager->add($user);
                                 header("Location: index.php?action=creationCompte&success=1");
                             } else {
-                                $erreurPasswordConfirmed = true;
+                                $errorPwConfirmed = true;
                                 include_once __DIR__ . '/../../templates/creationCompte.php';
                             }
                         } else {
@@ -122,7 +138,11 @@ class UserController
         }
     }
 
-    // Permet d'afficher l'ensemble des utilisateurs (users + admin)
+    /**
+     * Permet d'afficher l'ensemble des utilisateurs (users + admin)
+     *
+     * @return void
+     */
     public function gestion()
     {
         $userManager = new UserManager();
@@ -130,8 +150,11 @@ class UserController
         include_once __DIR__ . "/../../templates/gestionUsers.php";
     }
 
-
-    // Permet de récupérer les données sur la gestion des utilisateurs pour la validation du compte
+    /**
+     * Permet de récupérer les données sur la gestion des utilisateurs pour la validation du compte
+     *
+     * @return void
+     */
     public function validateUser()
     {
         $options = array(
@@ -155,7 +178,11 @@ class UserController
         }
     }
 
-    // Permet de se déconnecter du compte en supprimant les sessions existantes + retour à la page d'accueil
+    /**
+     * Permet de se déconnecter du compte en supprimant les sessions existantes + retour à la page d'accueil
+     *
+     * @return void
+     */
     public function deconnexion()
     {
         header("Location: index.php");

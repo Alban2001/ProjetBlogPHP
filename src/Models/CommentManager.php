@@ -8,7 +8,13 @@ use DateTime;
 
 class CommentManager
 {
-    //Permet d'ajouter un commentaire à l'article correspondant
+    /**
+     * Permet d'ajouter un commentaire à l'article correspondant
+     *
+     * @param Comment $commentaire [explicite description]
+     *
+     * @return void
+     */
     public function add(Comment $commentaire): void
     {
         $idArticle = $commentaire->getIdArticle();
@@ -27,8 +33,14 @@ valide, id_utilisateur) VALUES (?, ?, NOW(), ?, ?)");
         $statement->execute();
     }
 
-    // Affichage de l'ensemble des commentaires de l'article correspondant
-    public function getComments($idArticle)
+    /**
+     * Affichage de l'ensemble des commentaires de l'article correspondant
+     *
+     * @param $idArticle $idArticle [code de l'article]
+     *
+     * @return array
+     */
+    public function getComments($idArticle): array
     {
         $connection = new DatabaseConnection();
         $statement = $connection->getConnection()->prepare("SELECT contenu, date_creation, nom, prenom FROM commentaire, utilisateur WHERE id_article = ? AND commentaire.valide = 1 AND utilisateur.id = commentaire.id_utilisateur ORDER BY date_creation DESC");
@@ -49,7 +61,13 @@ valide, id_utilisateur) VALUES (?, ?, NOW(), ?, ?)");
         return $commentaires;
     }
 
-    // Affichage du nombre de commentaires avec l'article correspondant
+    /**
+     * Affichage du nombre de commentaires avec l'article correspondant
+     *
+     * @param $idArticle $idArticle [code de l'article]
+     *
+     * @return int
+     */
     public function nbrComments($idArticle): int
     {
         $connection = new DatabaseConnection();
@@ -61,7 +79,11 @@ valide, id_utilisateur) VALUES (?, ?, NOW(), ?, ?)");
         return $row["nbrCommentaires"];
     }
 
-    // Affichage de l'ensemble des commentaires
+    /**
+     * Affichage de l'ensemble des commentaires
+     *
+     * @return array
+     */
     public function getAll(): array
     {
         $connection = new DatabaseConnection();
@@ -85,7 +107,13 @@ valide, id_utilisateur) VALUES (?, ?, NOW(), ?, ?)");
         return $commentaires;
     }
 
-    // Permet de vérifier si l'ID du commentaire existe dans la BDD.
+    /**
+     * Permet de vérifier si l'ID du commentaire existe dans la BDD.
+     *
+     * @param $code $code [code du commentaire]
+     *
+     * @return bool
+     */
     public function verifierId($code): bool
     {
         $connection = new DatabaseConnection();
@@ -99,7 +127,13 @@ valide, id_utilisateur) VALUES (?, ?, NOW(), ?, ?)");
         return false;
     }
 
-    // Validation d'un commentaire
+    /**
+     * Validation d'un commentaire
+     *
+     * @param int $code [code du commentaire]
+     *
+     * @return void
+     */
     public function valide(int $code): void
     {
         $connection = new DatabaseConnection();

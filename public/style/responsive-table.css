@@ -3,15 +3,15 @@
   --tmr-white: #eee;
   --tmr-table-header: #54667a;
   --tmr-row-divider-color: #3490dc;
-  --tmr-stripped-row-background-color: rgb(0 0 0 / 0.05);
+  --tmr-stripped-row-background-color: rgb(0 0 0 / 5%);
 }
 
 /*
  Screen smaller than 760px and iPads.
  */
 
-@media screen and (min-width: 375px) and (max-width: 800px),
-  (min-device-width: 800px) and (max-device-width: 1024px) {
+@media (width >= 375px) and (min-width: 375px) and (max-width: 800px),
+  (width >= 375px) and (min-device-width: 800px) and (max-device-width: 1024px) {
   [data-content]::before {
     content: attr(data-content);
   }

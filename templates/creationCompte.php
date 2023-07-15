@@ -89,7 +89,7 @@ $_SESSION['tokenCompte'] = bin2hex(random_bytes(35)); ?>
                         <p id="msgErreurMdpConfirmed" class="d-none fst-italic fw-bold text-danger">Ce mot de passe ne
                             correspond pas à celui du dessus !
                         </p>
-                        <?php if (isset($erreurPasswordConfirmed) && $erreurPasswordConfirmed == true) { ?>
+                        <?php if (isset($errorPwConfirmed) && $errorPwConfirmed == true) { ?>
                         <p id="msgErreurMdpConfirmed2" class="fst-italic fw-bold text-danger">Ce mot de passe ne
                             correspond pas à celui du dessus !
                         </p>
