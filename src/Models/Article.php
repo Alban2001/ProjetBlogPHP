@@ -11,7 +11,7 @@ class Article
      */
 
     /**
-     * @var int Code
+     * @var integer Code
      */
     private int $code;
 
@@ -48,7 +48,7 @@ class Article
     private DateTime $dateDerniereMaj;
 
     /**
-     * @var int IdUtilisateur
+     * @var integer IdUtilisateur
      */
     private int $idUtilisateur;
 
