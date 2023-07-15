@@ -16,7 +16,7 @@
                     <li><a class="text-white" href="index.php">Accueil</a></li>
                     <li><a class="text-white" href="index.php?action=affichagesArticles">Articles</a></li>
                     <li><a class="text-white" href="index.php#contact">Contact</a></li>
-                    <?php if (isset($_SESSION["user"]["id"])) { ?>
+                    <?php if (isset($_SESSION["user"]["id"]) === true) { ?>
                     <li><a class="text-white" href="index.php?action=deconnexion">Se déconnecter</a></li>
                     <?php } else { ?>
                     <li><a class="text-white" href="index.php?action=connexion">Se connecter</a></li>

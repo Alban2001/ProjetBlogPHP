@@ -15,7 +15,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
             <div class="col">
                 <h1 class="fw-bold text-decoration-underline text-center mt-5">Gestion des utilisateurs</h1><br><br>
                 <?php
-                if (isset($get["successValidate"]) && $get["successValidate"] === "1") { ?>
+                if (isset($get["successValidate"]) === true && $get["successValidate"] === "1") { ?>
                 <div class="messageSuccess fw-bold bg-success text-white text-center p-3 w-100">
                     Validation de l'utilisateur effectuée avec succès !
                 </div>

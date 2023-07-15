@@ -16,21 +16,21 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
             <div class="col">
                 <h1 class="fw-bold text-decoration-underline text-center mt-5">Gestion des articles</h1><br><br>
                 <?php
-                if (isset($get["successInsert"]) && $get["successInsert"] === "1") { ?>
+                if (isset($get["successInsert"]) === true && $get["successInsert"] === "1") { ?>
                 <div class="messageSuccess fw-bold bg-success text-white text-center p-3 w-100">
                     Insertion d'un article effectuée avec succès !
                 </div>
                 <br>
                 <?php } ?>
                 <?php
-                if (isset($get["successUpdate"]) && $get["successUpdate"] === "1") { ?>
+                if (isset($get["successUpdate"]) === true && $get["successUpdate"] === "1") { ?>
                 <div class="messageSuccess fw-bold bg-success text-white text-center p-3 w-100">
                     Mise à jour de l'article effectuée avec succès !
                 </div>
                 <br>
                 <?php } ?>
                 <?php
-                if (isset($get["successDelete"]) && $get["successDelete"] === "1") { ?>
+                if (isset($get["successDelete"]) === true && $get["successDelete"] === "1") { ?>
                 <div class="messageSuccess fw-bold bg-success text-white text-center p-3 w-100">
                     Suppression de l'article effectuée avec succès !
                 </div>

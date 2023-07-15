@@ -19,12 +19,12 @@ $_SESSION['tokenCompte'] = bin2hex(random_bytes(35)); ?>
             <div class="col">
                 <div class="div-connexion p-4 border rounded shadow-lg fw-bold">
                     <h1 class="fs-4 fw-bold text-center">Création d'un compte</h1>
-                    <?php if (isset($erreurChamp) && $erreurChamp === true) { ?>
+                    <?php if (isset($erreurChamp) === true && $erreurChamp === true) { ?>
                     <div class="bg-danger text-white fw-bold p-3 mt-3">
                         La saisie de tout les champs est obligatoire !
                     </div>
                     <?php } ?>
-                    <?php if (isset($get["success"]) && $get["success"] === "1") { ?>
+                    <?php if (isset($get["success"]) === true && $get["success"] === "1") { ?>
                     <div class="messageSuccess bg-success text-white fw-bold p-3 mt-3">
                         Création de votre compte effectuée avec succès !<br>
                         Un mail vous sera envoyé dès que l'administrateur vous aura validé votre compte.
@@ -34,7 +34,7 @@ $_SESSION['tokenCompte'] = bin2hex(random_bytes(35)); ?>
                     <form action="index.php?action=retourCreationCompte" method="POST">
                         <label for="nom" class="form-label">Nom</label>
                         <input class="inputCompte form-control mb-3 border-2" type="text" name="nom" placeholder="Nom"
-                            value="<?php if (isset($inputs["nom"])) {
+                            value="<?php if (isset($inputs["nom"]) === true) {
                                 echo htmlspecialchars($inputs["nom"], ENT_QUOTES);
                             } ?>" />
                         <p class="msgErreurC d-none fst-italic fw-bold text-danger">La saisie de votre nom est
@@ -42,7 +42,7 @@ $_SESSION['tokenCompte'] = bin2hex(random_bytes(35)); ?>
                         </p>
                         <label for="prenom" class="form-label">Prénom</label>
                         <input class="inputCompte form-control mb-3 border-2" type="text" name="prenom"
-                            placeholder="Prénom" value="<?php if (isset($inputs["prenom"])) {
+                            placeholder="Prénom" value="<?php if (isset($inputs["prenom"]) === true) {
                                 echo htmlspecialchars($inputs["prenom"], ENT_QUOTES);
                             } ?>" />
                         <p class="msgErreurC d-none fst-italic fw-bold text-danger">La saisie de votre prénom est
@@ -50,18 +50,18 @@ $_SESSION['tokenCompte'] = bin2hex(random_bytes(35)); ?>
                         </p>
                         <label for="email" class="form-label">Email</label>
                         <input class="inputCompte form-control mb-3 border-2" type="email" name="email"
-                            placeholder="exemple@mail.fr" value="<?php if (isset($inputs["email"])) {
+                            placeholder="exemple@mail.fr" value="<?php if (isset($inputs["email"]) === true) {
                                 echo htmlspecialchars($inputs["email"], ENT_QUOTES);
                             } ?>" />
                         <p id="msgErreurEmail" class="d-none fst-italic fw-bold text-danger">Le format de l'email est
                             incorrect !
                         </p>
-                        <?php if (isset($erreurMail) && $erreurMail === true) { ?>
+                        <?php if (isset($erreurMail) === true && $erreurMail === true) { ?>
                         <p id="msgErreurEmail2" class="fst-italic fw-bold text-danger">Le format de l'email est
                             incorrect !
                         </p>
                         <?php } ?>
-                        <?php if (isset($erreurMailExistant) && $erreurMailExistant === true) { ?>
+                        <?php if (isset($erreurMailExistant) === true && $erreurMailExistant === true) { ?>
                         <p id="msgErreurEmail3" class="fst-italic fw-bold text-danger">Cette adresse mail a déjà été
                             utilisé. Veuillez en choisir une autre !
                         </p>
@@ -77,7 +77,7 @@ $_SESSION['tokenCompte'] = bin2hex(random_bytes(35)); ?>
                             contenir au moins : <br>- 12 caractères<br>- 1 lettre en majuscule<br>- 1 lettre en
                             miniscule<br>- 1 caractère spéciaux (?!@#$%^&*)(+=~.;:_-)
                         </p>
-                        <?php if (isset($erreurPassword) && $erreurPassword === true) { ?>
+                        <?php if (isset($erreurPassword) === true && $erreurPassword === true) { ?>
                         <p id="msgErreurMdp2" class="fst-italic fw-bold text-danger">Votre mot de passe doit
                             contenir au moins : <br>- 12 caractères<br>- 1 lettre en majuscule<br>- 1 lettre en
                             minuscule<br>- 1 caractère spéciaux (?!@#$%^&*)(+=~.;:_-)
@@ -89,7 +89,7 @@ $_SESSION['tokenCompte'] = bin2hex(random_bytes(35)); ?>
                         <p id="msgErreurMdpConfirmed" class="d-none fst-italic fw-bold text-danger">Ce mot de passe ne
                             correspond pas à celui du dessus !
                         </p>
-                        <?php if (isset($errorPwConfirmed) && $errorPwConfirmed === true) { ?>
+                        <?php if (isset($errorPwConfirmed) === true && $errorPwConfirmed === true) { ?>
                         <p id="msgErreurMdpConfirmed2" class="fst-italic fw-bold text-danger">Ce mot de passe ne
                             correspond pas à celui du dessus !
                         </p>

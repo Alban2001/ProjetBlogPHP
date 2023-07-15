@@ -10,7 +10,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
             <div class="col">
                 <h1 class="fw-bold p-5 text-center">Ajouter un article</h1>
                 <br>
-                <?php if (isset($numErreur) && $numErreur === true) { ?>
+                <?php if (isset($numErreur) === true && $numErreur === true) { ?>
                     <div class="bg-danger text-white fw-bold p-3">
                         La saisie de tout les champs est obligatoire !
                     </div>

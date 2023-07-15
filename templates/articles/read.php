@@ -40,7 +40,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
         </div>
         <div class="row">
             <div class="col">
-                <?php if (isset($get["messageErreur"]) && $get["messageErreur"] === "1") { ?>
+                <?php if (isset($get["messageErreur"]) === true && $get["messageErreur"] === "1") { ?>
                 <div class="bg-danger text-white fw-bold p-3">
                     La saisie du commentaire est obligatoire !
                 </div>
@@ -48,7 +48,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                 <?php } ?>
                 <form action="index.php?action=comment" method="POST">
                     <label for="textarea-commentaire" class="form-label fw-bold">Votre commentaire</label>
-                    <?php if (isset($_SESSION["user"]["id"])) { ?>
+                    <?php if (isset($_SESSION["user"]["id"]) === true) { ?>
                     <textarea id="textarea-commentaire" class="form-control" rows="5"
                         placeholder="Ecrivez votre commentaire..." name="commentaire"></textarea>
                     <input type="hidden" name="token"
@@ -66,7 +66,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                     <?php } ?>
                 </form>
                 <br>
-                <?php if (isset($get["success"]) && $get["success"] === "1") { ?>
+                <?php if (isset($get["success"]) === true && $get["success"] === "1") { ?>
                 <br>
                 <div class="messageSuccess fw-bold bg-success text-white text-center p-3">
                     Insertion du commentaire effectuée avec succès !<br>

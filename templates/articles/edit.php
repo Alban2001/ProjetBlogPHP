@@ -18,7 +18,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                     <?php echo htmlspecialchars($user->getPrenom()) . ' ' . htmlspecialchars($user->getNom(), ENT_QUOTES); ?>
                 </p>
                 <br>
-                <?php if (isset($numErreur) && $numErreur === true) { ?>
+                <?php if (isset($numErreur) === true && $numErreur === true) { ?>
                     <div class="bg-danger text-white fw-bold p-3">
                         La saisie de tout les champs est obligatoire !
                     </div>
@@ -27,7 +27,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                 <form action="index.php?action=retourEditArticle" method="POST" enctype='multipart/form-data'>
                     <label class="fw-bold" for="title" class="form-label">Titre</label>
                     <input class="inputAjoutArticle form-control border border-3" type="text" name="title"
-                        placeholder="Titre" maxlength="255" value="<?php if (isset($inputs["title"]) && !empty($inputs["title"])) {
+                        placeholder="Titre" maxlength="255" value="<?php if (isset($inputs["title"]) === true && empty($inputs["title"]) === false) {
                             echo htmlspecialchars($inputs["title"], ENT_QUOTES);
                         } else {
                             echo htmlspecialchars($article->getTitre(), ENT_QUOTES);
@@ -41,7 +41,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                     <input id="inputFileImage" class="form-control border border-3" type="file" name="image"
                         accept="image/png, image/jpg, image/jpeg"
                         value="<?php echo 'images/upload/' . htmlspecialchars($article->getImage(), ENT_QUOTES); ?>">
-                    <?php if (isset($erreurExtension) && $erreurExtension === true) { ?>
+                    <?php if (isset($erreurExtension) === true && $erreurExtension === true) { ?>
                         <p class="bg-danger fst-italic fw-bold text-white p-1">
                             <?php echo htmlspecialchars($messageErreur, ENT_QUOTES); ?>
                         </p><br>
@@ -49,7 +49,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                     <br>
                     <label class="fw-bold" for="chapo">Chapô</label><br>
                     <?php $chapo = "";
-                    if (isset($inputs["chapo"]) && !empty($inputs["chapo"])) {
+                    if (isset($inputs["chapo"]) === true && empty($inputs["chapo"]) === false) {
                         $chapo = htmlspecialchars($inputs["chapo"], ENT_QUOTES);
                     } else {
                         $chapo = htmlspecialchars($article->getChapo(), ENT_QUOTES);
@@ -60,7 +60,7 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
                     </p><br><br>
                     <label class="fw-bold" for="content">Contenu</label><br>
                     <?php $content = "";
-                    if (isset($inputs["content"]) && !empty($inputs["content"])) {
+                    if (isset($inputs["content"]) === true && empty($inputs["content"]) === false) {
                         $content = htmlspecialchars($inputs["content"], ENT_QUOTES);
                     } else {
                         $content = htmlspecialchars($article->getContenu(), ENT_QUOTES);

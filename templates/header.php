@@ -1,5 +1,5 @@
 <!--- VUE PARTIELLE : HEADER + NAV --->
-<?php if (isset($_SESSION["user"]["id"])) { ?>
+<?php if (isset($_SESSION["user"]["id"]) === true) { ?>
 <div class="p-2 fw-bold text-black border bg-white text-center">
   <?php echo "Bonjour " . htmlspecialchars($_SESSION["user"]["prenom"], ENT_QUOTES) . ". Ravi de vous revoir ! :-)"; ?>
 </div>
@@ -33,7 +33,7 @@
                 <li class="nav-item">
                   <a class="nav-link text-white fs-5" href="index.php?action=affichageArticles">Articles</a>
                 </li>
-                <?php if (isset($_SESSION["user"]["role"]) && $_SESSION["user"]["role"] === "admin") { ?>
+                <?php if (isset($_SESSION["user"]["role"]) === true && $_SESSION["user"]["role"] === "admin") { ?>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle text-white fs-5" href="#" id="navbarDropdownGestion" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
