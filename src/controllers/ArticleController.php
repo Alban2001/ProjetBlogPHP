@@ -21,8 +21,8 @@ class ArticleController
         $articleManager = new ArticleManager();
         $articles = $articleManager->getAll();
         include_once __DIR__ . "/../../templates/articles/gestion.php";
-
-    } //end gestion()
+    }
+    // end gestion()
 
 
     /**
@@ -83,6 +83,8 @@ class ArticleController
             throw new Exception("Erreur 405 : la requête effectuée n'est pas autorisée !");
         }
     }
+    // end retourAdd()
+
 
     /**
      * Permet de se diriger vers la page pour éditer un article
