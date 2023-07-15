@@ -9,11 +9,32 @@ class Article
     /*
      * Attributs de l'entité Article
      */
+
+    /**
+     * @var int Code
+     */
     private int $code;
+
+    /**
+     * @var string Titre
+     */
     private string $titre;
+
+    /**
+     * @var string Image
+     */
     private string $image;
+
+    /**
+     * @var string Chapo
+     */
     private string $chapo;
+
+    /**
+     * @var string Contenu
+     */
     private string $contenu;
+
     /**
      * La date de création est la date du jour par défaut lors de la création de l'article
      * @var DateTime DateCreation
@@ -26,6 +47,9 @@ class Article
      */
     private DateTime $dateDerniereMaj;
 
+    /**
+     * @var int IdUtilisateur
+     */
     private int $idUtilisateur;
 
     /**
