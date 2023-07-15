@@ -6,7 +6,9 @@ use DateTime;
 
 class Article
 {
-    // Attributs de l'entité Article
+    /*
+     * Attributs de l'entité Article
+     */
     private int $code;
     private string $titre;
     private string $image;
@@ -14,13 +16,13 @@ class Article
     private string $contenu;
     /**
      * La date de création est la date du jour par défaut lors de la création de l'article
-     * @var DateTime dateCreation
+     * @var DateTime DateCreation
      */
     private DateTime $dateCreation;
 
     /**
      * La date de création est la date du jour par défaut lors de la création de l'article
-     * @var DateTime dateDerniereMaj
+     * @var DateTime DateDerniereMaj
      */
     private DateTime $dateDerniereMaj;
 

@@ -7,13 +7,15 @@ use Models\User;
 
 class Comment
 {
-    // Attributs de l'entité Comment
+    /* 
+     * Attributs de l'entité Comment
+     */
     private int $code;
     private int $idArticle;
     private string $contenu;
     /**
      * La date de création est la date du jour par défaut lors de la création du commentaire
-     * @var DateTime dateCreation
+     * @var DateTime DateCreation
      */
     private DateTime $dateCreation;
 

@@ -4,7 +4,9 @@ namespace Models;
 
 class User
 {
-    // Attributs de l'entité User
+    /*
+     * Attributs de l'entité User
+     */
     private int $code;
     private string $nom;
     private string $prenom;
@@ -13,7 +15,7 @@ class User
     private int $valide = 0;
     /**
      * Valeur par défaut : un utlisateur a le rôle "User" automatiquement lorsqu'il crééra un compte
-     * @var string role
+     * @var string Role
      */
 
     private string $role = "user";
