@@ -35,10 +35,10 @@ class UserController
         $globals = new Globals();
         $globals->setPOST($options);
         $inputs = $globals->getPOST();
-        if (!empty($inputs["token"]) && $inputs["token"] === $_SESSION["token"]) {
+        if (empty($inputs["token"]) === false && $inputs["token"] === $_SESSION["token"]) {
             $userManager = new UserManager();
             // Si l'adresse mail et le mot de passe correspond
-            if ($userManager->verifierCompte($inputs["email"], $inputs["password"])) {
+            if ($userManager->verifierCompte($inputs["email"], $inputs["password"]) === true) {
                 session_start();
                 $user = $userManager->getUser($inputs["email"], $inputs["password"]);
                 $_SESSION["user"]["id"] = $user->getId();
@@ -86,21 +86,21 @@ class UserController
         $globals = new Globals();
         $globals->setPOST($options);
         $inputs = $globals->getPOST();
-        if (!empty($inputs["token"]) && $inputs["token"] === $_SESSION["tokenCompte"]) {
+        if (empty($inputs["token"]) === false && $inputs["token"] === $_SESSION["tokenCompte"]) {
             // Si les champs ne sont pas vides
-            if (!empty($inputs["nom"]) && !empty($inputs["prenom"]) && !empty($inputs["email"]) && !empty($inputs["password"]) && !empty($inputs["passwordConfirmed"])) {
+            if (empty($inputs["nom"]) === false && empty($inputs["prenom"]) === false && empty($inputs["email"]) === false && empty($inputs["password"]) === false && empty($inputs["passwordConfirmed"]) === false) {
                 // Si l'adresse mail respecte le bon format
-                if (filter_var($inputs["email"], FILTER_VALIDATE_EMAIL)) {
+                if (filter_var($inputs["email"], FILTER_VALIDATE_EMAIL) === true) {
                     $userManager = new UserManager();
                     // Si l'adresse mail n'existe pas dans la BDD
                     if ($userManager->verifierMail($inputs["email"]) === true) {
                         // Si le mot de passe doit contenir au moins 8 caractères, un chiffre, une lettre minuscule, une majuscule et un caractères spéciaux
                         if (
-                            strlen($inputs["password"]) >= 12 &&
-                            preg_match("/[a-z]/", $inputs["password"]) &&
-                            preg_match("/[A-Z]/", $inputs["password"]) &&
-                            preg_match("/[0-9]/", $inputs["password"]) &&
-                            preg_match("/[?!@#$%^&*)(+=~.;:_-]/", $inputs["password"])
+                            strlen($inputs["password"]) >= 12
+                            && preg_match("/[a-z]/", $inputs["password"])
+                            && preg_match("/[A-Z]/", $inputs["password"])
+                            && preg_match("/[0-9]/", $inputs["password"])
+                            && preg_match("/[?!@#$%^&*)(+=~.;:_-]/", $inputs["password"])
                         ) {
                             // Si le mot de passe saisit correspond au mot de passe de confirmation
                             if ($inputs["password"] === $inputs["passwordConfirmed"]) {
@@ -164,9 +164,9 @@ class UserController
         $globals = new Globals();
         $globals->setPOST($options);
         $inputs = $globals->getPOST();
-        if (!empty($inputs["token"]) && $inputs["token"] === $_SESSION["token"]) {
+        if (empty($inputs["token"]) === false && $inputs["token"] === $_SESSION["token"]) {
             $userManager = new UserManager();
-            if ($userManager->verifierId($inputs["id"])) {
+            if ($userManager->verifierId($inputs["id"]) === true) {
                 $userManager->valide($inputs["id"]);
                 $utilisateurs = $userManager->getAll();
                 header("Location: index.php?action=gestionUtilisateurs&successValidate=1");

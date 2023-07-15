@@ -21,7 +21,7 @@ class ArticleController
         $articleManager = new ArticleManager();
         $articles = $articleManager->getAll();
         include_once __DIR__ . "/../../templates/articles/gestion.php";
-    }
+    } //end gestion()
 
     /**
      * Permet de se diriger vers la page pour ajouter un nouvel article
@@ -48,12 +48,12 @@ class ArticleController
         $img = $globals->getFILES();
         $idUtilisateur = $_SESSION["user"]["id"];
 
-        if (!empty($inputs["token"]) && $inputs["token"] === $_SESSION["token"]) {
+        if (empty($inputs["token"]) === false && $inputs["token"] === $_SESSION["token"]) {
             // On vérifie que tout les champs ne sont pas vides
-            if (!empty($inputs["title"]) && !empty($inputs["chapo"]) && !empty($inputs["content"]) && !empty($img["image"]["name"])) {
+            if (empty($inputs["title"]) === false && empty($inputs["chapo"]) === false && empty($inputs["content"]) === false && empty($img["image"]["name"]) === false) {
                 $articleManager = new ArticleManager();
                 $image = $articleManager->addImage($img);
-                if (!empty($image)) {
+                if (empty($image) === false) {
                     $articleManager = new ArticleManager();
                     $objetArticle = new Article();
                     $objetArticle
@@ -91,7 +91,7 @@ class ArticleController
     {
         $articleManager = new ArticleManager();
         $userManager = new UserManager();
-        if ($articleManager->verifierId($code)) {
+        if ($articleManager->verifierId($code) === true) {
             $article = $articleManager->getArticle($code);
             $user = $userManager->getUserById($article->getIdUtilisateur());
             $_SESSION["article"]["id"] = $article->getId();
@@ -118,9 +118,9 @@ class ArticleController
         $idUtilisateur = $_SESSION["user"]["id"];
         $idArticle = $_SESSION["article"]["id"];
 
-        if (!empty($inputs["token"]) && $inputs["token"] === $_SESSION["token"]) {
+        if (empty($inputs["token"]) === false && $inputs["token"] === $_SESSION["token"]) {
             // On vérifie que tout les champs ne sont pas vides
-            if (!empty($inputs["title"]) && !empty($inputs["chapo"]) && !empty($inputs["content"])) {
+            if (empty($inputs["title"]) === false && empty($inputs["chapo"]) === false && empty($inputs["content"]) === false) {
                 $objetArticle = new Article();
                 $objetArticle
                     ->setId($idArticle)
@@ -130,11 +130,11 @@ class ArticleController
                     ->setIdUtilisateur($idUtilisateur)
                 ;
                 // Si je mets une nouvelle image, alors :
-                if (!empty($img["image"]["name"])) {
+                if (empty($img["image"]["name"]) === false) {
                     $article = $articleManager->getArticle($idArticle);
                     $image = $articleManager->addImage($img);
 
-                    if (!empty($image)) {
+                    if (empty($image) === false) {
                         $objetArticle->setImage($image);
                         $articleManager->update($objetArticle);
                         // Permet de supprimer l'ancienne image du dossier upload, car celle-ci ne sera plus utilisée
@@ -190,7 +190,7 @@ class ArticleController
 
         if (!empty($inputs["token"]) && $inputs["token"] === $_SESSION["token"]) {
             $articleManager = new ArticleManager();
-            if ($articleManager->verifierId($inputs["id"])) {
+            if ($articleManager->verifierId($inputs["id"]) === true) {
                 // On va aussi supprimer en même temps, l'image dans le dossier upload
                 // car celle-ci ne sera plus utilisée par la BDD
                 $article = $articleManager->getArticle($inputs["id"]);
@@ -228,7 +228,7 @@ class ArticleController
     public function read($code)
     {
         $articleManager = new ArticleManager();
-        if ($articleManager->verifierId($code)) {
+        if ($articleManager->verifierId($code) === true) {
             $userManager = new UserManager();
             $commentManager = new CommentManager();
             $article = $articleManager->getArticle($code);

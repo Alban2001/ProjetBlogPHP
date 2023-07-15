@@ -27,9 +27,9 @@ class CommentController
         $idArticle = $_SESSION["article"]["id"];
         $idUtilisateur = $_SESSION["user"]["id"];
 
-        if (!empty($inputs["token"]) && $inputs["token"] === $_SESSION["token"]) {
+        if (empty($inputs["token"]) === false && $inputs["token"] === $_SESSION["token"]) {
             // Si le commentaire n'est pas rempli
-            if (!empty($inputs["commentaire"])) {
+            if (empty($inputs["commentaire"]) === false) {
                 $commentManager = new CommentManager();
                 $objetComment = new Comment();
                 $objetComment
@@ -76,7 +76,7 @@ class CommentController
         $globals = new Globals();
         $globals->setPOST($options);
         $inputs = $globals->getPOST();
-        if (!empty($inputs["token"]) && $inputs["token"] === $_SESSION["token"]) {
+        if (empty($inputs["token"]) === false && $inputs["token"] === $_SESSION["token"]) {
             $commentManager = new CommentManager();
             if ($commentManager->verifierId($inputs["id"])) {
                 $commentManager->valide($inputs["id"]);
