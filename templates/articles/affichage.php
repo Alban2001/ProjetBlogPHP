@@ -1,7 +1,7 @@
 <!--- VUE DE LA PAGE SUR L'AFFICHAGE DE L'ENSEMBLE DES ARTICLES --->
 
-<?php $title = "Nos articles"; ?>
-<?php ob_start(); ?>
+<?php $title = "Nos articles";
+ob_start(); ?>
 
 <section id="affichageArticles" class="py-3 bg-light bg-gradient">
     <div class="container">
@@ -54,6 +54,6 @@
 <script type="text/javascript" src="scripts/pagination.js"></script>
 <script type="text/javascript" src="scripts/articles.js"></script>
 
-<?php $content = ob_get_clean(); ?>
+<?php $content = ob_get_clean();
 
-<?php include_once __DIR__ . "/../layout.php"; ?>
+include_once __DIR__ . "/../layout.php";

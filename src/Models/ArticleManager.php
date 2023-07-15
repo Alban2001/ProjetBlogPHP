@@ -51,7 +51,7 @@ class ArticleManager
         $extensions = ["jpg", "jpeg", "png"]; // Extensions d'image accepté
         $typeFichier = ["image/jpg", "image/jpeg", "image/png"]; // types de fichier accepté
 
-        if (in_array($extension, $extensions) && in_array(mime_content_type($img["image"]["tmp_name"]), $typeFichier)) {
+        if (in_array($extension, $extensions) === true && in_array(mime_content_type($img["image"]["tmp_name"]), $typeFichier) === true) {
             $nomImage = uniqid('', true); // Génère un id unique pour le nom de l'image
             $image = $nomImage . "." . $extension;
             // Définit le nouveau de destination pour les images uploadées

@@ -188,7 +188,7 @@ class ArticleController
         $globals->setPOST($options);
         $inputs = $globals->getPOST();
 
-        if (!empty($inputs["token"]) && $inputs["token"] === $_SESSION["token"]) {
+        if (empty($inputs["token"]) === false && $inputs["token"] === $_SESSION["token"]) {
             $articleManager = new ArticleManager();
             if ($articleManager->verifierId($inputs["id"]) === true) {
                 // On va aussi supprimer en même temps, l'image dans le dossier upload

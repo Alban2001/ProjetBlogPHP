@@ -4,11 +4,11 @@
 
 $globals = new Globals();
 $globals->setGET();
-$get = $globals->getGET(); ?>
+$get = $globals->getGET();
 
-<?php $title = "Création d'un compte"; ?>
+$title = "Création d'un compte";
 
-<?php ob_start();
+ob_start();
 $_SESSION['tokenCompte'] = bin2hex(random_bytes(35)); ?>
 
 <div class="div-connexion-bg">
@@ -108,6 +108,6 @@ $_SESSION['tokenCompte'] = bin2hex(random_bytes(35)); ?>
 
 <script type="text/javascript" src="scripts/connexion.js"></script>
 
-<?php $content = ob_get_clean(); ?>
+<?php $content = ob_get_clean();
 
-<?php include_once __DIR__ . "/layout.php"; ?>
+include_once __DIR__ . "/layout.php";

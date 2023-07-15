@@ -4,10 +4,10 @@
 
 $globals = new Globals();
 $globals->setGET();
-$get = $globals->getGET(); ?>
+$get = $globals->getGET();
 
-<?php $title = "Gestion des articles"; ?>
-<?php ob_start();
+$title = "Gestion des articles";
+ob_start();
 $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
 
 <section id="gestionArticles" class="py-3 bg-light bg-gradient">
@@ -126,6 +126,6 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
 <script type="text/javascript" src="scripts/pagination.js"></script>
 <script type="text/javascript" src="scripts/articles.js"></script>
 
-<?php $content = ob_get_clean(); ?>
+<?php $content = ob_get_clean();
 
-<?php include_once __DIR__ . "/../layout.php"; ?>
+include_once __DIR__ . "/../layout.php";

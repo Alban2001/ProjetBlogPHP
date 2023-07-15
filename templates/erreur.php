@@ -1,6 +1,6 @@
-<?php $title = "Page d'erreur"; ?>
+<?php $title = "Page d'erreur";
 
-<?php ob_start(); ?>
+ob_start(); ?>
 
 <section id="erreur">
     <div class="container">
@@ -16,6 +16,6 @@
     </div>
 </section>
 
-<?php $content = ob_get_clean(); ?>
+<?php $content = ob_get_clean();
 
-<?php include_once __DIR__ . "/layout.php"; ?>
+include_once __DIR__ . "/layout.php";

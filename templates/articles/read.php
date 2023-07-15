@@ -4,10 +4,10 @@
 
 $globals = new Globals();
 $globals->setGET();
-$get = $globals->getGET(); ?>
+$get = $globals->getGET();
 
-<?php $title = "Lecture d'article"; ?>
-<?php ob_start();
+$title = "Lecture d'article";
+ob_start();
 $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
 
 <section id="lireArticle" class="py-5">
@@ -106,6 +106,6 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
 
 <script type="text/javascript" src="scripts/articles.js"></script>
 
-<?php $content = ob_get_clean(); ?>
+<?php $content = ob_get_clean();
 
-<?php include_once __DIR__ . "/../layout.php"; ?>
+include_once __DIR__ . "/../layout.php";

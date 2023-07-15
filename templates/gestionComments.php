@@ -3,10 +3,10 @@
 
 $globals = new Globals();
 $globals->setGET();
-$get = $globals->getGET(); ?>
+$get = $globals->getGET();
 
-<?php $title = "Gestion des commentaires"; ?>
-<?php ob_start();
+$title = "Gestion des commentaires";
+ob_start();
 $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
 
 <section id="gestionCommentaires" class="py-3 bg-light bg-gradient">
@@ -112,6 +112,6 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
 <script type="text/javascript" src="scripts/pagination.js"></script>
 <script type="text/javascript" src="scripts/gestion.js"></script>
 
-<?php $content = ob_get_clean(); ?>
+<?php $content = ob_get_clean();
 
-<?php include_once __DIR__ . "/layout.php"; ?>
+include_once __DIR__ . "/layout.php";

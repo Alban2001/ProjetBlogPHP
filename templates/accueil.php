@@ -1,8 +1,8 @@
 <!--- VUE DE LA PAGE D'ACCUEIL --->
 
-<?php $title = "Accueil"; ?>
+<?php $title = "Accueil";
 
-<?php ob_start(); ?>
+ob_start(); ?>
 
 <!-- SECTION : ACCUEIL -->
 <section id="accueil">
@@ -192,6 +192,6 @@
     </div>
 </section>
 
-<?php $content = ob_get_clean(); ?>
+<?php $content = ob_get_clean();
 
-<?php include_once __DIR__ . "/layout.php"; ?>
+include_once __DIR__ . "/layout.php";

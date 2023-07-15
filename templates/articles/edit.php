@@ -1,5 +1,5 @@
-<?php $title = "Editer d'un article"; ?>
-<?php ob_start();
+<?php $title = "Editer d'un article";
+ob_start();
 $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
 
 <section id="ajoutArticle" class="py-5 bg-light bg-gradient">
@@ -101,6 +101,6 @@ $_SESSION['token'] = bin2hex(random_bytes(35)); ?>
 
 <script type="text/javascript" src="scripts/articles.js"></script>
 
-<?php $content = ob_get_clean(); ?>
+<?php $content = ob_get_clean();
 
-<?php include_once __DIR__ . "/../layout.php"; ?>
+include_once __DIR__ . "/../layout.php";

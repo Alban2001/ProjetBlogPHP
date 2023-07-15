@@ -78,7 +78,7 @@ class CommentController
         $inputs = $globals->getPOST();
         if (empty($inputs["token"]) === false && $inputs["token"] === $_SESSION["token"]) {
             $commentManager = new CommentManager();
-            if ($commentManager->verifierId($inputs["id"])) {
+            if ($commentManager->verifierId($inputs["id"]) === true) {
                 $commentManager->valide($inputs["id"]);
                 $commentaires = $commentManager->getAll();
                 header("Location: index.php?action=gestionCommentaires&successValidate=1");
