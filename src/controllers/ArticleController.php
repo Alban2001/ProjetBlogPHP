@@ -33,7 +33,9 @@ class ArticleController
     public function add()
     {
         include_once __DIR__ . "/../../templates/articles/add.php";
-    }
+
+    } //end add()
+
 
     /**
      * Permet de récupérer les données saisies de la page add.php, de les traiter et de faire une insertion dans la BDD
