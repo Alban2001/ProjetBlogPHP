@@ -21,7 +21,9 @@ class ArticleController
         $articleManager = new ArticleManager();
         $articles = $articleManager->getAll();
         include_once __DIR__ . "/../../templates/articles/gestion.php";
+
     } //end gestion()
+
 
     /**
      * Permet de se diriger vers la page pour ajouter un nouvel article
