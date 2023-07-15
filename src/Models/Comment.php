@@ -13,6 +13,7 @@ class Comment
     private string $contenu;
     /**
      * La date de création est la date du jour par défaut lors de la création du commentaire
+     * @var DateTime dateCreation
      */
     private DateTime $dateCreation;
 

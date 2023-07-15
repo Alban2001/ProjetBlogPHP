@@ -14,11 +14,13 @@ class Article
     private string $contenu;
     /**
      * La date de création est la date du jour par défaut lors de la création de l'article
+     * @var DateTime dateCreation
      */
     private DateTime $dateCreation;
 
     /**
      * La date de création est la date du jour par défaut lors de la création de l'article
+     * @var DateTime dateDerniereMaj
      */
     private DateTime $dateDerniereMaj;
 

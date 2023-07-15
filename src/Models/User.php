@@ -13,7 +13,9 @@ class User
     private int $valide = 0;
     /**
      * Valeur par défaut : un utlisateur a le rôle "User" automatiquement lorsqu'il crééra un compte
+     * @var string role
      */
+
     private string $role = "user";
 
     /**
