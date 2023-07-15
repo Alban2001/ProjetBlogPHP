@@ -35,7 +35,7 @@ class ArticleController
         include_once __DIR__ . "/../../templates/articles/add.php";
 
     }
-    //end add()
+    // end add()
 
 
     /**
