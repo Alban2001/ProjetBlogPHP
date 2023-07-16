@@ -90,7 +90,7 @@ class UserController
             // Si les champs ne sont pas vides
             if (empty($inputs["nom"]) === false && empty($inputs["prenom"]) === false && empty($inputs["email"]) === false && empty($inputs["password"]) === false && empty($inputs["passwordConfirmed"]) === false) {
                 // Si l'adresse mail respecte le bon format
-                if (filter_var($inputs["email"], FILTER_VALIDATE_EMAIL) === true) {
+                if (filter_var($inputs["email"], FILTER_VALIDATE_EMAIL)) {
                     $userManager = new UserManager();
                     // Si l'adresse mail n'existe pas dans la BDD
                     if ($userManager->verifierMail($inputs["email"]) === true) {
