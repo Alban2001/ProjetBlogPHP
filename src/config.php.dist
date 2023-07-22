@@ -7,3 +7,10 @@ $_ENV["DB_HOST"] = "nom de l'hôte";
 $_ENV["DB_NAME"] = "nom de la bdd";
 $_ENV["DB_USERNAME"] = "votre username";
 $_ENV["DB_PASSWORD"] = "votre mot de passe";
+
+// Variables pour l'envoi de mail
+$_ENV["SMTP_HOST"] = "votre nom de serveur";
+$_ENV["SMTP_PORT"] = 0; // numéro de port
+$_ENV["SMTP_SECURE"] = "votre type de chiffrement";
+$_ENV["SMTP_USERNAME"] = "votre nom d'utilisateur/adresse mail";
+$_ENV["SMTP_PASSWORD"] = "votre mot de passe secret";

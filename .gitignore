@@ -1,3 +1,4 @@
 # Ignore le fichier config.php
 config.php
 upload
+vendor
