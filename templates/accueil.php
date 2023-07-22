@@ -1,8 +1,8 @@
 <!--- VUE DE LA PAGE D'ACCUEIL --->
 
 <?php $title = "Accueil";
-
-ob_start(); ?>
+ob_start();
+$_SESSION['token'] = bin2hex(random_bytes(35)); ?>
 
 <!-- SECTION : ACCUEIL -->
 <section id="accueil">
@@ -170,27 +170,64 @@ ob_start(); ?>
                 <div class="div-coordonnees"></div>
             </div>
             <div class="col-12 col-md-6">
-                <form action="" method="post">
+                <form action="index.php?action=sendEmail#contact" method="post">
                     <h2 class="fw-bold">Contactez-moi</h2>
                     <hr class="border border-2 border-dark">
+                    <?php if (isset($erreurChamp) === true && $erreurChamp === true) { ?>
+                        <div class="bg-danger text-white fw-bold p-3">
+                            La saisie de tout les champs est obligatoire !
+                        </div>
+                    <?php } ?>
+                    <?php if (isset($messageSuccess) === true && $messageSuccess === true) { ?>
+                        <div class="messageSuccess bg-success text-white fw-bold p-3">
+                            Votre message a été envoyé avec succès !
+                        </div>
+                    <?php } ?><br>
                     <label class="fw-bold bg-dark p-1 rounded-top text-white" for="nomPrenom">Nom / Prénom</label>
-                    <input id="nomPrenom" class="form-control border border-3" type="text" name="nomPrenom"
-                        placeholder="Saisissez votre nom et prénom..."><br>
+                    <input id="nomPrenom" class="inputContact form-control border border-3" type="text" name="nomPrenom"
+                        placeholder="Saisissez votre nom et prénom..." value="<?php if (isset($inputs["nomPrenom"])) {
+                            echo htmlspecialchars($inputs["nomPrenom"], ENT_QUOTES);
+                        } ?>">
+                    <p class="messageErreurP d-none fst-italic fw-bold text-danger">La saisie de votre nom et prénom est
+                        obligatoire !
+                    </p><br>
                     <label class="fw-bold bg-dark p-1 rounded-top text-white" for="email">Email</label>
-                    <input id="email" class="form-control border border-3" type="email" name="email"
-                        placeholder="exemple@mail.fr"><br>
+                    <input id="email" class="inputContact form-control border border-3" type="text" name="email"
+                        placeholder="exemple@mail.fr" value="<?php if (isset($inputs["email"])) {
+                            echo htmlspecialchars($inputs["email"], ENT_QUOTES);
+                        } ?>">
+                    <?php if (isset($erreurMail) === true && $erreurMail === true) { ?>
+                        <p id="messageErreurEmail" class="fst-italic fw-bold text-danger">Le format de votre adresse
+                            email est incorrecte !</p><br>
+                    <?php } ?>
+                    <p class="messageErreurP d-none fst-italic fw-bold text-danger">Le format de votre adresse email est
+                        incorrecte !</p><br>
                     <label class="fw-bold bg-dark p-1 rounded-top text-white" for="objet">Objet</label>
-                    <input id="objet" class="form-control border border-3" type="text" name="objet"
-                        placeholder="Votre objet"><br>
+                    <input id="objet" class="inputContact form-control border border-3" type="text" name="objet"
+                        placeholder="Votre objet" value="<?php if (isset($inputs["objet"])) {
+                            echo htmlspecialchars($inputs["objet"], ENT_QUOTES);
+                        } ?>">
+                    <p class="messageErreurP d-none fst-italic fw-bold text-danger">La saisie de l'objet du message est
+                        obligatoire !
+                    </p><br>
                     <label class="fw-bold bg-dark p-1 rounded-top text-white" for="message">Message</label><br>
-                    <textarea class="w-100 border border-3 p-3" name="message" id="message" rows="10"
-                        placeholder="Ecrivez votre message..."></textarea><br><br>
+                    <textarea class="inputContact w-100 border border-3 p-3" name="message" id="message" rows="10"
+                        placeholder="Ecrivez votre message..."><?php if (isset($inputs["message"])) {
+                            echo htmlspecialchars($inputs["message"], ENT_QUOTES);
+                        } ?></textarea>
+                    <p class="messageErreurP d-none fst-italic fw-bold text-danger">La saisie de votre message est
+                        obligatoire !
+                    </p><br><br>
+                    <input type="hidden" name="token"
+                        value="<?php echo htmlspecialchars($_SESSION['token'], ENT_QUOTES); ?>">
                     <input class="btn btn-dark bg-gradient w-100" type="submit" value="Envoyer">
                 </form>
             </div>
         </div>
     </div>
 </section>
+
+<script type="text/javascript" src="scripts/accueil.js"></script>
 
 <?php $content = ob_get_clean();
 
