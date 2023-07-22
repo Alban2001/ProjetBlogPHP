@@ -12,9 +12,9 @@ use Controllers\ArticleController;
 use Controllers\CommentController;
 use Lib\Globals;
 
-// ini_set("display_errors", 1);
-// ini_set("display_startup_errors", 1);
-// error_reporting(-1);
+ini_set("display_errors", 1);
+ini_set("display_startup_errors", 1);
+error_reporting(-1);
 
 session_start();
 
@@ -50,6 +50,9 @@ try {
         } else if ($get_action === "affichageArticles") {
             $articleController = new ArticleController();
             $articleController->affichage();
+        } else if ($get_action === "sendEmail") {
+            $homeController = new HomeController();
+            $homeController->sendMail();
         }
         if (isset($get_id) && $get_id > 0) {
             $code = $get_id;
